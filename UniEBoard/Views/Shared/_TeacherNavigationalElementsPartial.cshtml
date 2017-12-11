@@ -1,0 +1,28 @@
+﻿@{string ctrName = ViewContext.RouteData.Values["controller"].ToString();}
+@{string actName = ViewContext.RouteData.Values["action"].ToString();}
+
+
+<li class="divider"></li>
+<li class="nav-group-1"><a title="Courses" href=@Url.Action("Courses", "Teacher") class="@((ctrName == "Teacher" && actName == "Courses") ? "i-link active" : "i-link")"><i class="icon-desktop"><p>Courses</p></i></a></li>
+<li class="nav-group-1"><a title="Modules" href=@Url.Action("Modules", "Teacher") class="@((ctrName == "Teacher" && actName == "Modules") ? "i-link active" : "i-link")"><i class="icon-th-large"><p>Modules</p></i></a></li>
+<li class="nav-group-1"><a title="Classes" href=@Url.Action("Units", "Teacher") class="@((ctrName == "Teacher" && actName == "Units") ? "i-link active" : "i-link")"><i class="icon-th"><p>Classes</p></i></a></li>
+
+
+<li class="divider"></li>
+<li class="nav-group-2"><a title="Quizzes" href=@Url.Action("Quizzes", "Teacher") class="@((ctrName == "Teacher" && actName == "Quizzes") ? "i-link active" : "i-link")"><i class="icon-tasks"><p>Quizzes</p></i></a></li>
+<li class="nav-group-2"><a title="Assignment" href=@Url.Action("Assignments", "Teacher") class="@((ctrName == "Teacher" && actName == "Assignments") ? "i-link active" : "i-link")"><i class="icon-edit"><p>Assignment</p></i></a></li>
+<li class="nav-group-2"><a title="Grade Work" href=@Url.Action("Grades", "Teacher") class="@((ctrName == "Teacher" && actName == "Grades") ? "i-link active" : "i-link")"><i class="icon-star"><p>Grade Work</p></i></a></li>
+
+
+<li class="divider"></li>
+<li class="nav-group-3"><a title="Assets" href=@Url.Action("Assets", "Teacher") class="@((ctrName == "Teacher" && actName == "Assets") ? "i-link active" : "i-link")"><i class="icon-picture"><p>Assets</p></i></a></li>
+<!--
+<li class="nav-group-3"><a title="Messages" href=@Url.Action("Messages", "Teacher") class="@((ctrName == "Teacher" && actName == "Messages") ? "i-link active" : "i-link")"><i class="icon-envelope"><p>Messages</p></i></a></li>
+-->
+<li class="nav-group-3"><a title="Tasks" href=@Url.Action("Index", "Task", new { view = "teacher" }) class="@((ctrName == "Task" && actName == "Index") ? "i-link active" : "i-link")"><i class="icon-check"><p>Tasks</p></i></a></li>
+
+<li class="nav-group-3"><a title="Analytics" href=@Url.Action("Analytics", "Teacher") class="@((ctrName == "Teacher" && actName == "Analytics") ? "i-link active" : "i-link")"><i class="icon-bar-chart"><p>Analytics</p></i></a></li>
+        
+<li class="divider"></li>
+<li class="nav-group-4"><a title="Help" class="toggle-help i-link"><i class="icon-question-sign"><p>Help</p></i></a></li>
+<li class="divider"></li>

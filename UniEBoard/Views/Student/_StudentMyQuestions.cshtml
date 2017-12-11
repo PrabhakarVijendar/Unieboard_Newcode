@@ -1,0 +1,34 @@
+﻿@model IEnumerable<UniEBoard.Service.Models.BaseQuestionTopicViewModel>
+@{
+    ViewBag.Title = "_StudentMyQuestions";
+}
+<div class="questions">
+    <h3>
+        My Questions</h3>
+    <hr>
+    <ul class="square">
+        @foreach (var item in Model)
+        {
+            <li><a data-title="@item.Title" class="roll" href="">@item.Title
+            <span class="@item.StatusCssClass">@item.Status</span></a></li>
+        }
+    </ul>
+    <a class="small success radius button" href="/Discussion/Index">View all discussions</a>
+</div>
+
+@*<div class="questions">
+    <h3>
+        My Questions</h3>
+    <hr>
+    <ul class="square">
+        <li><a data-title="Reading material?" class="roll" href="">Reading material?&nbsp;<span
+            class="label success radius">Answered</span></a></li>
+        <li><a data-title="Tim Berners-Lee?" class="roll" href="">Tim Berners-Lee?&nbsp;<span
+            class="label radius">Updated</span></a></li>
+        <li><a data-title="Historical data in Excel?" class="roll" href="">Historical data in
+            Excel?&nbsp;</a></li>
+        <li><a data-title="Exploiting market mechanics?" class="roll" href="">Exploiting market
+            mechanics?&nbsp;</a></li>
+    </ul>
+    <a class="small success radius button" href="discussions.htm">View all discussions</a>
+</div>*@ 

@@ -1,0 +1,107 @@
+﻿@using UniEBoard.Model.Enums;
+@model UniEBoard.Service.Models.Quizzes.QuestionViewModel
+
+@{
+    String styleButtons = "", styleShowSolutionButton = "style=\"display: none\"";
+
+    if (Model != null && Model.Quiz != null)
+    { 
+        if ((Model.Quiz.DisplayEndResults == QuizDisplayEndResultsOptions.ShowAnswerAfterQuestion || Model.Quiz.DisplayEndResults == QuizDisplayEndResultsOptions.ShowAnswerAfterQuestionAndQuiz)
+            && (Model.questionPosition <= Model.numquestions))
+        {
+            styleButtons = "style=\"display: none\"";
+            styleShowSolutionButton = "";
+        }
+    }
+}
+
+
+@if (Model != null)
+{
+    <div class="display-field">
+        <h2>
+            @if (Model.QuestionNumber != 0)
+            {
+                <span class="quiz-number">@Model.QuestionNumber -</span>
+            }
+            @Html.DisplayFor(model => model.Name)
+        </h2>
+    </div>
+    
+
+    <input id="@String.Format("HiddenPosition", @Model.Id)" type="hidden" value=@Model.questionPosition />
+
+    <div id="@String.Format("questionchoices-{0}", @Model.Id)">
+        <ul class="questionul no-bullet">
+            @if (Model.QuestionType_Id != QuestionQuizType.FreeText)
+            {
+                foreach (var item in Model.QuestionChoices)
+                {
+                    if (Model.QuestionType_Id == QuestionQuizType.MultipleSelection)
+                    {
+                        <li>
+                            <label for="@String.Format("question-{0}", @item.Id)">
+                                <input id="@String.Format("question-{0}", @item.Id)"
+                                       type="checkbox" name="@item.Question_Id"
+                                       value="@item.Id"
+                                       @if (Model.StudentChoices.Contains(@item.Id.ToString())) { String.Format("checked"); }>
+                                @Html.DisplayFor(modelItem2 => item.Name)
+                            </label>
+                        </li>
+
+                    }
+                    else if (Model.QuestionType_Id == QuestionQuizType.SingleSelection)
+                    {
+                        <li>
+                            <label for="@String.Format("question-{0}", @item.Id)">
+                                <input id="@String.Format("question-{0}", @item.Id)"
+                                       type="radio" name="@item.Question_Id"
+                                       value="@item.Id"
+                                       @if (Model.StudentChoices.Contains(@item.Id.ToString())) { String.Format("checked"); }>
+                                @Html.DisplayFor(modelItem2 => item.Name)
+                            </label>
+                        </li>
+                    }
+                }
+            }
+            else //freeText
+            {
+                <li>
+                    <input id="@String.Format("question-{0}", Model.Id)" type="text" name="@Model.Id">
+                </li>
+            }
+        </ul>
+
+    </div>
+    
+
+    <div id="solutionButton" @Html.Raw(styleShowSolutionButton)>
+        <a href="#" id="firstPartialLink2" class="small radius button" onclick="@String.Format("showAnswer()")">Next</a>
+    </div>
+
+    <div id="solution" class="" style="display: none">
+        The correct answer is: @Html.Raw(@Model.QuestionMessageSolution)
+    </div>
+
+
+    <div id="buttons" class="" @Html.Raw(styleButtons)>
+        @if (Model.questionPosition != (Model.numquestions-1))
+        {
+            <a href="#" id="firstPartialLink2" class="small radius button" onclick="@String.Format("Next({0},{1},'question','{2}', {3})", @Model.Quiz_Id, @Model.Id, @Model.QuestionMessageSolution, ViewData["QuizCounter"])">Next</a>
+        }
+        else // Last question
+        {
+            String javaScriptCall = String.Format("submitQuiz({0},{1},'question','{2}',{3})", @Model.Quiz_Id, @Model.Id, @Model.QuestionMessageSolution, ViewData["QuizCounter"] ) + ";";              
+            
+            if (Model.Quiz.DisplayEndResults == QuizDisplayEndResultsOptions.ShowAnswerAfterQuestionAndQuiz || Model.Quiz.DisplayEndResults == QuizDisplayEndResultsOptions.ShowAnswerAfterQuiz)
+            {
+                javaScriptCall = String.Format("showQuizAnswers({0}, {1})", @Model.Quiz_Id, ViewData["QuizCounter"]) + ";";
+            }
+            
+            <p>You are almost done! Please click over Submit Results to continue...</p>
+            <a href="#" id="firstPartialLink2" class="small radius button" onclick="@javaScriptCall"> Submit Results</a>
+        }
+    </div>
+   
+
+}

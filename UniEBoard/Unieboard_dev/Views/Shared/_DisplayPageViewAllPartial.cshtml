@@ -1,0 +1,12 @@
+﻿@model UniEBoard.Service.Models.PageViewAllFilterViewModel
+@if (Request.IsAuthenticated && Model != null)
+{
+    <div class="row">
+        <div class="large-12 medium-12 columns">
+            <form method="post" id="form_pagenumberdisplayfilter" name="form_pagenumberdisplayfilter" class="custom view-selector" action="@Model.TargetUrl">
+
+                @Html.DropDownListFor(m => m.SelectedFilter, new SelectList(new List<string> { "10", "20", "50" }), "View All", new { onchange = "javascript:document.getElementById('form_pagenumberdisplayfilter').submit()", @class = "tiny" })
+            </form>
+        </div>
+    </div>
+}

@@ -1,0 +1,133 @@
+﻿<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <!--
+         _____     _ _____ _____               _
+        |  |  |___|_|   __| __  |___ ___ ___ _| |
+        |  |  |   | |   __| __ -| . | .'|  _| . |
+        |_____|_|_|_|_____|_____|___|__,|_| |___|
+    -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UniEBoard : @ViewBag.Title</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon">
+    @Styles.Render("~/css/font-awesome.css")
+    @Styles.Render("~/css/app.css")
+    @Scripts.Render("~/bower_components/modernizr/modernizr.js")
+    @RenderSection("ajax", required: false)
+</head>
+<body>
+    <div id="st-container" class="st-container">
+        <div class="st-menu st-effect-1" id="menu-1">
+            <!--side content-->
+        </div>
+        <div class="st-menu st-effect-2" id="menu-2">
+            <!--bottom content-->
+        </div>
+        <!-- content push wrapper -->
+        <div class="st-pusher">
+            <div class="st-content">
+                <!-- this is the wrapper for the content -->
+                <div class="st-content-inner">
+                    <!-- extra div for emulating position:fixed of the menu -->
+                    <div class="main clearfix">
+                        <!--Begin Content-->
+                        <!-- Begin Navigation -->
+                        <div id="main-nav" class="contain-to-grid">
+                            <div class="close-reveal">X</div>
+                            <nav class="top-bar">
+                                <ul class="title-area left">
+                                    @RenderSection("firstNavigationElement", required: false)
+                                    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+                                </ul>
+                                <section class="top-bar-section help-off">
+                                    <ul class="right">
+                                        @RenderSection("navigationalElements", required: false)
+                                    </ul>
+                                </section>
+                            </nav>
+                        </div>
+                        <!-- End Navigation -->
+                        <!-- Begin Header -->
+                        <div class="contain-to-grid header">
+                            <div class="row">
+                                <div class="large-2 small-4 columns">
+                                    <a href="/Teacher/Index">
+                                        <h1 class="client-logo"><img src="/Images/logo.png" title=""></h1>
+                                    </a>
+                                </div>
+                                <div class="large-7 small-1 columns">
+
+                                </div>
+                                <div class="large-3 small-7 columns">
+                                    <h1 class="unieboard-logo">
+                                        <img src="/Images/UniEBoard-logo.png" title="UniEBoard - e-ducation for you">
+                                    </h1>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="large-12 columns">
+                                @Html.Partial("_StatusPartial")
+                            </div>
+                        </div>
+                        <!-- End Header -->
+                        @RenderSection("featured", required: false)
+                        @RenderBody()
+
+                        <!-- Footer -->
+                        <footer class="row">
+                            <div class="large-12 columns">
+                                <hr>
+                                <div class="row">
+                                    <div class="large-6 columns">
+                                        <p><small>&copy; Copyright UniEBoard.com 2013</small></p>
+                                    </div>
+                                    <div class="large-6 columns">
+                                        <ul class="inline-list right dn">
+                                            <li>@Html.ActionLink("Privacy & Terms", "About", "Home")</li>
+                                            <li>@Html.ActionLink("My Account", "Index", "Home")</li>
+                                            <li>@Html.ActionLink("Help", "About", "Home")</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </footer>
+                        <!-- End Footer -->
+                        <!--End Content-->
+                    </div><!-- /main -->
+                </div><!-- /st-content-inner -->
+            </div><!-- /st-content -->
+        </div><!-- /st-pusher -->
+    </div><!-- /st-container -->
+
+    <!-- cleaned Javascript files do not remove!-->
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/bower_components/jquery-ui/ui/minified/jquery-ui.min.js"></script>
+    <script src="/bower_components/jqueryui-timepicker-addon/src/jquery-ui-timepicker-addon.js"></script>
+    <script src="/bower_components/chart-js/Chart.min.js"></script>    
+    <script src="/bower_components/foundation/js/foundation.min.js"></script>
+    <script src="/js/app.js"></script>
+    <script src="/js/classie.js"></script>) <!-- this can be removed if we rewrite sidebarEffects.js to use jQuery -->
+    <script src="/js/sidebarEffects.js"></script>
+    <script src="/ckeditor/ckeditor.js"></script>
+    <script>
+        $(document).foundation();
+    </script>
+    <!-- end -->
+
+    @if (Request.RawUrl.ToString().ToLower().Contains("student/task")
+        || Request.RawUrl.ToString().ToLower().Contains("discussion/index")
+        || Request.RawUrl.ToString().ToLower().Contains("student/index")
+        || Request.RawUrl.ToString().ToLower().Contains("task/index")
+        || Request.RawUrl.ToString().ToLower().Contains("teacher/index"))
+    {
+        @*@Scripts.Render("~/bundles/jqueryval")*@
+        @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.js")
+        @Scripts.Render("~/Scripts/jquery.validate.unobtrusive.js")
+        @Scripts.Render("~/Scripts/jquery.validate.min.js")
+    }
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+

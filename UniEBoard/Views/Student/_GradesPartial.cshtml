@@ -1,0 +1,126 @@
+﻿<!--Charts-->
+<div class="row">
+    <div class="large-12 medium-12 columns">
+        <div class="panel">
+            <h6>Grade Overall</h6>
+            <canvas id="GradeOverall" width="900" height="300"></canvas>
+            <div class="key big-centered">
+                <div class="item-2"><i class="icon-sign-blank"></i> @Html.Raw(ViewData["GradeOverall"].ToString())% GPA</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="large-1 medium-122 columns">
+        <div class="panel">
+            <h6>Grade Per Module</h6>
+            <canvas id="GradePerModule" width="900" height="200"></canvas>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="large-12 medium-12 columns">
+        <div class="panel">
+            <h6>Grade Per Assignment</h6>
+            <canvas id="GradePerAssignment" width="900" height="200"></canvas>
+        </div>
+    </div>
+</div>
+<!--End Charts-->
+
+<script src="~/Scripts/js/chart.js"></script>
+
+<script>
+
+/* Grade Overall */
+var GradeOverallData = [
+    {
+        color: "#9b59b6",
+        value: @{ @Html.Raw(100 - Int32.Parse(ViewData["GradeOverall"].ToString()) ); }
+        },
+    {
+        color: "#1AD8AE",
+        value:  @{ @Html.Raw(Int32.Parse(ViewData["GradeOverall"].ToString()) ); }
+        }
+]
+var GradeOverall = new Chart(document.getElementById("GradeOverall").getContext("2d")).Pie(GradeOverallData);
+
+
+/* Grade Per Assignment */
+var GradePerAssignmentData = {
+    labels: [
+        @{
+            var count = ((List<UniEBoard.Service.Models.SubmissionViewModel>)ViewData["GradePerAssignment"]).Count();
+            foreach (var item in (List<UniEBoard.Service.Models.SubmissionViewModel>)ViewData["GradePerAssignment"])
+            {
+                @Html.Raw("\"" + item.Assignment.Title + "\"");
+                if (--count > 0) {
+                    @Html.Raw(",");
+                }
+            }
+        }
+    ],
+    datasets: [
+        {
+            fillColor: "#1AD8AE",
+            strokeColor: "#1AD8AE",
+            pointColor: "rgba(151,187,205,1)",
+            pointStrokeColor: "#fff",
+            @*data: [40,80] *@
+            data: [
+                @{
+                    count = ((List<UniEBoard.Service.Models.SubmissionViewModel>)ViewData["GradePerAssignment"]).Count();
+                    foreach (var item in (List<UniEBoard.Service.Models.SubmissionViewModel>)ViewData["GradePerAssignment"])
+                    {
+                        @Html.Raw(item.GradePointValue);
+                        if (--count > 0) {
+                            @Html.Raw(",");
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}
+var GradePerAssignment = new Chart(document.getElementById("GradePerAssignment").getContext("2d")).Bar(GradePerAssignmentData, { scaleShowLabels: true, pointLabelFontSize: 10 });
+
+/* Grade Per Module */
+var GradePerModuleData = {
+    labels: [
+        @{
+                count = ((List<UniEBoard.Service.Models.ModuleGradeViewModel>)ViewData["GradePerModule"]).Count();
+                foreach (var item in (List<UniEBoard.Service.Models.ModuleGradeViewModel>) ViewData["GradePerModule"])
+                {
+                    @Html.Raw("\""+ item.Module.Title +"\"");
+                    if (--count > 0) {
+                        @Html.Raw(",");
+                    }
+                }
+                }
+    ],
+    datasets: [
+        {
+            fillColor: "#34495e",
+            strokeColor: "#34495e",
+            pointColor: "rgba(151,187,205,1)",
+            pointStrokeColor: "#fff",
+            data: [
+                @{
+                    count = ((List<UniEBoard.Service.Models.ModuleGradeViewModel>)ViewData["GradePerModule"]).Count();
+                    foreach (var item in (List<UniEBoard.Service.Models.ModuleGradeViewModel>) ViewData["GradePerModule"])
+                    {
+                        @Html.Raw(item.Grade);
+                        if (--count > 0) {
+                            @Html.Raw(",");
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}
+var GradePerModule = new Chart(document.getElementById("GradePerModule").getContext("2d")).Bar(GradePerModuleData, { scaleShowLabels: true, pointLabelFontSize: 10 });
+
+
+</script>
+

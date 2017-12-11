@@ -1,0 +1,15 @@
+﻿@model List<UniEBoard.Service.Models.UserViewModel>
+
+@if (Request.IsAuthenticated)
+{
+    foreach (var user in Model)
+    {
+        <span class="label radius">
+                @user.FullName
+           
+            <a id="RemoveTagFilter_@user.Id" class="ajaxTagRemoveLink" 
+               data-source='@Url.Action("RemoveFilterTagAsset", "Teacher", new { id = user.Id })'
+               data-target-id="" data-action="removeFilter" data-callback="RemoveUserFromMessageUserList">x</a>
+        </span>
+    }
+}

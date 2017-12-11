@@ -1,0 +1,73 @@
+﻿@model List<UniEBoard.Service.Models.MessageViewModel>
+
+@{
+    List<UniEBoard.Service.Models.MessageViewModel> assignments = (from m in Model
+                                                             where m.MessageType == (int)UniEBoard.Model.Enums.MessageType.Assignment
+                                                             select m).ToList();
+    List<UniEBoard.Service.Models.MessageViewModel> tasks = (from m in Model
+                                                                   where m.MessageType == (int)UniEBoard.Model.Enums.MessageType.Task
+                                                                   select m).ToList();
+    List<UniEBoard.Service.Models.MessageViewModel> messages = (from m in Model
+                                                             where m.MessageType == (int)UniEBoard.Model.Enums.MessageType.Message
+                                                             select m).ToList();
+    List<UniEBoard.Service.Models.MessageViewModel> notifications = (from m in Model
+                                                                where m.MessageType == (int)UniEBoard.Model.Enums.MessageType.Notification
+                                                                select m).ToList();
+    var CurrentUser = (ViewContext.Controller as UniEBoard.Controllers.BaseController).CurrentUser;
+}
+
+<ul class="dashboard-alerts" id="notifications">
+                <li>
+                    <a class="alert-reveal"><i class="icon-bell"></i> Notifications <span class="label radius plus10 alert-count" id="notificationCount">@notifications.Count</span></a>
+                    <ul class="alert-panel">
+                        @foreach(var notification in notifications) {
+                            <div data-alert class="alert-item radius">
+                                @Ajax.ActionLink("x", "AddStudentViewedMessage", "Student", new { messageId = notification.Id, userId = CurrentUser.Id, messageType = notification.MessageType } , new AjaxOptions() { HttpMethod = "Post", UpdateTargetId = "notificationCount" }, new { @class = "close" })
+                                <span>@*New assignment created:*@ @notification.Title</span>
+                            </div>
+                        }
+                    </ul>
+                </li>
+                <li>
+                    <a class="alert-reveal"><i class="icon-comment-alt"></i> Messages <span class="label radius plus10 alert-count" id="messageCount">@messages.Count</span></a>
+                    <ul class="alert-panel">
+                        <li>
+                            @foreach(var message in messages) {
+                                <div data-alert class="alert-item radius">	
+                                    @Ajax.ActionLink("x", "AddStudentViewedMessage", "Student", new { messageId = message.Id, userId = CurrentUser.Id, messageType = message.MessageType } , new AjaxOptions() { HttpMethod = "Post", UpdateTargetId = "messageCount" }, new { @class = "close" })
+                                    <span>@*New assignment created:*@ @message.Title</span>
+                                </div>
+                            }
+                        </li>
+                    </ul>
+                </li>
+                @if(!CurrentUser.IsAdmin) {
+                <li>
+                    <a class="alert-reveal"><i class="icon-edit"></i> Assignments <span class="label radius plus10 alert-count" id="assignmentCount">@assignments.Count</span></a>
+                    <ul class="alert-panel">
+                        <li>
+                            @foreach(var assignment in assignments) {
+                                <div data-alert class="alert-item radius">	
+                                    @Ajax.ActionLink("x", "AddStudentViewedMessage", "Student", new { messageId = assignment.Id, userId = CurrentUser.Id, messageType = assignment.MessageType } , new AjaxOptions() { HttpMethod = "Post", UpdateTargetId = "assignmentCount" }, new { @class = "close" })
+                                    <span>@*New assignment created:*@ @assignment.Title</span>
+                                </div>
+                            }
+                        </li>
+                    </ul>
+                </li>
+                }
+                <li>
+                    <a class="alert-reveal"><i class="icon-check"></i> Tasks <span class="label radius plus10 alert-count" id="taskCount">@tasks.Count</span></a>
+                    <ul class="alert-panel">
+                        <li>
+                            @foreach(var task in tasks) {
+                                <div data-alert class="alert-item radius">		
+                                    @Ajax.ActionLink("x", "AddStudentViewedMessage", "Student", new { messageId = task.Id, userId = CurrentUser.Id, messageType = task.MessageType } , new AjaxOptions() { HttpMethod = "Post", UpdateTargetId = "taskCount" }, new { @class = "close" })
+                                    <span>@task.Title</span>
+                                </div>
+                            }
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+

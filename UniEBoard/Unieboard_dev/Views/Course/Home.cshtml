@@ -1,0 +1,35 @@
+﻿@model UniEBoard.Service.Models.CourseViewModel
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section firstNavigationElement {
+    @Html.Partial("_LogoutPartial")
+}
+
+@section navigationalElements {
+    @Html.Partial("_StudentNavigationalElementsPartial")
+}
+
+@if(Model != null) {
+<div class="row">
+    <div class="large-12 medium-12 columns">
+        @Html.Partial("_CourseBreadcrumbsPartial", Model)
+        @*<ul class="breadcrumbs">
+                <li><a href="dashboard.htm">My Dashboard</a></li>
+                <li><a href="courses.htm">Courses</a></li>
+                <li class="current"><a href="#">Internet History, Technology, and Security</a></li>
+            </ul>*@
+        <a class="tm-35 small success radius button right edit-view">Edit Page</a>
+        <hr>
+    </div>
+</div>
+<div class="row">
+    <div class="large-3 medium-3 columns">
+        @Html.Partial("_MenuLeftCoursePartial", Model)
+    </div>
+    <div contenteditable="false" id="editable" class="large-9 medium-9 columns">
+        <p>@Html.Raw(HttpUtility.HtmlDecode(Model.Overview))</p>
+    </div>
+</div>
+} 

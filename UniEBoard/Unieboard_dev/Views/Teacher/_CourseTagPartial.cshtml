@@ -1,0 +1,13 @@
+﻿@model IEnumerable<UniEBoard.Service.Models.CourseViewModel>
+@if (Request.IsAuthenticated && Model != null)
+{
+    if (Model != null)
+    {
+        foreach (var course in Model)
+        {                         
+            <span class="label radius">@course.Title           
+                @Ajax.ActionLink("x", "RemoveUserFromCourse", new { userId = ViewData["UserIdentifier"], courseId = course.Id }, new AjaxOptions { HttpMethod = "Post", UpdateTargetId = string.Format("{0}_{1}", "courseTags", ViewData["UserIdentifier"]), InsertionMode = InsertionMode.Replace }, new { @class = "close" })
+            </span>
+        }
+    }
+}

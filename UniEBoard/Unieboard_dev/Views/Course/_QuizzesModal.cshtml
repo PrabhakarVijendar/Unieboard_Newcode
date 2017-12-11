@@ -1,0 +1,23 @@
+﻿@model UniEBoard.Service.Models.Quizzes.QuizzesViewModel
+
+
+<div id=@Model.Id class="reveal-modal" >
+    <div class="row">
+        <div class="large-12 medium-12 columns">
+            <div class="quiz-questions">
+                <div id=@String.Format("welcome_{0}_{1}", @Model.Id, ViewData["counter"])>
+                    <h2>Welcome to @Model.Title</h2>
+                    <p>@Model.Instructions</p>
+                    <p>@Model.Description</p>
+                    <a href="#" id="firstPartialLink2" class="small radius button" onclick='@String.Format("Start({0}, {1})", @Model.Id, ViewData["counter"])'> Start  <i class="icon-arrow-right lm-5"></i></a>
+                </div>
+
+                <div id=@String.Format("question_{0}_{1}", @Model.Id, ViewData["counter"]) style="display: none">
+                    <div id=@String.Format("secondpartial_{0}_{1}", @Model.Id, ViewData["counter"])></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+

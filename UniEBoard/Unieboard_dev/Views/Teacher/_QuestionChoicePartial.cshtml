@@ -1,0 +1,34 @@
+﻿@model UniEBoard.Service.Models.Quizzes.QuestionViewModel
+@Scripts.Render("~/Scripts/jquery.validate.unobtrusive.js")
+
+@*{
+    //Layout = null;
+}
+@*if (Model != null)*@
+@{
+
+    //int choiceNumber = ViewBag.questionChoiceNumber;
+    int choiceNumber = 1;
+
+    <div class="large-8 medium-8 columns">
+        @Html.LabelFor(model => model.QuestionChoices[choiceNumber].Name)
+        @Html.TextBoxFor(model => model.QuestionChoices[choiceNumber].Name, new { placeholder = "Enter Answer Text..." })
+        @Html.ValidationMessageFor(model => model.QuestionChoices[choiceNumber].Name)
+    </div>
+    <div class="large-2 medium-2 columns">
+        @Html.LabelFor(model => model.QuestionChoices[choiceNumber].PointsValue)
+        @Html.TextBoxFor(model => model.QuestionChoices[choiceNumber].PointsValue)
+        @Html.ValidationMessageFor(model => model.QuestionChoices[choiceNumber].PointsValue)
+    </div>
+    <div class="large-1 medium-1 columns">
+        @Html.LabelFor(model => model.QuestionChoices[choiceNumber].CorrectAnswer)
+        @Html.CheckBoxFor(model => model.QuestionChoices[choiceNumber].CorrectAnswer)
+    </div>
+
+    <div class="large-1 medium-1 columns">
+        @Ajax.RawAjaxActionLink("Add+++", "BlankQuestionChoice", "Teacher", new { questionChoiceNumber = choiceNumber }, new AjaxOptions { HttpMethod = "Post", InsertionMode = InsertionMode.InsertBefore, UpdateTargetId = "savequestionrow" }, new { @class = "fr button radius tiny t20" })
+
+    </div>
+
+
+}

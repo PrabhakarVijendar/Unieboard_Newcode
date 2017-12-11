@@ -1,0 +1,53 @@
+﻿@{
+    ViewBag.Title = "My Tasks/Assignments";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var viewType = Request.QueryString["view"];
+    var breadcrumbDashBoard = viewType.ToLower().Equals("student") ? @Html.ActionLink("My Dashboard", "Index", "Student") : @Html.ActionLink("My Dashboard", "Index", "Teacher");
+    var breadcrumbPage = viewType.ToLower().Equals("student") ? @Html.ActionLink("Tasks", "Index", "Task") : @Html.ActionLink("Tasks", "Index", "Task");
+}
+@section firstNavigationElement {
+    @Html.Partial("_LogoutPartial")
+}
+@section navigationalElements {
+    @if (viewType.ToLower().Equals("student"))
+    {
+        @Html.Partial("_StudentNavigationalElementsPartial")
+    }
+    else
+    {
+        @Html.Partial("_TeacherNavigationalElementsPartial")
+    }
+}
+<!-- Begin Breadcrumbs -->
+<div class="row">
+    <div class="large-12 medium-12 columns">
+        <ul class="breadcrumbs">
+			<li>@breadcrumbDashBoard</li>
+			<li class="current">@breadcrumbPage</li>
+		</ul>
+	</div>
+</div>
+<!-- End Begin Breadcrumbs -->
+<div class="row">
+    <!-- Begin Tasks And Assignments -->
+    <div class="large-8 medium-8 columns">
+
+        <!-- Begin Tasks -->
+        <h2 class="tm-25">
+            Tasks <small>/ Deadlines</small></h2>
+        <div id="tasks" class="tasks">     
+           
+        @if (ViewBag.Tasks != null)
+        {
+                @Html.Partial("_TaskPartial", (List<UniEBoard.Service.Models.TaskViewModel>)ViewBag.Tasks)
+        }
+        </div>
+        <!-- End Tasks -->
+    </div>
+    <!-- End Tasks And Assignments --> 
+    <!-- Begin Add Tasks -->
+    <div class="large-4 medium-4 columns">
+        @Html.Partial("_AddTaskPartial")
+    </div>
+</div>
+  <!-- End Add Tasks -->

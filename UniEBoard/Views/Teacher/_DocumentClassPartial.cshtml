@@ -1,0 +1,12 @@
+﻿@model UniEBoard.Service.Models.DocumentViewModel
+@if (Request.IsAuthenticated && Model != null)
+{
+    if (Model != null)
+    {
+                             
+            <span class="label radius">@Model.Name           
+                @Ajax.ActionLink("x", "RemoveDocumentFromClass", new { documentId = @Model.Id, classId = ViewData["ClassDocumentIdentifier"] }, new AjaxOptions { HttpMethod = "Post", UpdateTargetId = string.Format("{0}_{1}", "assetDocument", ViewData["ClassDocumentIdentifier"]), InsertionMode = InsertionMode.Replace }, new { @class = "close" })
+            </span>
+        
+    }
+}

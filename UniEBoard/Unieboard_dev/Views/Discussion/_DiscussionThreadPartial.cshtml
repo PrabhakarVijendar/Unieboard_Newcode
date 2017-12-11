@@ -1,0 +1,53 @@
+﻿@model IEnumerable<UniEBoard.Service.Models.DiscussionViewModel>
+<!-- Begin forum -->
+
+    <div class="row">
+        <div class="large-12 medium-12 columns">
+            <div class="forum" id="result">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>
+                                Forum
+                            </th>
+                            <th width="250">
+                                Latest Activity
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+
+                            <tr>
+                                <td>
+                                    <h4 style="display: inline">
+                                        @Ajax.ActionLink(item.Title, "DiscussionTopic", "Discussion", new { topicId = item.Id, selectedCourse = (int)ViewData["SelectedStudentCourses"] }, new AjaxOptions() { HttpMethod = "Post", UpdateTargetId = "result", InsertionMode = InsertionMode.Replace }, new { id = "linkDiscussion" })
+                                        @*Html.ActionLink(item.Title, "TopicPost", "Discussion", new { id = item.Id }, new { id = "linkDiscussion" });*@
+                                    </h4>
+                                    <p>@item.Description</p>
+                                </td>
+                                <td style="vertical-align: middle">
+                                    <a href="/Discussion/TopicPost/@item.LatestPostCalculatedTopicId" class="">
+                                        @if (item.LatestPostBody.Length > 60)
+                                        {
+                                            @item.LatestPostBody.Substring(0, 60).PadRight(63, '.')
+                                        }
+                                        else
+                                        {
+                                            @item.LatestPostBody
+                                        }
+                                    </a>
+                                </td>
+                            </tr>
+
+
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+<!-- End forum -->

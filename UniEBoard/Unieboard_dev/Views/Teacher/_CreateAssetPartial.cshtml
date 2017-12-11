@@ -1,0 +1,57 @@
+﻿@model UniEBoard.Service.Models.CreateAssetViewModel
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("CreateAsset", "Teacher", FormMethod.Post, new { @class = "custom", enctype = "multipart/form-data" }))
+    {
+        @*@Html.ValidationSummary(false)*@
+        if (!ViewData.ModelState.IsValid) { 
+        <div class="validation-summary-errors">
+            <ul class="no-bullet">
+                @foreach (ModelState modelState in ViewData.ModelState.Values)
+                {
+                    foreach (ModelError modelError in modelState.Errors)
+                    {
+                        <li>@modelError.ErrorMessage</li>
+                    }
+                }
+                    
+            </ul>
+        </div>
+        }
+        <div id="AddNew" class="hide panel">
+            <div class="row">
+                <div class="large-6 medium-6 columns">
+                    @Html.LabelFor(p => p.Name) @Html.TextBoxFor(p => p.Name, new { required = "required", placeholder = "Enter Asset name..." })
+                </div>
+                <div class="large-3 medium-3 columns">
+                    @Html.LabelFor(p => p.AssetType) @Html.DropDownListFor(p => p.AssetType, (IEnumerable<SelectListItem>)ViewData["AssetTypes"], new { id = "ddAssetFormat", required = "required"})
+                </div>
+                <div class="large-3 medium-3 columns">
+                    <label for="isweb">Type</label>
+                    @Html.DropDownList("isweb", (IEnumerable<SelectListItem>)ViewData["UploadTypes"], new { required = "required" })
+                </div>
+            </div>
+            <div id="pathRow" class="row">
+                <div class="large-12 medium-12 columns">
+                    <label for="Path">Web Url Path</label>
+                    @Html.TextBoxFor(p => p.Path, new { required = "required", placeholder = "Enter Web Url" })
+                </div>
+            </div>
+            <div id="fileUploadRow" class="row" style="display:none">
+                <div class="large-6 medium-6 columns">
+                    @Html.LabelFor(p => p.UploadFile)
+                    <input type="file" id="UploadFile" name="UploadFile" />
+                </div>
+                <div class="large-6 medium-6 columns">
+                    @Html.LabelFor(p => p.AlternateUploadFile)
+                    <input type="file" id="AlternateUploadFile" name="AlternateUploadFile" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="large-12 medium-12 columns">
+                    <input id="assetcreatebtn" type="submit" value="Add Asset" class="fr tiny radius button" />
+                </div>
+            </div>
+        </div>
+    }
+}

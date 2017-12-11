@@ -1,0 +1,94 @@
+﻿            
+<div class="row demo-1">                    
+    <div class="large-6 columns">
+        <div class="panel">
+            <h6>Average Grade Per Assignment</h6>
+            <canvas id="AverageGradePerAssignment" width="400" height="300"></canvas>
+        </div>        
+    </div>
+    <div class="large-6 columns">
+        <div class="panel">
+            <h6>Students GPA per Course</h6>
+            <table class="full">
+                <thead>
+                    <tr>
+                        <th>Student Name</th>
+                        <th>GPA</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (ViewData["StudentsName"] != null)
+                    {
+                        List<string> studentsName = ViewData["StudentsName"] as List<string>;
+                        List<int> studentsGrades = ViewData["StudentsGrades"] as List<int>;
+                        for (int i = 0; i != studentsName.Count; i++)
+                        {
+                            <tr>
+                                <td>
+                                    <div class="user list">                                       
+                                        <div class="avatar">
+                                            <img src="/images/person.png" alt="teacher">
+                                        </div>
+                                        <div class="name">
+                                            @studentsName[i]
+                                        </div>                                       
+                                    </div>
+                                </td>
+                                <td>@studentsGrades[i]</td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div> 
+  
+         
+                        
+<script src="~/Scripts/js/chart.js"></script>
+<script>
+
+    
+
+    /* Average Grade Per Assignment */
+ 
+    var AverageGradePerAssignmentData = {
+        labels: [
+                @{
+                    var count = ((List<UniEBoard.Service.Models.AssignmentViewModel>)ViewData["Assignments"]).Count();
+                    foreach (var item in (List<UniEBoard.Service.Models.AssignmentViewModel>)ViewData["Assignments"])
+                    {
+                        @Html.Raw("\"" + item.Title + "\"");
+                        if (--count > 0) {
+                            @Html.Raw(",");
+                        }
+                    }
+                }
+                ],
+        datasets: [
+            {
+                fillColor: "#34495e",
+                strokeColor: "#34495e",
+                pointColor: "rgba(151,187,205,1)",
+                pointStrokeColor: "#fff",
+                scaleStartValue: 0,
+                data: [
+                    @{
+                        count = ((List<UniEBoard.Service.Models.AssignmentViewModel>)ViewData["Assignments"]).Count();
+                        foreach (var item in (List<UniEBoard.Service.Models.AssignmentViewModel>)ViewData["Assignments"])
+                        {
+                            @Html.Raw(item.AverageGrade);
+                            if (--count > 0) {
+                                @Html.Raw(",");
+                            }
+                        }
+                    }
+                    ]
+            }
+        ]
+    }
+    var AverageGradePerAssignment = new Chart(document.getElementById("AverageGradePerAssignment").getContext("2d")).Bar(AverageGradePerAssignmentData, { scaleShowLabels: true, pointLabelFontSize: 10, scaleStartValue: 0 });
+
+
+</script>

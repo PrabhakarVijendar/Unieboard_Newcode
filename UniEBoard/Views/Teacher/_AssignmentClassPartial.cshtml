@@ -1,0 +1,15 @@
+﻿@model IEnumerable<UniEBoard.Service.Models.AssignmentViewModel>
+@if (Request.IsAuthenticated && Model != null)
+{
+    if (Model != null)
+    {
+        foreach (var obj in Model)
+        {
+            <span class="label radius">@obj.Title          
+                @Ajax.ActionLink("x", "RemoveAssignmentFromClass", new { assignmentId = obj.Id, classId = ViewData["ClassAssignmentIdentifier"] }, new AjaxOptions { HttpMethod = "Post", UpdateTargetId = string.Format("{0}_{1}", "calssAssignment", ViewData["ClassAssignmentIdentifier"]), InsertionMode = InsertionMode.Replace }, new { @class = "close" })
+            </span>
+        }
+                               
+        
+    }
+}

@@ -1,0 +1,65 @@
+﻿@model UniEBoard.Service.Models.UnitViewModel
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("CreateUnit", "Teacher", FormMethod.Post, new { @class = "custom" }))
+    {
+    @*@Html.ValidationSummary(false)*@
+    if (!ViewData.ModelState.IsValid) { 
+    <div class="validation-summary-errors">
+        <ul class="no-bullet">
+            @foreach (ModelState modelState in ViewData.ModelState.Values)
+            {
+                foreach (ModelError modelError in modelState.Errors)
+                {
+                    <li>@modelError.ErrorMessage</li>
+                }
+            }
+                    
+        </ul>
+    </div>
+    }
+    <div id="AddNew" class="hide panel">
+        <div class="row">
+            <div class="large-6 columns">
+                <label for="Title">@UniEBoard.Service.Helpers.Configuration.WebSite.Current.TitleClass Title</label>
+                @Html.TextBoxFor(u => u.Title, new { required = "required", placeholder = string.Format("Enter {0} Title...", UniEBoard.Service.Helpers.Configuration.WebSite.Current.TitleClass) })
+            </div>
+            <div class="large-6 columns">
+                <label for="Module">@UniEBoard.Service.Helpers.Configuration.WebSite.Current.TitleCourse @UniEBoard.Service.Helpers.Configuration.WebSite.Current.TitleModule</label>
+                @Html.DropDownListFor(p => p.ModuleId, (IEnumerable<SelectListItem>)ViewData["ModuleList"], new { required = "required" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="large-6 columns">
+                <label for="Description">Description</label>
+                @Html.TextAreaFor(u => u.Description, new { required = "required", placeholder = "Enter Description...", cols = "30", rows = "10" })
+            </div>
+            <div class="large-3 columns">
+                <label for="from">Date & Time</label>
+                <div class="row collapse">
+                    <div class="small-10 columns">
+                        @Html.TextBoxFor(u => u.PublishFrom, "{0:dd/MM/yyyy HH:mm}", new { placeholder = "Enter Start Date...", @class = "dateandtimepicker", required = "required" })
+                    </div>
+                    <div class="small-2 columns">
+                        <a data-focus-id="PublishFrom" class="button prefix"><i class="icon-calendar"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="large-3 columns">
+                <label for="to">Duration</label>
+                <div class="row collapse">
+                    <div class="small-12 columns">
+                        @*Html.TextBoxFor(u => u.PublishTo, "{0:dd/MM/yyyy HH:mm}", new { placeholder = "Enter End Date...", @class = "dateandtimepicker" })*@
+                        @Html.DropDownListFor(p => p.Duration, (IEnumerable<SelectListItem>)ViewData["DurationList"], new { required = "required" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="large-12 columns">
+                <input id="unitcreatebtn" type="submit" value="Create Class" class="right tiny radius button" />
+            </div>
+        </div>
+    </div>
+    }
+}

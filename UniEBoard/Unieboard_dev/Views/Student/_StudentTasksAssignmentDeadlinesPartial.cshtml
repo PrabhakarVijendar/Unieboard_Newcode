@@ -1,0 +1,16 @@
+﻿@model IEnumerable<UniEBoard.Service.Models.TaskAssignmentViewModel>
+@if (Request.IsAuthenticated)
+{
+    <div class="tasks">
+	    <h3>My Tasks <small>/ Deadlines</small></h3>
+		<hr/>
+		<ul class="square">
+        @foreach(var item in Model)
+        {
+			<li>
+                <a href="@Url.Action("Tasks","Student")" class="roll" data-title="Pre class reading (CI)">@item.Title&nbsp;<span class="label @item.CssClass">@item.DaysLeft</span></a>
+            </li>
+        }
+		</ul>
+	</div>
+}

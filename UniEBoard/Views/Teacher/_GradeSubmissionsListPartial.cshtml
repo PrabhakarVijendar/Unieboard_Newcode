@@ -1,0 +1,91 @@
+﻿@model List<UniEBoard.Service.Models.AssignmentViewModel>
+
+@foreach (var assignment in Model)
+{
+
+    if (assignment.Submissions.Count() != 0)
+    { 
+
+   
+        <h5>  <a class="toggleSubmission" data-target="submissionsForAssign_@assignment.Id" data-action="show" data-assignmentid="@assignment.Id">
+    <small><i id="iconForAssign_@assignment.Id" class="general icon-plus "></i></small>
+                </a>  @assignment.Title<small> &nbsp; @assignment.Course.Title</small></h5> 
+    <div id="submissionsForAssign_@assignment.Id" style="display:none" >
+        <hr>
+        @foreach (var submission in assignment.Submissions)
+        {
+        <div class="row">
+            <div class="large-3 medium-3 columns student">
+                <p class="bm-5">@submission.Student.FullName</p>
+                @if (submission.GradePointValue != null)
+                {
+                    <span id="label_@submission.Id" class="label secondary radius">Marked</span>
+                }
+                else if (submission.Status == 0)
+                {
+                    <span id="label_@submission.Id" class="label alert radius">Not Submitted</span>
+                }
+                else
+                {
+                    <span id="label_@submission.Id" class="label success radius">Received</span>
+                }
+                
+                
+            </div>
+            <div class="large-1 medium-1 columns download-assignment">
+                @foreach (var fileSub in submission.FileUploads)
+                {
+                    <a href="#"><i class="general icon-file-alt"></i><br /><small>@fileSub.FileName</small></a>
+                }
+            </div>
+            <div class="large-5 medium-5 columns set-comments">
+                <label for="comments" class="hide">Comments</label>
+                @if (submission.GradePointValue != null || submission.Status == 0)
+                {
+                    <textarea id="comments_@submission.Id" name="comments_@submission.Id" disabled>@submission.Body</textarea>
+                    
+                }
+                else
+                {
+                    <textarea id="comments_@submission.Id" name="comments_@submission.Id" placeholder="Type your comments here"></textarea>
+                }
+            </div>
+            <div class="large-2 medium-2 columns set-grade">
+                <label for="grade" class="hide">Grade</label>
+                @if (submission.GradePointValue != null || submission.Status == 0)
+                {
+                    
+                    <input type="text" id="grade_@submission.Id" name="grade_@submission.Id" value="@submission.GradePointValue" disabled>
+                }
+                else
+                {
+                    <input type="text" id="grade_@submission.Id" name="grade_@submission.Id" placeholder="Enter grade">
+                }
+
+            </div>
+            <div class="large-1 medium-1 columns">
+                @if (submission.Status == 0 )
+                {
+                   @*disabled*@
+                    <a id="submitGrade_@submission.Id" class="tiny radius button right disabled" data-reveal-id="myPaper">Submit</a>
+                }
+                
+                else if(submission.GradePointValue != null){
+                    @*disabled*@
+    <a id="submitGrade_@submission.Id" class="tiny radius button right disabled" data-reveal-id="myPaper">Marked</a>
+                }
+
+                else
+                {
+                    <a id="submitGrade_@submission.Id" class="tiny radius button right submitGrade" data-reveal-id="myPaper" data-url="SubmitGradesForSubmission" data-submissionid="@submission.Id" data-assignmentid="@assignment.Id">Submit</a>
+                }
+
+
+            </div>
+
+        </div>
+        <hr>
+        }
+    </div>
+    }
+}

@@ -1,0 +1,37 @@
+﻿@model IEnumerable<UniEBoard.Service.Models.TopicViewModel>
+<!-- Begin forum -->
+<div class="row">
+    <div class="large-12 medium-12 columns">
+        <div class="forum">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>
+                            Topics
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+
+                        <tr>
+                            <td>
+                                <h4 style="display: inline">
+                                    <a href="/Discussion/TopicPost/@item.Id?topicTitle=@item.Title">@item.Title</a>
+                                </h4>
+                            </td>
+                        </tr>
+
+
+                    }
+                    <tr>
+                        <td>
+                            @Ajax.ActionLink("Back", "DiscussionThread", "Discussion", new { selectedCourse = (int)ViewData["SelectedStudentCourses"], }, new AjaxOptions() { HttpMethod = "Post", UpdateTargetId = "result", InsertionMode = InsertionMode.Replace }, new { id = "linkDiscussionBack" })
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

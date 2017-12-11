@@ -1,0 +1,54 @@
+﻿@{
+    ViewBag.Title = "My DashBoard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section firstNavigationElement {
+    @Html.Partial("_LogoutPartial")
+}
+
+@section navigationalElements {
+    @Html.Partial("_TeacherNavigationalElementsPartial")
+}
+
+
+<!-- Begin Alerts & Intro -->
+
+    <div class="row">
+        <div class="large-12 medium-12 columns">
+            <ul class="breadcrumbs">
+                <li>@Html.ActionLink("My Dashboard", "Index", "Teacher")</li>
+                <li class="current">@Html.ActionLink("Users", "Users", "Teacher")</li>
+            </ul>
+        </div>
+    </div>
+    
+	<!-- End Begin Alerts & Intro -->
+
+
+	<!-- Begin Schedule -->
+	<div class="row">
+        <div class="large-12 medium-12 columns">
+            <!-- Begin Add Users -->
+            <h2>Users <small> <a class="create-new "><i class="icon-plus"></i></a></small></h2>
+            @Html.Partial("_CreateUserPartial")
+            <!-- Filter -->
+            @Html.Partial("_UserFilterPartial")
+
+            <!-- Users List  -->
+            <div id="userList">
+                @Html.Partial("_UserListPartial", (IEnumerable<UniEBoard.Service.Models.UserViewModel>)ViewData["Users"])
+            </div>
+
+            <!-- Begin Pager -->
+            @Html.Partial("_DisplayPageViewAllPartial", (UniEBoard.Service.Models.PageViewAllFilterViewModel)ViewData["Pager"])
+        </div>
+	</div>
+	<!-- End Body -->
+
+	
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+    </script>
+}

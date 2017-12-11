@@ -1,0 +1,100 @@
+﻿@{
+    ViewBag.Title = "My DashBoard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section firstNavigationElement {
+    @Html.Partial("_LogoutPartial")
+}
+
+@section navigationalElements {
+    @Html.Partial("_TeacherNavigationalElementsPartial")
+}
+
+<!-- Begin Breadcrumbs -->
+
+<div class="row">
+    <div class="large-12 medium-12 columns">
+        <ul class="breadcrumbs">
+            <li>@Html.ActionLink("My Dashboard", "Index", "Teacher")</li>
+            <li class="current">@Html.ActionLink("Analytics", "Analytics", "Teacher")</li>
+        </ul>
+    </div>
+</div>
+
+<!-- Begin Grades -->
+<div class="row">
+    <div class="large-12 medium-12 columns">
+        
+        <h2>Analytics</h2>
+
+        <div class="grade">
+            <form class="custom analytics-filter">
+                <div class="row demo-1">
+                    <div class="large-12 medium-12 columns">
+                        <div class="panel">
+                            <h6>Students Per Course</h6>
+                            <canvas id="StudentsPerCourse" width="400" height="300"></canvas>
+                         </div>
+                    </div>
+                 </div>
+                
+                <div class="panel">
+                    <div class="row">
+                        <div class="large-12 medium-12 columns">
+                            <label for="filter-course" class="hide ">Filter by course:</label>
+                            @Html.DropDownList("CoursesDropList", (SelectList)ViewData["CoursesDropList"], "-- Select Courses --", new { data_source = @Url.Action("AnalyticsPerCourse"), @class = "ajaxDropDown", data_targetElementId = "AnalyticsPerCourse" })
+                        </div>
+                    </div>
+                </div>
+
+                <!--Charts-->   
+                <div id="AnalyticsPerCourse">
+                    @*@Html.Partial("_AnalyticsPerCoursePartial")*@
+                </div>
+                <!--End Charts-->
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- End Grades -->
+<script src="~/Scripts/js/chart.js"></script>
+    <script>
+        /* Students Per Course */
+    var StudentsPerCourseData = {
+        labels: [
+                @{
+                    var count = ((List<UniEBoard.Service.Models.CourseViewModel>)ViewData["Courses"]).Count();
+                    foreach (var item in (List<UniEBoard.Service.Models.CourseViewModel>)ViewData["Courses"])
+	        {
+                        @Html.Raw("\"" + item.Title + "\"");
+                        if (--count > 0) {
+                            @Html.Raw(",");
+	         }
+                }
+        }
+                ],
+            datasets: [
+                {
+                    fillColor: "#34495e",
+                    strokeColor: "#34495e",
+                    pointColor: "rgba(151,187,205,1)",
+                    pointStrokeColor: "#fff",                    
+            data: [
+                @{
+                    count = ((List<UniEBoard.Service.Models.CourseViewModel>)ViewData["Courses"]).Count();
+                    foreach (var item in (List<UniEBoard.Service.Models.CourseViewModel>)ViewData["Courses"])
+                {
+                        @Html.Raw(item.CourseRegistrations.Count());
+                        if (--count > 0) {
+                            @Html.Raw(",");
+                }
+        }
+	        }
+        ]
+                }
+            ]
+    }
+        var StudentsPerCourse = new Chart(document.getElementById("StudentsPerCourse").getContext("2d")).Bar(StudentsPerCourseData, { scaleShowLabels: true, pointLabelFontSize: 10, scaleStartValue: 0 });
+    </script>

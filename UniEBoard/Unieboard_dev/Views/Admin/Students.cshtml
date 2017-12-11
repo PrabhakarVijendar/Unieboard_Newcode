@@ -1,0 +1,49 @@
+﻿@model IEnumerable<UniEBoard.Service.Models.StudentViewModel>
+@{
+    ViewBag.Title = "My DashBoard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section firstNavigationElement {
+    @Html.Partial("_LogoutPartial")
+}
+
+@section navigationalElements {
+    @Html.Partial("_AdminNavigationalElementsPartial")
+}
+
+<form id="createNewStudent" method="post">
+    <h3>Create a new Student</h3>
+    <p>
+        <label for="UserName">UserName:</label>
+        <input type="text" name="UserName" />
+    </p>
+    <input type="button" id="saveStudent" value="Save" />
+</form>
+
+<ul id="userList">
+    
+</ul>
+
+@section Scripts {
+    
+        <script>
+            $(function () {
+                $.getJSON('/api/adminmanageusers', function (usersPayload) {
+                    $(usersPayload).each(function (i, item) {
+                        $('#userList').append('<li>' + item.UserName + '</li>');
+                    });
+                });
+            });
+
+            $('#saveStudent').click(function () {
+                $.post("api/contact",
+                    $("#createNewStudent").serialize(),
+                    function (value) {
+                        $('#userList').append('<li>' + value.UserName + '</li>');
+                    },
+                    "json"
+              );
+            });
+    </script>
+}

@@ -1,0 +1,12 @@
+﻿@model UniEBoard.Service.Models.DisplayFilterViewModel
+@if (Request.IsAuthenticated && Model != null)
+{       
+    @Html.HiddenFor(f => f.ActiveFilter)
+    <dl class="sub-nav">
+        <dt>@Model.DisplayLegend:</dt>
+        <dd class="@Model.Item1Css"><a href="javascript:document.getElementById('ActiveFilter').value = @Model.Item1Value;$('#submit_@Model.Item1Value@Model.Item2Value@Model.Item3Value').click();">@Model.Item1Display</a></dd>
+        <dd class="@Model.Item2Css"><a href="javascript:document.getElementById('ActiveFilter').value = @Model.Item2Value;$('#submit_@Model.Item1Value@Model.Item2Value@Model.Item3Value').click();">@Model.Item2Display</a></dd>
+        <dd class="@Model.Item3Css"><a href="javascript:document.getElementById('ActiveFilter').value = @Model.Item3Value;$('#submit_@Model.Item1Value@Model.Item2Value@Model.Item3Value').click();">@Model.Item3Display</a></dd>
+        <input type="submit" id="submit_@Model.Item1Value@Model.Item2Value@Model.Item3Value" style="display:none"/>
+    </dl>
+}

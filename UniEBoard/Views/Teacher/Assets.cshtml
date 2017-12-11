@@ -1,0 +1,100 @@
+﻿@{
+    ViewBag.Title = "My DashBoard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section firstNavigationElement {
+    @Html.Partial("_LogoutPartial")
+}
+
+@section navigationalElements {
+    @Html.Partial("_TeacherNavigationalElementsPartial")
+}
+@if (ViewData["Assets"] != null)
+{
+    foreach (var item in (IEnumerable<UniEBoard.Service.Models.AssetViewModel>)ViewData["Assets"])
+    {    
+            @*Load Videos popup*@
+            if (item.Id != 0 && item.AssetType == 1)
+            {
+                <div id="@item.Id" class="reveal-modal">
+                    @if (!@item.IsWebUrl)
+                    {
+                        <video id="Video_@item.Id" controls>
+                            <source src="@Url.Action("Render", "Asset", new { Id = item.Id })" type="video/mp4">
+                            @if (!string.IsNullOrEmpty(((UniEBoard.Service.Models.VideoViewModel)item).AlternatePath))
+                            {
+                                <source src="@Url.Action("RenderAlternateVideo", "Asset", new { Id = item.Id })" type="video/webm">
+                            }
+                            Your browser does not support HTML5 video.
+                        </video>
+                    }
+                    else
+                    {
+                       <iframe src="@Url.Action("Render", "Asset", new { Id = item.Id })" frameborder="0" allowfullscreen></iframe>
+                    }
+                </div>
+            }
+    }
+}
+
+
+<!-- Begin Alerts & Intro -->
+
+    <div class="row">
+        <div class="large-12 medium-12 columns">
+            <ul class="breadcrumbs">
+			    <li>@Html.ActionLink("My Dashboard", "Index", "Teacher")</li>
+			    <li class="current">@Html.ActionLink("Assets", "Assets", "Teacher")</li>
+		    </ul>
+	    </div>
+    </div>
+    
+	<!-- End Begin Alerts & Intro -->
+
+
+	<!-- Begin Schedule -->
+	<div class="row">
+        <div class="large-12 medium-12 columns">
+			<!-- Begin Activate New Users -->
+            <h2>Assets <small> <a class="create-new "><i class="icon-plus"></i></a></small></h2>
+           
+            <!-- Add Asset -->
+            @Html.Partial("_CreateAssetPartial")
+  
+            <!-- Filter -->
+            @Html.Partial("_AssetFilterPartial")
+
+            <!-- Asset List -->
+            <div id="assetList">
+                @Html.Partial("_AssetListPartial", (IEnumerable<UniEBoard.Service.Models.AssetViewModel>)ViewData["Assets"])
+            </div>
+
+            <!-- Pager List -->
+            @Html.Partial("_DisplayPageViewAllPartial", (UniEBoard.Service.Models.PageViewAllFilterViewModel)ViewData["Pager"])
+		</div>
+	</div>
+	<!-- End Body -->
+
+	
+@section Scripts {
+    @Scripts.Render("~/Scripts/custom/global.js")
+    @*@Scripts.Render("~/Scripts/custom/discussion.js")*@
+
+    <script type="text/javascript">
+        
+        // Toggle Web Url and filepath
+        //$('#fileUploadRow').hide();
+        $('#isweb').change(function () {
+            var value = $(this).val();
+            if (value == 1) {
+                $('#fileUploadRow').hide();
+                $('#pathRow').show();
+            } else {
+                $('#fileUploadRow').show();
+                $('#pathRow').hide();
+            }
+            value = -1;
+        });
+    </script>
+}

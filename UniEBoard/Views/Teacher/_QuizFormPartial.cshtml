@@ -1,0 +1,62 @@
+﻿@model UniEBoard.Service.Models.Quizzes.QuizzesViewModel
+@if (Request.IsAuthenticated)
+{
+    <div id="AddNew" class="hide panel">
+        <div class="row">
+            <div class="large-12 medium-12 columns">
+                @Html.LabelFor(model => model.Title)
+                @Html.TextBoxFor(model => model.Title, new { required = "required", placeholder = "Enter Quiz Title..." })
+            </div>
+        </div>
+        <div class="row">
+            <div class="large-12 medium-12 columns">
+                @Html.LabelFor(model => model.Description)
+                @Html.TextAreaFor(model => model.Description, new { required = "required", placeholder = "Enter Description...", cols = "30", rows = "10" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="large-4 medium-4 columns">
+                <label for="Module">@UniEBoard.Service.Helpers.Configuration.WebSite.Current.TitleModule</label>
+                @Html.DropDownListFor(model => model.ModuleId, (IEnumerable<SelectListItem>)ViewData["AvailableModules"], new { required = "required" })
+            </div>
+
+            <div class="large-4 medium-4 columns">
+                @Html.LabelFor(model => model.PublishFrom)
+                <div class="row collapse">
+                    <div class="small-10 columns">
+                        @Html.TextBoxFor(model => model.PublishFrom, new { required = "required", placeholder = "Enter Start Date...", @class = "datetimepicker" })
+                    </div>
+                    <div class="small-2 columns">
+                        <a href="#" data-focus-id="PublishFrom" class="button prefix"><i class="icon-calendar"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="large-4 medium-4 columns">
+                @Html.LabelFor(model => model.PublishTo)
+                <div class="row collapse">
+                    <div class="small-10 columns">
+                        @Html.TextBoxFor(model => model.PublishTo, new { required = "required", placeholder = "Enter End Date...", @class = "datetimepicker" })
+                    </div>
+                    <div class="small-2 columns">
+                        <a href="#" data-focus-id="PublishTo" class="button prefix"><i class="icon-calendar"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="large-4 medium-4 columns">
+                @Html.LabelFor(model => model.MaxAttemptsAllowed)
+                @Html.TextBoxFor(model => model.MaxAttemptsAllowed, new { required = "required", placeholder = "Enter # of attempts...", pattern = "[0-9]*" })
+            </div>
+            <div class="large-4 medium-4 columns">
+                @Html.LabelFor(model => model.DisplayEndResults)
+                @Html.DropDownListFor(model => model.DisplayEndResults, new SelectList(ViewBag.QuizDisplayEndResultsOptions, "Value", "Text"), new { required = "required"})
+            </div>
+
+            <div class="large-2 medium-2 columns">
+                <br /><br />
+                <input id="quizcreatebtn" type="submit" value="Create Quiz" class="right tiny radius button" />
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,13 @@
+﻿@using Cognite.Utility.MethodExtensions;
+@model IEnumerable<UniEBoard.Service.Models.MessageViewModel>
+
+@if (Request.IsAuthenticated)
+{
+    foreach(var item in Model)
+    {
+        <div data-alert="" class="general-alert secondary radius">
+            @item.Title<span class="label success radius">Pass</span> <a href="">View comments</a>
+            @Ajax.ActionLink("x", "AddStudentViewedMessage", "Student", new { messageId = item.Id, studentId = Cognite.MembershipProvider.WebSecurity.CurrentUserId } , new AjaxOptions() { HttpMethod = "Post" }, new { @class = "close" })
+        </div>
+    }
+}

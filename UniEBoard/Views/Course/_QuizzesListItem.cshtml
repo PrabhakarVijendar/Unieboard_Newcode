@@ -1,0 +1,55 @@
+﻿@model UniEBoard.Service.Models.Quizzes.QuizzesViewModel
+
+<section class="section active">
+    <h5 class="title"> @Html.DisplayFor(modelModel => Model.ModuleTitle)</h5>
+    <div class="content">
+        <h6 class="tm-10">
+            <span class="left"><i class="icon-ok todo">&nbsp;</i>@Html.DisplayFor(modelModel => Model.Title)</span>     
+            
+
+                @if(Model.AttemptsSoFar < Model.MaxAttemptsAllowed)
+                { 
+                    @Html.ActionLink("Attempt Quiz", "ShowQuiz", "Course",
+                                new { id = Model.Id },
+                                new { @class = "small success radius button right", @data_reveal_id = Model.Id });
+                }
+                else
+                {
+                    <span class="small radius button">[Disabled] Attempt Quiz</span>
+                }
+
+           
+        </h6>
+        <hr>
+        <div class="large-12 medium-12 columns small-detail">
+            <div class="row">
+                <div class="large-2 medium-2 columns">Hard Deadline</div>
+                <div class="large-10 medium-10 columns">
+                    <dl>
+                        <dt>@Html.DisplayFor(modelModel => Model.Deadline)</dt>
+                        <dd>@Html.DisplayFor(modelModel => Model.Description)</dd>
+                    </dl>
+                </div>
+            </div>
+            <div class="row">
+                <div class="large-2 medium-2 columns">Effective Score</div>
+                <div class="large-10 medium-10 columns">
+                    <dl>
+                        <dt>N/A</dt>
+                        <dd>@Html.DisplayFor(modelModel => Model.Instructions)</dd>
+                    </dl>
+                </div>
+            </div>
+            <div class="row">
+                <div class="large-2 medium-2 columns"># of Attempts</div>
+                <div class="large-10 medium-10 columns">
+                    <dl>
+                        <dt> @Html.DisplayFor(modelModel => Model.AttemptsSoFar)/ @Html.DisplayFor(modelModel => Model.MaxAttemptsAllowed)</dt>
+                        <dd>&nbsp;</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+</section> 

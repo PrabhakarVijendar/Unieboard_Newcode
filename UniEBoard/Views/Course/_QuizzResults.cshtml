@@ -1,0 +1,14 @@
+﻿@model UniEBoard.Service.Models.Quizzes.ResultQuizzModel
+@if (Model != null)
+{ 
+    <div id="results" style="display: block">
+        <h2>
+            @Model.ResultMessage
+        </h2>
+        <p><strong>Name = </strong>@Model.Name</p>
+        <p><strong>Score = </strong>@String.Format("{0}/{1} Points({2} %)", @Model.Results, @Model.PointValueTotal, @Model.Percent)</p>
+        @*<p><strong>Answered Incorrectly = </strong>@Model.QuestionIncorrect</p>*@
+        <p><strong>Time taken = </strong>@String.Format("{0} mins {1} secs ", @Model.TimeTaken.Minutes, @Model.TimeTaken.Seconds)</p>
+        <input id="Button1" type="button" class="small radius button close-reveal-modal" value="Close" onclick="window.location.reload();return false;"  />
+    </div>
+}

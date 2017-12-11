@@ -1,0 +1,12 @@
+﻿@model UniEBoard.Service.Models.VideoViewModel
+@if (Request.IsAuthenticated && Model != null)
+{
+    if (Model != null)
+    {
+                             
+            <span class="label radius">@Model.Name           
+                @Ajax.ActionLink("x", "RemoveVideoFromClass", new { videoId = @Model.Id, classId = ViewData["ClassVideoIdentifier"] }, new AjaxOptions { HttpMethod = "Post", UpdateTargetId = string.Format("{0}_{1}", "assetVideo", ViewData["ClassVideoIdentifier"]), InsertionMode = InsertionMode.Replace }, new { @class = "close" })
+            </span>
+        
+    }
+}

@@ -1,0 +1,31 @@
+﻿@model IEnumerable<UniEBoard.Service.Models.CourseViewModel>
+@{
+    ViewBag.Title = "My Courses";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section firstNavigationElement {
+    @Html.Partial("_LogoutPartial")
+}
+
+@section navigationalElements {
+    @Html.Partial("_StudentNavigationalElementsPartial")
+}
+
+<!-- Begin Breadcrumbs -->
+
+<div class="row">
+    <div class="large-12 medium-12 columns">
+        <ul class="breadcrumbs">
+            <li>@Html.ActionLink("My Dashboard", "Index", "Student")</li>
+            <li class="current">@Html.ActionLink("COURSES", "Courses", "Student")</li>
+        </ul>
+    </div>
+</div>
+
+<!-- Begin Courses / Grades -->
+@if (Model != null)
+{
+    @Html.Partial("_StudentCoursePartial", Model)
+}
+<!-- End Courses / Grades -->
+	

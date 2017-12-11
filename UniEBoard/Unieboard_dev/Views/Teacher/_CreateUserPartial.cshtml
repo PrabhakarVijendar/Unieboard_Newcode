@@ -1,0 +1,63 @@
+﻿@model UniEBoard.Service.Models.UserViewModel
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("CreateStudentUser", "Teacher", FormMethod.Post, new { @class = "custom" }))
+    {
+        if (!ViewData.ModelState.IsValid) 
+            { 
+            <div class="validation-summary-errors">
+                <ul class="no-bullet">
+                    @foreach (ModelState modelState in ViewData.ModelState.Values)
+                    {
+                        foreach (ModelError modelError in modelState.Errors)
+                        {
+                            <li>@modelError.ErrorMessage</li>
+                        }
+                    }
+                    
+                </ul>
+            </div>
+            }
+            <div id="AddNew" class="hide panel" >
+                <div class="row">
+                    <div class="large-6 columns">
+                        <label for="FirstName">First Name</label>
+                        @Html.TextBoxFor(m => m.FirstName, new {required = "required", placeholder = "Enter First Name..." })
+                    </div>
+                    <div class="large-6 columns">
+                        <label for="LastName">Last Name</label>
+                        @Html.TextBoxFor(m => m.LastName, new {required = "required", placeholder = "Enter Last Name..." })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-6 columns">
+                        <label for="Mobile">Mobile</label>
+                        <input name="Mobile" type="text" placeholder="Mobile" required />
+                    </div>
+                    <div class="large-3 columns">
+                        <label for="Postcode">Postcode/Zip</label>
+                        <input name="Postcode" type="text" placeholder="Postcode/Zip" required />
+                    </div>
+                    <div class="large-3 columns">
+                        <label for="Postcode">Role</label>
+                        @Html.CustomDropDownList("Roles", (IEnumerable<SelectListItem>)ViewData["Roles"], 0, "Select user role...", new { })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-6 columns">
+                        <label for="Email">Email</label>
+                        @Html.TextBoxFor(m => m.Email, new { required = "required", placeholder = "Enter Email Address..." })
+                    </div>
+                    <div class="large-6 columns">
+                        <label for="New-Course">Course</label>
+                        @Html.DropDownListFor(p => p.DefaultCourseId, (IEnumerable<SelectListItem>)ViewData["Courses"], new { required = "required"})
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-12 medium-12 columns">
+                        <input type="submit" value="Create User" class="right button radius tiny" />
+                    </div>
+                </div>
+            </div>
+    }
+}

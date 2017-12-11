@@ -1,0 +1,17 @@
+﻿@model UniEBoard.Service.Models.CourseViewModel
+@{
+    ViewBag.Title = "";
+
+}
+@if (Model != null)
+{
+    
+    <ul class="breadcrumbs">
+        <li>@Html.ActionLink("My Dashboard", "Index", "Student", null, null)</li>
+        <li>@Html.ActionLink("Courses", "Courses", "Student", null, null)</li>
+        <li class="current">@Html.ActionLink(@Model.Title, "Details", "Course", new { @Id = Model.Id }, "")</li>
+    </ul>
+    <h2 class="tm-25 left">
+         @Html.DisplayFor(model => model.Title)
+        </h2>
+}

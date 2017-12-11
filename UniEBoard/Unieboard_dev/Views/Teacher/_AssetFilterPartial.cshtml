@@ -1,0 +1,4 @@
+﻿<form class="custom">
+    <input type="text" class="autocompleteTagAsset" data-source="@Url.Action("AutoCompleteAssetTags", "Teacher")" data-type="filterAsset" placeholder="Filter Assets...">
+    <div id="tagFiltering" class="tags">@Html.Partial("_AssetFilterTagPartial", Session["tagAssetFilter"])</div>        
+</form>

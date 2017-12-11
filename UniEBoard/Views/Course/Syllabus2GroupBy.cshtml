@@ -1,0 +1,60 @@
+﻿@model IEnumerable<UniEBoard.Service.Models.ModuleSyllabusModel>
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- End Course / Grades -->
+@section firstNavigationElement {
+    @Html.Partial("_LogoutPartial")
+}
+@section navigationalElements {
+    @Html.Partial("_StudentNavigationalElementsPartial")
+}
+<div class="row">
+    <div class="large-12 medium-12 columns">
+        @Html.Partial("_CourseBreadcrumbsPartial", ViewData["CourseModel"])
+
+        <a class="tm-35 small success radius button right edit-view">Edit Page</a>
+        <hr>
+    </div>
+</div>
+<div class="row">
+    <div class="large-3 medium-3 columns">
+        @Html.Partial("_MenuLeftCoursePartial", ViewData["CourseModel"])
+    </div>
+    <div class="large-9 medium-9 columns">
+        @*  <h5>@Html.ActionLink("Titleeeeeeee", "Home", "Course", new { @Id = 1 }, new { @class = "roll", @data_title = "Titleeeeee" })</h5>*@
+        <h3 class="course-page-header">
+            Course Syllabus
+        </h3>
+        <hr>
+        <p>
+            This syllabus includes both a calendar-style course outline as well as some notes
+            about the course. Scroll down to see the notes about the course.
+        </p>
+        @if (Model != null)
+        {
+
+            <hr />
+            <ul class="square">
+                @foreach (var item in Model)
+                {
+                    <h5>
+                        @item.PublishFrom -   @item.PublishTo
+                    </h5>
+                    <ul class="square">
+                        @foreach (var item2 in item.Modules)
+                        {
+                            <li>@item2.Title</li>
+
+                        }
+                        <p>
+                            <strong>Assignment: Quiz - 10 points</strong>
+                        </p>
+                    </ul>
+                }
+            </ul>
+        }
+        <h5>
+            Final Exam - 30 points
+        </h5>

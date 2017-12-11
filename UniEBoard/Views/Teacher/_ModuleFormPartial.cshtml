@@ -1,0 +1,26 @@
+﻿@model UniEBoard.Service.Models.ModuleViewModel
+@if (Request.IsAuthenticated)
+{
+    <div id="AddNew" class="hide panel">
+        <div class="row">
+            <div class="large-6 columns">
+                @Html.LabelFor(u => u.Title)
+                @Html.TextBoxFor(u => u.Title, new { required = "required", placeholder = "Enter Module Title..." })
+            </div>
+            <div class="large-6 columns">
+                <label for="to">Course</label>
+                @Html.DropDownListFor(model => model.Course_Id, new SelectList(ViewBag.CoursesDropDownList, "Value", "Text"), string.Format("Select {0}...", UniEBoard.Service.Helpers.Configuration.WebSite.Current.TitleCourse), new { required = "required" })
+            </div>            
+        </div>
+        <div class="row">
+            <div class="large-6 columns">
+                @Html.LabelFor(u => u.Description)
+                @Html.TextAreaFor(u => u.Description, new { required = "required", placeholder = "Enter Description...", cols = "30", rows = "10" })
+            </div>
+            <div class="large-6 columns">
+                <input id="unitcreatebtn" type="submit" value="Create Module" class="right tiny radius button t20" />
+            </div>
+        </div>
+    </div>
+}
+

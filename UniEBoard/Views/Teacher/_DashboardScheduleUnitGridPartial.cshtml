@@ -1,0 +1,178 @@
+﻿@model IEnumerable<UniEBoard.Service.Models.UnitViewModel>
+
+@{
+    int count = 0;
+    var ajaxCall = ViewData["ajaxCall"];
+}
+
+@if (Model != null)
+{
+    foreach (var item in Model)
+    {
+        foreach (var asset in item.Assets)
+        { 
+            @*Load Videos popup*@
+            if (asset.AssetType == 1)
+            {
+                <div id="@asset.Id" class="reveal-modal">
+                    @*if (!@item.Video.IsWebUrl)*@
+                    @if (!((asset.Path.ToLower().StartsWith("http") || asset.Path.ToLower().StartsWith("https") || asset.Path.ToLower().StartsWith("www"))))
+                    {
+                        <video id="Video_@asset.Id" controls preload="none">
+                            <source src="@Url.Action("Render", "Asset", new { Id = asset.Id })" type="video/mp4">
+                            @if (!string.IsNullOrEmpty(asset.Path))
+                            {
+                                <source src="@Url.Action("RenderAlternateVideo", "Asset", new { Id = asset.Id })" type="video/webm">
+                            }
+                            Your browser does not support HTML5 video.
+                        </video>
+                    }
+                    else
+                    {
+                        <iframe src="@Url.Action("Render", "Asset", new { Id = asset.Id })" frameborder="0" allowfullscreen></iframe>
+                    }
+                </div>
+            }
+         }
+    }
+   
+}
+
+<form class="custom" id="unitForm">
+    <table class="full responsive grid @(!ViewBag.ShowTime ? "" : "schedule")">
+        @if (!(Boolean)ViewBag.ShowTime)
+        {
+            <thead>
+                <tr>
+                    <th>
+                        <div class="row">
+                            <div class="large-5 medium-5 columns">Title</div>
+                            <div class="large-3 medium-3 columns">Module</div>
+                            <div class="large-3 medium-3 columns">Assets</div>
+                            <div class="large-1 medium-1 columns"></div>
+                        </div>
+                    </th>
+                </tr>
+            </thead>
+        }
+        @foreach (var item in Model)
+        {
+            if ((Boolean)ViewBag.ShowTime)
+            {
+                <thead>
+                    <tr>
+                        <th>
+                            <div class="row">
+                                <div class="large-12 medium-12 columns">
+                                    <span class="left">@item.PublishFrom.Value.ToString("hh:mm tt")<small>: @item.Module.Title (group goes here)</small></span>
+                                    <span class="right"><small>@item.DurationFormatted</small></span>
+                                </div>
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+            }
+
+            <tr>
+                <td>
+                    <div class="row">
+                        <div class="large-5 medium-5 columns">
+                            <input type="text" id="Title_@item.Id" name="Title_@item.Id" value="@item.Title" data-dbunitid="@item.Id" data-action="UpdateUnitDashboard">
+                        </div>
+                        <div class="large-3 medium-3 columns">
+                            <input type="text" value=@item.Module.Title data-dbunitid="@item.Id" disabled>
+                        </div>
+                        <div class="@(!(bool)ViewBag.ShowTime ? "large-2 medium-2" : "large-3 medium-3") columns icon-spacing">
+                            <span class="title-asset">
+                                <span class="c-assets_@item.Id">
+                                    @Html.Partial("_UnitAssetListPartial", item)
+                                </span>
+                                <ul class="no-bullet">
+                                    <li>
+                                        @* === Quiz === *@
+                                        @if (item.QuizId.HasValue)
+                                        {
+
+                                            if (item.Quiz != null)
+                                            {
+                                                ViewData["counter"] = count++;
+                                                @Html.Partial("../Course/_QuizzesModal", item.Quiz);
+                                            }
+
+                                            <a href='@Url.Action("ShowQuiz", "Course", new { Id = item.QuizId })' data-id="@item.QuizId" data-reveal-id="@item.QuizId" title="@item.Quiz.Title" class="sidebar-activate reveal-side" data-effect="st-effect-1">
+                                                <i class="icon-tasks"></i>
+                                            </a>
+
+                                        }
+                                    </li>
+                                </ul>
+                            </span>
+
+                        </div>
+
+                        <div class="@(!(bool)ViewBag.ShowTime ? "large-2 medium-2" : "large-1 medium-1") columns action-2-icons collapse">
+                            <i class="icon-collapse i-medium"></i>
+                            @if (!(Boolean)ViewBag.ShowTime)
+                            {
+                                <a target="_self" href='@Url.Action("RemoveUnit", "Teacher", new { unitId = item.Id })' onclick="return confirm('Are you sure you wish to delete this item?');">
+                                    <i class="icon-remove"></i>
+                                </a>
+                            }
+                        </div>
+
+                    </div>
+
+                    <div class='row detail @(item.Id == ViewBag.Unit ? "" : "hide")'>
+                        <hr>
+                        <div class="large-5 medium-5 columns">
+                            <label for="">Description</label>
+                            <textarea cols="30" rows="5" data-val="true" data-val-required="The Description field is required." id="Description_@item.Id" name="Description_@item.Id" data-dbunitid="@item.Id" data-action="UpdateUnitDashboard" placeholder="Enter Description..." required="required">@item.Description</textarea>
+                        </div>
+
+                        <div class="large-3 medium-3 columns">
+                            <label for="">Date/Time:</label>
+                            <input class="dateandtimepicker" data-val="true" data-val-date="The field Date must be a date." data-val-required="The Date field is required." id="PublishFrom_@item.Id" name="PublishFrom_@item.Id" data-dbunitid="@item.Id" data-action="UpdateUnitDashboard" placeholder="Enter Date..." type="text" value="@item.PublishFrom.Value.ToString("dd/MM/yyyy HH:mm")">
+                            <label for="">Duration:</label>
+                            @Html.CustomDropDownList(string.Format("Duration_{0}", item.Id), (IEnumerable<SelectListItem>)ViewData["DurationList"],
+item.DurationSelectedOption.ToString(), "Select Duration", new { @class = "small", data_dbunitid = item.Id, data_action = @Url.Action("UpdateUnitDashboard", "Teacher") })
+                            <label for="">Quiz:</label>
+                            @Html.CustomDropDownList(string.Format("QuizId_{0}", item.Id), (IEnumerable<SelectListItem>)ViewData["Quizes"],
+     item.QuizId, "Select Quiz", new { @class = "small", data_dbunitId = item.Id, data_action = @Url.Action("UpdateUnitDashboard", "Teacher") })
+                        </div>
+                        <div class="large-4 medium-4 columns">
+                            <label for="" class="asset-label">Add New Asset</label>
+                            <input type="text" id="AsseFieldtForUnit_@item.Id" name="AsseFieldtForUnit_@item.Id" placeholder="Search for an asset..." class="new-asset asset-search autocomplete" data-source="@Url.Action("AutoCompleteAssets", "Teacher")">
+                            <a class="AddAssetIcon" id="AddAssetForUnit_@item.Id" data-action="@Url.Action("AddAssetForUnit", "Teacher")" data-unitid="@item.Id" data-target-id="c-assets_@item.Id"><i class=" icon-plus asset-search"></i></a>
+                            <div id="assets_@item.Id" class="body-asset c-assets_@item.Id">
+                                @Html.Partial("_UnitAssetListPartial", item)
+                            </div>
+                        </div>
+
+                    </div>
+                </td>
+            </tr>
+
+        }
+    </table>
+
+</form>
+
+<script src="/Scripts/js/sidebarEffects.js"></script>
+@if(ajaxCall != null && (bool)ajaxCall == true) {
+    
+    <script type="text/javascript">
+        $('#unitForm').ready(function () {
+            //BindFilterControls();
+            //BindToggleControls();
+            //BindReveal();
+            //BindingUnitsDashboard();
+            //BindAutocomplete();
+            //BindAddAsset();
+            //BindRemoveAsset();
+            //BindDatePicker();
+            //$(document).foundation();
+        });
+        
+    
+    </script>
+}

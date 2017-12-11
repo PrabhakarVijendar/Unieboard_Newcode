@@ -1,0 +1,44 @@
+﻿@model IEnumerable<UniEBoard.Service.Models.CourseViewModel>
+@if (Request.IsAuthenticated)
+{
+	<!-- Begin Course Grades -->
+	<div class="row">
+        <div class="large-12 medium-12 columns">
+
+            <h3>My @UniEBoard.Service.Helpers.Configuration.WebSite.Current.TitleCourses <small>/ Grades</small></h3>
+            <hr />
+        </div>
+  </div>
+	<div class="row">
+
+        @foreach (var item in Model)
+{
+    <div class="large-6 medium-6 columns">
+        <div class="grades">
+            <h5>
+                @Html.ActionLink(@item.Title, "Home", "Course", new { @Id = @item.Id }, new { @class = "roll", @data_title = @item.Title })
+            </h5>
+            <p>@item.PublishFrom.ToString("dd/MM/yyyy") - @item.PublishTo.ToString("dd/MM/yyyy")</p>
+            @if (item.Modules != null)
+            {
+                <hr />
+                <ul class="square">
+                    @foreach (var moduleItem in item.Modules)
+                    {
+                        <li>
+                            @Html.ActionLink(@moduleItem.Title, "VideoLectures", "Course", new { @id = @item.Id }, new { @class = "roll", @data_title = @moduleItem.Title })
+                        </li>
+                        @*                             <li><a href="" class="roll" data-title="The Dawn of Electronic Computing (1940-1960)">pass example&nbsp;<span class="label success radius">Pass</span></a></li>
+                            <li><a href="" class="roll" data-title="Commercialization and Growth (1995-2000)">pending example&nbsp;<span class="label pending radius">Pending</span></a></li>
+                            <li><a href="" class="roll" data-title="Module 3: Market Mechanics">fail example&nbsp;<span class="label fail radius">Fail</span></a></li>
+                            <li><a href="" class="roll" data-title="QUIZ: Market Mechanics">submitted example&nbsp;<span class="label pending radius">Submitted</span></a></li> *@
+                    }
+                </ul>
+            }
+        </div>
+    </div>
+}
+
+    </div>
+  <!-- End Course / Grades -->
+}

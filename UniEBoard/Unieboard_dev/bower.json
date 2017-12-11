@@ -1,0 +1,9 @@
+{
+  "name": "foundation-libsass-template",
+  "dependencies": {
+    "foundation": "zurb/bower-foundation",
+     "jquery-ui" : "latest",
+     "jqueryui-timepicker-addon" : "latest",
+     "chart-js": "git://github.com/nnnick/Chart.js.git"
+  }
+}

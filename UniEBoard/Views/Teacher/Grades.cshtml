@@ -1,0 +1,57 @@
+﻿@model List<UniEBoard.Service.Models.AssignmentViewModel>
+@{
+    ViewBag.Title = "My DashBoard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section firstNavigationElement {
+    @Html.Partial("_LogoutPartial")
+}
+
+@section navigationalElements {
+    @Html.Partial("_TeacherNavigationalElementsPartial")
+}
+
+<!-- Begin Breadcrumbs -->
+
+<div class="row">
+    <div class="large-12 medium-12 columns">
+        <ul class="breadcrumbs">
+            <li>@Html.ActionLink("My Dashboard", "Index", "Teacher")</li>
+            <li class="current">@Html.ActionLink("Grade Work", "Grades", "Teacher")</li>
+        </ul>
+    </div>
+</div>
+
+<!-- Begin Grades -->
+<div class="row">
+    <div class="large-12 medium-12 columns">
+
+        <h2>Grade work</h2>
+
+        <div class="grade">
+            <form class="custom">
+                <div class="panel" id="GradeFilter">
+                    @Html.Partial("_GradeFilter")
+                </div>
+
+                <dl class="sub-nav">
+                    <dt>Filter:</dt>
+                    <dd id="AllSelector" class="active"><a class="FilterSelector" data-value="All">All</a></dd>
+                    <dd id="SubmittedSelector"><a class="FilterSelector" data-value="Submitted">Submitted</a></dd>
+                    <dd id="NotSubmittedSelector"><a class="FilterSelector" data-value="NotSubmitted">Not Submitted</a></dd>
+                    <dd id="MarkedSelector"><a class="FilterSelector" data-value="Marked">Marked</a></dd>
+                </dl>
+                <input type="hidden" id="FilterHidden" name="FilterHidden" value="All" />
+
+                <div id="SubmissionsList">
+                    @Html.Partial("_GradeSubmissionsListPartial", Model)
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- End Grades -->

@@ -1,0 +1,64 @@
+﻿@model IEnumerable<UniEBoard.Service.Models.AssignmentViewModel>
+@if (Request.IsAuthenticated)
+{
+    <ul id="moduleList" class="square">
+        @if (Model == null)
+        {
+            return;
+        }
+        @if (ViewData["ModulesList"] != null)
+        {
+            foreach (var module in (IEnumerable<UniEBoard.Service.Models.ModuleViewModel>)ViewData["ModulesList"])
+            {
+                if (module.Id != 0)
+                {
+            <li>@module.Title &nbsp;
+                <ul>
+                    @foreach (var item in Model.Where(x => x.ModuleId == module.Id))
+                    {
+                        <li><a class="roll" data-title="@item.Title">@item.Title &nbsp;</a></li>
+                    }
+                </ul>
+            </li>
+                }
+            }
+        }
+    </ul>
+   
+}
+
+
+@*<ul class="square">
+        <li>General&nbsp;
+            <ul>
+                <li><a href="" class="roll" data-title="Demographic Survey Take Survey">Demographic
+                    Survey Take Survey&nbsp; <span class="label success radius">Published</span></a></li>
+            </ul>
+        </li>
+        <li>Introduction to the Course&nbsp;</li>
+        <li>The Dawn of Electronic Computing (1940-1960)&nbsp;
+            <ul>
+                <li><a href="" class="roll" data-title="Week 1 Quiz">Week 1 Quiz&nbsp; <span class="label success radius">
+                    Published</span></a></li>
+            </ul>
+        </li>
+        <li>The First Internet (1960-1990)&nbsp;
+            <ul>
+                <li><a href="" class="roll" data-title="Week 2 Quiz">Week 2 Quiz&nbsp; <span class="label success radius">
+                    Published</span></a></li>
+            </ul>
+        </li>
+        <li>The World Wide Web (1990-1995)&nbsp;
+            <ul>
+                <li><a href="" class="roll" data-title="Essay The early days">Essay The early days&nbsp;
+                    <span class="label radius">Draft</span></a></li>
+            </ul>
+        </li>
+        <li>Commercialization and Growth (1995-2000)&nbsp;</li>
+        <li>Internets and Packets</li>
+        <li>Transports and Security</li>
+        <li>Networked Applications</li>
+        <li>Security - Protecting Information</li>
+        <li>Security - Establishing Identity</li>
+        <li>Final Exam</li>
+    </ul>*@

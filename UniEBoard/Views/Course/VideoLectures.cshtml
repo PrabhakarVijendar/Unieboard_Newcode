@@ -1,0 +1,131 @@
+﻿@model IEnumerable<UniEBoard.Service.Models.Courses.VideoLecturesViewModel>
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- End Course / Grades -->
+@section firstNavigationElement {
+    @Html.Partial("_LogoutPartial")
+}
+@section navigationalElements {
+    @Html.Partial("_StudentNavigationalElementsPartial")
+}
+
+@section ajax{ @Html.Partial("_QuizzesAjax") }
+
+@{
+    int count = 0;
+    }
+
+@if (Model != null)
+{
+    foreach (var item in Model)
+    {
+        foreach (var item2 in item.Units)
+        {                 
+            @*Load Videos popup*@
+            if (@item2.VideoId != 0)
+            {
+                <div id="@item2.VideoId" class="reveal-modal">
+                    @if (!@item2.Video.IsWebUrl)
+                    {
+                        <video id="Video_@item2.VideoId" controls preload="none">
+                            <source src="@Url.Action("Render", "Asset", new { Id = item2.Video.Id })" type="video/mp4">
+                            @if(!string.IsNullOrEmpty(item2.Video.Path))
+                            {
+                                <source src="@Url.Action("RenderAlternateVideo", "Asset", new { Id = item2.Video.Id })" type="video/webm">
+                            }
+                            Your browser does not support HTML5 video.
+                        </video>
+                    }
+                    else
+                    {
+                        <iframe src="@Url.Action("Render", "Asset", new { Id = item2.Video.Id })" frameborder="0" allowfullscreen></iframe>
+                    }
+                </div>
+            }
+        }
+    }
+}
+<div class="row">
+    <div class="large-12 medium-12 columns">
+        @Html.Partial("_CourseBreadcrumbsPartial", ViewData["CourseModel"])
+        <a class="tm-35 small success radius button right edit-view">Edit Page</a>
+        <hr>
+    </div>
+</div>
+<div class="row">
+    <div class="large-3 medium-3 columns">
+        @Html.Partial("_MenuLeftCoursePartial", ViewData["CourseModel"])
+    </div>
+    <div class="large-9 medium-9 columns">
+        <h3>
+            Lectures
+        </h3>
+        <hr />
+        <div class="row">
+            <div class="large-12 medium-12 columns">
+                <div>
+                    <!--class="section-container" data-section-->
+                    @if (Model != null)
+                    {
+                        foreach (var item in Model)
+                        {
+                            <section class="section active">
+                                <h5 class="title">
+                                    @item.ModuleTitle
+                                    @* <small>(1/3)</small>*@
+                                </h5>
+                                <div class="content">
+                                    <ul class="lecture-list">
+                                        @foreach (var item2 in item.Units)
+                                        {
+                                            <li>
+                                                @*<i class="icon-ok done">&nbsp;</i>*@
+                                                @*          VIDEO   *@
+                                                @item2.Title
+                                                <div class="document-types">
+                                                    @if (item2.VideoId != 0)
+                                                    {
+                                                        <a data-effect="st-effect-1" class="sidebar-activate reveal-side" data-id="@item2.VideoId" data-video="Video_@item2.VideoId" title="@item2.Video.Name"><i class="icon-youtube-play"></i></a>
+                                                    }
+                                                    @*                                     FILES*@
+                                                    @if (item2.Document != null && (item2.Document.AssetType == 3 || item2.Document.ContentType.Equals("image/jpeg")))
+                                                    {
+                                                        <a target="_blank" href='@Url.Action("Render", "Asset", new { Id = item2.DocumentId.Value })' title="@item2.Document.Name"><i class="icon-picture"></i></a>
+                                                    }
+                                                    else
+                                                    {
+                                                        <a target="_blank" href='@Url.Action("Render", "Asset", new { Id = item2.DocumentId.Value })' title="@item2.Title"><i class="icon-file-alt"></i></a>
+                                                    }
+                                                    @*                                   IDEA*@
+                                                    <a href="#" title="Discussions"><i class="icon-comments"></i></a>
+                                                    @if (item2.QuizId.HasValue)
+                                                    {
+                                                        if (item2.Quiz != null)
+                                                        {
+                                                            ViewData["counter"] = count++;
+                                                            @Html.Partial("_QuizzesModal", item2.Quiz);
+                                                        }
+                                                        @Html.ActionLink(" ", "ShowQuiz", "Course",
+                                                new { id = item2.QuizId },
+                                                new { @class = "icon-tasks sidebar-activate reveal-side", @data_reveal_id = item2.QuizId, data_effect = "st-effect-1", @data_id = item2.QuizId, title = "Quiz" });
+                                                    }
+                                                </div>
+                                            </li>
+
+                                        }
+
+                                    </ul>
+                                </div>
+                            </section>
+
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    @section Scripts {
+        @Scripts.Render("~/Scripts/custom/global.js")
+    }

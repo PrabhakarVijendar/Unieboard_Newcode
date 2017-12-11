@@ -1,0 +1,69 @@
+﻿@model IEnumerable<UniEBoard.Service.Models.UserViewModel>
+@if (Request.IsAuthenticated)
+{
+    <form class="custom">
+        <table class="full responsive grid">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Mobile</th>
+                    <th>@UniEBoard.Service.Helpers.Configuration.WebSite.Current.TitleCourse</th>
+                    <th>Role</th>
+                    <th>Active</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null)
+                {
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <div class="user">
+                                    <a title="change avatar">
+                                        <div class="avatar">
+                                            <img src="/images/person.png" alt="@item.FirstName @item.LastName ">
+                                        </div>
+                                    </a>
+                                </div>
+                            </td>
+                            <td><p>@item.FirstName @*<input type="text" name="FirstName" id="FirstName" value="@item.FirstName">*@</p></td>
+                            <td><p>@item.LastName @*<input type="text" name="LastName" id="LastName" value="@item.LastName">*@</p></td>
+                            <td><p>@item.Email @*<input type="text" name="Email" id="Email" value="@item.Email">*@</p></td>
+                            <td><p>Mobile</p></td>
+                            <td class="tags" id="courseTags_@item.Id">
+                                @Html.Partial("_CourseTagPartial", item.Courses, new ViewDataDictionary { { "UserIdentifier", item.Id } })
+                            </td>
+                            <td>
+                                <select class="small">
+                                    <option value="value">Student</option>
+                                    <option value="value">Teacher</option>
+                                    <option value="value">Admin</option>
+                                </select>
+                            </td>
+                            <td class="action-2-icons">
+                                <div class="switch tiny radius ajaxUpdate" data-source="@Url.Action("UpdateUser")" title="Disable user account">
+                                    @*<input id="a_@item.Id" name="switch-a_@item.Id" type="radio">*@
+                                    @Html.RadioButton(string.Format("switch-a_{0}", item.Id), item.AccountDisabled, item.AccountDisabled, new { id = string.Format("a_{0}", item.Id), data_userId = @item.Id })
+                                    <label for="a_@item.Id" onclick="">Off</label>
+                                    @*<input id="a1_@item.Id" name="switch-a_@item.Id" type="radio" checked>*@
+                                    @Html.RadioButton(string.Format("switch-a_{0}", item.Id), !item.AccountDisabled, !item.AccountDisabled, new { id = string.Format("a1_{0}", item.Id), data_userId = @item.Id })
+                                    <label for="a1_@item.Id" onclick="">On</label>
+                                    <span></span>
+                                </div>
+                            </td>
+                            <td>
+                                <a target="_self" href='' title="Delete Course"><i class="icon-remove"></i></a>
+                                <a class="reset" title="Reset Password"><i class="icon-exclamation-sign"></i></a>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </form>
+}

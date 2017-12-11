@@ -1,0 +1,104 @@
+﻿@model UniEBoard.Service.Models.AssignmentSubmissionViewModel
+
+@if (Model != null)
+{
+@*<form enctype="multipart/form-data" method="post" id="form_@Model.AssignmentId" class="custom">
+    <!-- Assignment Details -->
+        @Html.HiddenFor(m => m.AssignmentId)
+        <a class="toggleSubmission" data-toggle-id="assignmentdetails_@Model.AssignmentId">
+        <label class="left tm-4">@Model.Title&nbsp;<span class="label @Model.AssignmentCssClass">@Model.DaysLeft</span></label>
+        </a>
+        <a href="javascript:document.forms['form_@Model.AssignmentId'].action = '@Url.Action("MakeSubmission", "Student")';document.getElementById('form_@Model.AssignmentId').submit()" class="small success radius button right">Submit</a>                 
+        
+        <div class="row" id="assignmentdetails_@Model.AssignmentId">
+            <div class="small-12 columns">
+                    <div class="section-container tabs" data-section="tabs">
+                    <section>
+                        <p class="title" data-section-title><strong><a href="#">Information</a></strong></p>
+                        <div class="content" data-section-content>
+                            <p>@MvcHtmlString.Create(Model.Instructions)</p>
+                        </div>
+                    </section>
+                    <section>
+                        <p class="title" data-section-title><strong><a href="#">Submission Notes</a></strong></p>
+                        <div class="content" data-section-content>            
+                            <p>
+                            @Html.TextAreaFor(m => m.Body)
+                            </p>
+                        </div>
+                    </section>
+                    <section>
+                        <p class="title" data-section-title><strong><a href="#">Upload Attachments</a></strong></p>
+                        <div class="content" data-section-content>
+                            <!-- File Upload Section-->
+                            <div class="row">
+                                <div class="small-12 columns">
+                                    <div id="ajax-replace-files_@Model.AssignmentId">
+                                        @if (Model.FileUploads != null)
+                                        {
+                                            @Html.Partial("_SubmissionFilePartial", (IEnumerable<UniEBoard.Service.Models.BaseFileViewModel>)Model.FileUploads)
+                                        }
+                                    </div>                            
+                                    <input type="file" id="UploadFile" name="UploadFile"/>
+                                    <a href="#" class="button tiny secondary" onclick='cognite_ajax.ajaxSubmitReplace("form_@Model.AssignmentId","@Url.Action("UploadSubmissionFile", "Student")","ajax-replace-files_@Model.AssignmentId",RevealManager.Show("uploadedFile"),null)'>Upload</a>               
+
+                                    <a id="testcust" href="#" class="button tiny secondary" 
+                                    data-cx-formid="form_@Model.AssignmentId"  
+                                    data-cx-url="@Url.Action("UploadSubmissionFile", "Student")" 
+                                    data-cx-replacetargetid="ajax-replace-files_@Model.AssignmentId"
+                                    data-cx-appendtargetid=""
+                                    data-cx-prependtargetid=""
+                                    data-cx-removetargetid="" 
+                                    data-cx-errorcallback=""
+                                    data-cx-successcallback='RevealManager.Show("uploadedFile")'>
+                                    Test</a>    
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </section>
+                </div> 
+            </div>
+        </div>
+</form>
+    *@
+
+ <form enctype="multipart/form-data" method="post" id="form_@Model.AssignmentId" class="custom">   
+     <div class="large-12 medium-12 columns">
+         @Html.HiddenFor(m => m.AssignmentId)
+         <a class="toggleSubmission" data-toggle-id="assignmentdetails_@Model.AssignmentId" href="#">
+             <label class="left tm-4">@Model.Title&nbsp;<span class="label @Model.AssignmentCssClass">@Model.DaysLeft</span></label>
+         </a>
+         <a href="javascript:document.forms['form_@Model.AssignmentId'].action = '@Url.Action("MakeSubmission", "Student")';document.getElementById('form_@Model.AssignmentId').submit()" class="small success radius button right">Submit</a>
+         @*    <a href="#" class="small button secondary right rm-20" data-reveal-id="myPaper">Files</a>*@
+         @if (Model.Status == 1)
+         {
+             <div class="row collapse right rm-20">
+                 <div class="small-8 columns">
+                     <input type="file" id="UploadFile" name="UploadFile" class="upload-file" />
+                     <div class="upload-fake button tiny">Browse for a file</div>
+                 </div>
+                 <div class="small-4 columns">
+                     <a href="#" class="button tiny secondary" onclick='cognite_ajax.ajaxSubmitReplace("form_@Model.AssignmentId","@Url.Action("UploadSubmissionFile", "Student")","ajax-replace-files_@Model.AssignmentId",RevealManager.Show("uploadedFile"),null)'>Upload</a>
+                 </div>
+             </div>
+         }
+         <div class="row" id="assignmentdetails_@Model.AssignmentId">
+             <div class="large-10 medium-10 columns">
+                 <div class="row collapse" id="ajax-replace-files_@Model.AssignmentId">
+                     @if (Model.FileUploads != null)
+                     {
+                         @Html.Partial("_SubmissionFilePartial", (IEnumerable<UniEBoard.Service.Models.BaseFileViewModel>)Model.FileUploads)
+                     }
+                 </div>
+                 <div class="row">
+                     <div class="large-10 medium-10 columns">
+                         @MvcHtmlString.Create(Model.Instructions)
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+</form>
+}

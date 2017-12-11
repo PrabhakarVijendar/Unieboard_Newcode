@@ -1,0 +1,69 @@
+﻿@{
+    ViewBag.Title = "My DashBoard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section firstNavigationElement {
+    @Html.Partial("_LogoutPartial")
+}
+@section navigationalElements {
+    @Html.Partial("_TeacherNavigationalElementsPartial")
+}
+<!-- Begin Alerts & Intro -->
+<div class="row">
+    <div class="large-12 medium-12 columns">
+        <ul class="breadcrumbs">
+            <li>@Html.ActionLink("My Dashboard", "Index", "Teacher")</li>
+            <li class="current">@Html.ActionLink("Quizzes", "Quizzes", "Teacher")</li>
+        </ul>
+    </div>
+</div>
+<!-- End Begin Alerts & Intro -->
+<!-- Begin Quizzes -->
+<div class="row">
+    <div class="large-12 medium-12 columns">
+        <!-- Begin Course -->
+        <h2>
+            Quizzes <small> <a class="create-new "><i class="icon-plus"></i></a></small>
+        </h2>
+        <!-- Add Quiz -->
+        @using (Html.BeginForm("CreateQuiz", "Teacher", FormMethod.Post, new { @class = "custom", enctype = "multipart/form-data" }))
+        {
+            @*@Html.ValidationSummary(false)*@
+            if (!ViewData.ModelState.IsValid) 
+            { 
+            <div class="validation-summary-errors">
+                <ul class="no-bullet">
+                    @foreach (ModelState modelState in ViewData.ModelState.Values)
+                    {
+                        foreach (ModelError modelError in modelState.Errors)
+                        {
+                            <li>@modelError.ErrorMessage</li>
+                        }
+                    }
+                    
+                </ul>
+            </div>
+            }
+            @Html.Partial("_QuizFormPartial")
+        }
+        
+        <!-- Filter -->
+        @Html.Partial("_QuizFilterPartial")
+
+        <!-- Quiz List -->
+        <div id="quizList">
+            @Html.Partial("_QuizListPartial", (IEnumerable<UniEBoard.Service.Models.Quizzes.QuizzesViewModel>)ViewData["Quizzes"])
+        </div>
+        
+        @Html.Partial("_DisplayPageViewAllPartial", (UniEBoard.Service.Models.PageViewAllFilterViewModel)ViewData["Pager"])
+    </div>
+</div>
+<!-- End Body -->
+@section Scripts {
+    <script type="text/javascript">
+        $('[data-focus-id]').click(function () {
+            var targetElemId = $(this).attr("data-focus-id");
+            $('#' + targetElemId).focus();
+        });
+    </script>
+}

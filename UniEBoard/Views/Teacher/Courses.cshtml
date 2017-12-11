@@ -1,0 +1,98 @@
+﻿@model UniEBoard.Service.Models.CourseViewModel
+@{
+    ViewBag.Title = "My DashBoard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var CurrentUser = (ViewContext.Controller as UniEBoard.Controllers.BaseController).CurrentUser;
+}
+@section firstNavigationElement {
+    @Html.Partial("_LogoutPartial")
+}
+@section navigationalElements {
+    @Html.Partial("_TeacherNavigationalElementsPartial")
+}
+<!-- Begin Alerts & Intro -->
+    <div class="row">
+        <div class="large-12 medium-12 columns">
+            <ul class="breadcrumbs">
+			    <li>@Html.ActionLink("My Dashboard", "Index", "Teacher")</li>
+			    <li class="current">@Html.ActionLink("Courses", "Courses", "Teacher")</li>
+		    </ul>
+	    </div>
+    </div>
+	<!-- End Begin Alerts & Intro -->
+<div class="row">
+    <br />
+    <div class="large-12 medium-12 columns">
+        <!-- Create Course -->
+        @if(CurrentUser.IsAdmin) {
+            <h2>Courses <small> <a class="create-new "><i class="icon-plus"></i></a></small></h2>
+            using (Html.BeginForm("CreateCourse", "Teacher", FormMethod.Post, new { @class = "custom" }))
+        {
+            @*@Html.ValidationSummary(false)*@
+            if (!ViewData.ModelState.IsValid)
+            { 
+            <div class="validation-summary-errors">
+                <ul class="no-bullet">
+                    @foreach (ModelState modelState in ViewData.ModelState.Values)
+                    {
+                        foreach (ModelError modelError in modelState.Errors)
+                        {
+                            <li>@modelError.ErrorMessage</li>
+                        }
+                    }
+                </ul>
+            </div>
+            }
+            
+            @Html.Partial("_CourseFormPartial", Model)
+        }
+        }
+
+        <!-- Filter -->
+        @Html.Partial("_CourseFilterPartial")
+        <!-- Display Courses -->
+        <div id="courseList">
+            @Html.Partial("_CourseListPartial", (IEnumerable<UniEBoard.Service.Models.CourseViewModel>)ViewData["CourseList"])
+        </div>
+        <!-- Display Pager -->
+        @Html.Partial("_DisplayPageViewAllPartial", (UniEBoard.Service.Models.PageViewAllFilterViewModel)ViewData["Pager"])
+    </div>
+</div>
+@section Scripts {
+    <script type="text/javascript">
+        $('body').on('change', '[data-courseId]', function () {
+            
+            var cId = $(this).attr('data-courseId');
+            var title = $('#Title_' + cId).val();
+            var dId = $('#Department_' + cId).val();
+            var desc = $('#Description_' + cId).val();
+            var cLength = $('#Length_' + cId).val();
+            var pFrom = $('#PublishFrom_' + cId).val();
+            var pTo = $('#PublishTo_' + cId).val();
+
+            console.log("{ name:'" + title + "', description:'" + desc + "', departmentId:'" + dId + "', courseId: '" + cId + "', courseLength: '" + cLength + "', publishFrom: '" + pFrom + "', publishTo: '" + pTo + "'}");
+            console.log('publish from: ' + pFrom + ', publish to: ' + pTo);
+
+            $.ajax({
+                url: '@Url.Action("UpdateCourse", "Teacher")',
+                type: 'POST',
+                data: "{ name:'" + title + "', description:'" + desc + "', departmentId:'" + dId + "', courseId: '" + cId + "', courseLength: '" + cLength + "', publishFrom: '" + pFrom + "', publishTo: '" + pTo + "'}",
+                /*data: {
+                    courseId: cId,
+                    name: title,
+                    departmentId: dId,
+                    courseLength: cLength,
+                    publishFrom: pFrom,
+                    publishTo: pTo
+                },*/
+                contentType: "application/json; charset=utf-8",
+                dataType: "html",
+                error: function (jXhr) {
+                    if (typeof console != 'undefined')
+                        alert("Error Updating Object")
+                }
+            });
+        });
+
+    </script>
+}

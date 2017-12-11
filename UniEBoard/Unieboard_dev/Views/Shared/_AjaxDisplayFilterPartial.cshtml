@@ -1,0 +1,10 @@
+﻿@model UniEBoard.Service.Models.DisplayFilterViewModel
+@if (Request.IsAuthenticated && Model != null)
+{
+    <dl class="sub-nav">
+        <dt>@Model.DisplayLegend:</dt>
+        <dd class="@Model.Item1Css">@Ajax.ActionLink(Model.Item1Display, Model.TargetActionName, Model.TargetControllerName, new { filter = Model.Item1Value, view = Model.ViewType }, new AjaxOptions() { HttpMethod = "Post", UpdateTargetId = Model.UpdateTargetId, InsertionMode = InsertionMode.Replace })</dd>
+        <dd class="@Model.Item2Css">@Ajax.ActionLink(Model.Item2Display, Model.TargetActionName, Model.TargetControllerName, new { filter = Model.Item2Value, view = Model.ViewType }, new AjaxOptions() { HttpMethod = "Post", UpdateTargetId = Model.UpdateTargetId, InsertionMode = InsertionMode.Replace })</dd>
+        <dd class="@Model.Item3Css">@Ajax.ActionLink(Model.Item3Display, Model.TargetActionName, Model.TargetControllerName, new { filter = Model.Item3Value, view = Model.ViewType }, new AjaxOptions() { HttpMethod = "Post", UpdateTargetId = Model.UpdateTargetId, InsertionMode = InsertionMode.Replace })</dd>
+    </dl>
+}

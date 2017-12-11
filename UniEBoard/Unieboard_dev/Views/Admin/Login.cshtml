@@ -1,0 +1,42 @@
+﻿@using Cognite.Utility.MethodExtensions;
+@model UniEBoard.Service.Models.AdminLoginViewModel
+
+@{
+    ViewBag.Title = "Admin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section firstNavigationElement {
+	<li class="name">
+		<h1><a href="dashboard.htm">&nbsp;</a></h1>
+	</li>
+}
+
+
+	<!-- Begin Login -->
+    <div class="row">
+        <div class="large-4 medium-4 columns schedule">&nbsp;</div>
+        <div class="large-4 medium-4 columns schedule">
+            <h2>@ViewBag.Title</h2>
+            @using (Html.BeginForm("Login", "Admin", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "custom" }))
+            {
+                @Html.ValidationSummary(false)
+                @Html.AntiForgeryToken()
+
+                <div class="panel">
+                    @Html.LabelFor(m => m.UserName)
+                    @Html.TextBoxFor(m => m.UserName, new { placeholder = "Type your admin username" })
+
+                    @Html.LabelFor(m => m.Password)
+                    @Html.PasswordFor(m => m.Password, new { placeholder = "Type your admin password" })
+
+                    <input type="submit" value="Login" class="small success radius button" />
+                </div>
+            }
+        </div>
+        <div class="large-4 medium-4 columns schedule">&nbsp;</div>
+    </div>
+    <!-- End Login -->
+
+
+

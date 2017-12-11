@@ -1,0 +1,22 @@
+﻿@if (Request.IsAuthenticated)
+{
+    <li class="name">
+        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+        {
+            @Html.AntiForgeryToken()        
+            <h1>
+                <div class="user">
+                    <a href="/Teacher/Index">
+                        <div class="avatar">
+                            <img src="/images/person.png" alt="@User.Identity.Name">
+                        </div>
+                        <div class="name">
+                            @User.Identity.Name
+                        </div>
+                    </a>
+                </div>
+                <a href="javascript:document.getElementById('logoutForm').submit()" title="Sign out" class="signout"><i class="icon-signout"><p>Sign out</p></i></a>
+            </h1>
+        }
+    </li>
+}

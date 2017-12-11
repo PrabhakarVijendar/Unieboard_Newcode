@@ -1,0 +1,38 @@
+﻿@model UniEBoard.Service.Models.CourseViewModel
+@{string ctrName = ViewContext.RouteData.Values["controller"].ToString();}
+@{string actName = ViewContext.RouteData.Values["action"].ToString();}
+@{
+    ViewBag.Title = "";
+
+}
+
+@if (Model != null)
+{
+    <ul class="side-nav">
+            <li>
+            @Html.ActionLink("Course Home", "Home", "Course", new { @Id = Model.Id }, new { @class = "roll", @data_title = "Course Home", @Id = "CourseHome" })
+          @*  <a data-title="Course Home" class="roll" href="IHTS.htm">Course Home</a>*@
+            </li>
+            <li>
+              @Html.ActionLink("Syllabus", "Syllabus", "Course", new { @Id = Model.Id }, new { @class = "roll", @data_title = "Syllabus" })
+      @*      <a data-title="Syllabus" class="roll" href="IHTS-Syllabus.htm">Syllabus</a>*@
+            </li>
+            <li>
+             @Html.ActionLink("Lectures", "VideoLectures", "Course", new { @Id = Model.Id }, new { @class = "roll", @data_title = "Classes" })
+@*            <a data-title="Video Lectures" class="roll" href="IHTS-video-lectures.htm">Video
+                Lectures</a>*@
+                </li>
+            <li>
+  @*              @if (ctrName.Equals("Course") && (!actName.Equals("VideoLectures"))) 
+                { 
+                    @Html.ActionLink("Quizzes", "Quizzes", "Course", new { @Id = Model.Id }, new { @class = "roll", @data_title = "Quizzes" })
+                }
+
+  
+            <a data-title="Quizzes" class="roll" href="IHTS-quizzes.htm">Quizzes</a>*@
+            </li>
+            <li><a data-title="Discussions" class="roll" href="/Discussion/Index">Discussions</a></li>
+            <!--<li><a data-title="Wiki" class="roll" href="IHTS-wiki.htm">Wiki</a></li>-->
+        </ul>
+}
+

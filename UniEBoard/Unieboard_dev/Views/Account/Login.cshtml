@@ -1,0 +1,71 @@
+﻿@using Cognite.Utility.MethodExtensions;
+@model UniEBoard.Service.Models.UserLoginViewModel
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section firstNavigationElement {
+    <li class="name">
+        <h1>
+            <a href="dashboard.htm">&nbsp;</a></h1>
+    </li>
+}
+<!-- Begin Login -->
+<div class="row">
+    <div class="large-3 medium-3 columns">
+        &nbsp;
+    </div>
+    <div class="large-6 medium-6 columns">
+        <h2>@ViewBag.Title</h2>
+        @*            <div id="alert" data-alert="" class="alert-box alert">
+                Are you a Student or Teacher?
+                <a href="" class="close">×</a>
+            </div>*@
+        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "custom", id = "loginForm", name = "loginForm" }))
+        {
+
+
+            <div class="panel">
+                <div class="row collapse">
+                    <div class="large-2 medium-2 columns">
+                        <div class="user login">
+                            <div class="avatar">
+                                <img src="/images/person.png" alt="@User.Identity.Name">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="large-8 medium-8 columns">
+                        @*Html.LabelFor(m => m.UserType)
+            @Html.DropDownListFor(m => m.UserType, new SelectList(ViewBag.LoginTypes, "Key", "Value"), "Choose Login")*@
+                        @*@Html.ValidationMessageFor(m => m.UserType)*@
+
+                        @Html.TextBoxFor(m => m.UserName, new { placeholder = "Type your username", tabindex = "1" })
+                        @*@Html.ValidationMessageFor(m => m.UserName)*@
+
+                        @Html.PasswordFor(m => m.Password, new { placeholder = "Type your password", tabindex = "2" })
+                        @*@Html.ValidationMessageFor(m => m.Password)*@
+
+                        <small class="left">@Html.ActionLink("Forgot Password?", "ForgetPassword", "Account", new { tabindex = "4" })</small>
+                        <!--<a href="ForgetPassword" style="font-size: small; text-decoration: underline">Forget
+        Password?</a>-->
+                    </div>
+                    <div class="large-2 medium-2 columns collapse">
+                        <a href="javascript:document.getElementById('loginForm').submit()" title="Sign In" class="signin right" tabindex="3"><i class=" icon-signin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <p class="message-success">@ViewBag.StatusMessage</p>
+            @Html.ValidationSummary(false)
+            @Html.AntiForgeryToken()
+        }
+    </div>
+    <div class="large-3 medium-3 columns">
+        &nbsp;
+    </div>
+    </div>
+<!-- End Login -->
+@*    <section class="social" id="socialLoginForm">
+    <h2>Use another service to log in.</h2>
+    @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
+    </section>*@ 

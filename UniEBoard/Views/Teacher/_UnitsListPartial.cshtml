@@ -1,0 +1,69 @@
+﻿@model IEnumerable<UniEBoard.Service.Models.UnitViewModel>
+@if (Request.IsAuthenticated)
+{
+    <form class="custom">
+    <p class="message-success">@ViewBag.StatusMessage</p>
+    <table class="full responsive grid tableRowDnD" id="unitList" data-source=@Url.Action("UpdateOrder") data-type="units">
+        <thead>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Video
+                </th>
+                <th>
+                    Document
+                </th>
+                @*<th>Schedules</th>*@
+                <th>
+                    @UniEBoard.Service.Helpers.Configuration.WebSite.Current.TitleModule
+                </th>
+                <th>
+                    Quizes
+                </th>
+                @*<th>
+                    Assignment
+                </th>*@
+                <th>
+                    Actions
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr id="@item.Id" data-sortOrder="@item.SortOrder">
+                    <td>
+                        <input type="text" id="Title_@item.Id" name="Title_@item.Id" value="@item.Title" data-unitId="@item.Id" data-action="UpdateUnit">
+                    </td>
+                    <td>
+                        @Html.CustomDropDownList(string.Format("VideoId_{0}", item.Id), (IEnumerable<SelectListItem>)ViewData["Videos"],
+                            item.VideoId, "Select Video", new { @class="small hide", data_unitId = item.Id, data_action = @Url.Action("UpdateUnit", "Teacher") })
+                    </td>
+                    <td>
+                        @Html.CustomDropDownList(string.Format("DocumentId_{0}", item.Id), (IEnumerable<SelectListItem>)ViewData["Docs"],
+                            item.DocumentId, "Select Document", new { @class="small hide", data_unitId = item.Id, data_action = @Url.Action("UpdateUnit", "Teacher") })
+                    </td>
+                    @*<td></td>*@
+                    <td>
+                        <p>@item.ModuleTitle</p>
+                    </td>
+                    <td>
+                        @Html.CustomDropDownList(string.Format("QuizId_{0}", item.Id), (IEnumerable<SelectListItem>)ViewData["Quizes"], 
+                            item.QuizId, "Select Quiz", new { @class="small hide", data_unitId = item.Id, data_action = @Url.Action("UpdateUnit", "Teacher") })
+                    </td>
+                    @*<td>
+                        @Html.CustomDropDownList(string.Format("AssignmentId_{0}", item.Id), (IEnumerable<SelectListItem>)ViewData["Assignment"], 
+                            item.AssignmentId, "Select Assignment", new { data_unitId = item.Id, data_action = @Url.Action("UpdateUnit", "Teacher") })
+                    </td>*@
+                    <td class="actions">
+                        <a target="_self" href='@Url.Action("RemoveUnit", "Teacher", new { unitId = item.Id })' onclick="return confirm('Are you sure you wish to delete this item?');"><i
+                                class="icon-remove"></i></a> 
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    </form>
+}

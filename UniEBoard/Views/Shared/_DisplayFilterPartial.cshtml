@@ -1,0 +1,14 @@
+﻿@model UniEBoard.Service.Models.DisplayFilterViewModel
+@if (Request.IsAuthenticated && Model != null)
+{
+    using (Html.BeginForm(Model.TargetActionName, Model.TargetControllerName, FormMethod.Post, new { id = "form_displayfilter" }))
+    {
+    @Html.HiddenFor(f => f.ActiveFilter)
+    <dl class="sub-nav">
+        <dt>@Model.DisplayLegend:</dt>
+        <dd class="@Model.Item1Css"><a href="javascript:document.getElementById('ActiveFilter').value = @Model.Item1Value;document.getElementById('form_displayfilter').submit()">@Model.Item1Display</a></dd>
+        <dd class="@Model.Item2Css"><a href="javascript:document.getElementById('ActiveFilter').value = @Model.Item2Value;document.getElementById('form_displayfilter').submit()">@Model.Item2Display</a></dd>
+        <dd class="@Model.Item3Css"><a href="javascript:document.getElementById('ActiveFilter').value = @Model.Item3Value;document.getElementById('form_displayfilter').submit()">@Model.Item3Display</a></dd>
+    </dl>
+    }
+}

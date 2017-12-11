@@ -1,0 +1,85 @@
+﻿@model IEnumerable<UniEBoard.Service.Models.CourseViewModel>
+@if (Request.IsAuthenticated)
+{
+    <form class="custom">
+        <p class="message-success">@ViewBag.StatusMessage</p>
+        <table class="full responsive grid tableRowDnD" data-source=@Url.Action("UpdateOrder") data-type="courses">
+            <thead>
+                <tr>
+                    <th>
+                        <div class="row">
+                            <div class="large-6 medium-6 columns">
+                                Title
+                            </div>
+                            <div class="large-3 medium-3 columns">
+                                Department
+                            </div>
+                            <div class="large-1 medium-1 columns">
+                                Active
+                            </div>
+                            <div class="large-2 medium-2 columns ar">
+                                Actions
+                            </div>
+                        </div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var obj in Model)
+                {
+                    <tr id="@obj.Id" data-sortorder="@obj.SortOrder">
+                        <td>
+                            <div class="row">
+                                <div class="large-6 medium-6 columns">
+                                    <input type="text" id="Title_@obj.Id" name="Title_@obj.Id" value="@obj.Title" data-courseid="@obj.Id" />
+                                </div>
+                                <div class="large-3 medium-3 columns">
+                                    @Html.CustomDropDownList(string.Format("Department_{0}", obj.Id), (IEnumerable<SelectListItem>)ViewData["DepartmentList"], obj.DepartmentId, "Select department...", new { @class = "medium ", data_courseId = obj.Id })
+                                </div>
+                                <div class="large-1 medium-1 columns">
+                                    <div id="activateCourse_@obj.Id" class="switch tiny radius ajaxUpdate" data-source="@Url.Action("ActivateCourse")">
+                                        @Html.RadioButton(string.Format("switch-a_{0}", obj.Id), !obj.Approved, !obj.Approved, new { id = string.Format("a_{0}", obj.Id), data_courseId = @obj.Id })
+                                        <label for="a_@obj.Id" onclick="">
+                                            Off
+                                        </label>
+                                        @Html.RadioButton(string.Format("switch-a_{0}", obj.Id), obj.Approved, obj.Approved, new { id = string.Format("a1_{0}", obj.Id), data_courseId = @obj.Id })
+                                        <label for="a1_@obj.Id" onclick="">
+                                            On
+                                        </label>
+                                        <span></span>
+                                    </div>
+                                </div>
+                                <div class="large-2 medium-2 columns action-2-icons collapse">
+                                    <i class="icon-collapse i-medium"></i>
+                                    <a target="_self" href='@Url.Action("RemoveCourse", "Teacher", new { courseId = obj.Id })' onclick="return confirm('Are you sure you wish to delete this item?');" title="Delete Course"><i class="icon-remove"></i></a>
+                                    <a href='@Url.Action("Home", "Course", new { id = obj.Id })' target="_blank" title="Course Preview"><i class="icon-globe"></i></a>
+                                    <a href='@Url.Action("Modules", "Teacher", new { courseId = obj.Id })' title="Modules"><i class="icon-list-alt"></i></a>
+                                </div>
+                            </div>
+                            <div class="row detail hide">
+                                <hr>
+                                <div class="large-6 medium-6 columns">
+                                    <label for="">Description</label>
+                                    <textarea cols="30" data-val="true" data-val-required="The Description field is required." id="Description_@obj.Id" name="Description_@obj.Id" placeholder="Enter Description..." required="required" rows="5" data-courseid="@obj.Id">@obj.Overview</textarea>
+                                </div>
+
+                                <div class="large-2 medium-2 columns">
+                                    <label for="">Start Date</label>
+                                    @Html.TextBoxFor(m => obj.PublishFrom, "{0:dd/MM/yyyy}", new { @class = "datetimepicker small", name = "PublishFrom_" + obj.Id, id = "PublishFrom_" + obj.Id, data_courseId = obj.Id })
+                                </div>
+                                <div class="large-2 medium-2 columns">
+                                    <label for="">End Date</label>
+                                    @Html.TextBoxFor(m => obj.PublishTo, "{0:dd/MM/yyyy}", new { @class = "datetimepicker small", name = "PublishTo_" + obj.Id, id = "PublishTo_" + obj.Id, data_courseId = obj.Id })
+                                </div>
+                                <div class="large-2 medium-2 columns">
+                                    <label for="">Students on Course</label>
+                                    <p>@obj.StudentCount</p>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </form>
+}

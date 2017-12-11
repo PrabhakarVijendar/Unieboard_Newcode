@@ -1,0 +1,22 @@
+﻿@model IEnumerable<UniEBoard.Service.Models.UnitViewModel>
+<div class="row">
+    <div class="large-3 medium-3 columns">
+        <h5>Today's Classes</h5>
+    </div>
+    <div class="large-9 medium-9 columns">
+        <div class="schedule-picker">
+            <a class="changeToOneDayBefore" data-target="#switchDate"><i class="icon-angle-left"></i></a>
+            <input type="text" id="switchDate" class="datetimepicker DateFilterTextBox" size="30" data-url="/Student/UnitListDashboardFilteredPartial" data-target="#unitList" value="@DateTime.Today.Date.ToString("dddd dd MMMM yyyy")" />
+            <a class="changeToOneDayAfter" data-target="#switchDate"><i class="icon-angle-right"></i></a>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="large-12 medium-12 columns">
+        <div id="unitList">
+            @Html.Partial("_DashboardScheduleUnitGridPartial", Model)
+        </div>
+    </div>
+</div>
+
+<hr>

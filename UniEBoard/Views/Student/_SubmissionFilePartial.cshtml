@@ -1,0 +1,19 @@
+﻿@model IEnumerable<UniEBoard.Service.Models.BaseFileViewModel>
+@if (Request.IsAuthenticated && Model != null)
+{  
+    foreach (var item in Model)
+    {
+@*        <ul class="square">
+            <li id="listfileitem_@item.Id">
+                @Html.ActionLink(item.FileName, "Download", "File", new { id = item.Id, identityToken = item.IdentityToken }, null)              
+                <a id="removefile_@item.Id" class="foundicon-enclosed-remove enclosed-icon" title = "Remove File" href="#" onclick='cognite_ajax.postRemoveCallback("@Url.Action("RemoveSubmissionFile", "Student", new { id = item.Id, identityToken = item.IdentityToken })","listfileitem_@item.Id",RevealModal("removedFile"))'>&nbsp;</a>
+            </li>
+        </ul>*@
+    <div class="large-12 medium-12 columns" id="listfileitem_@item.Id">
+        @Html.ActionLink(item.FileName, "Download", "File", new { id = item.Id, identityToken = item.IdentityToken }, null)
+        <a id="removefile_@item.Id" class="foundicon-enclosed-remove enclosed-icon" title="Remove File" href="#" onclick='cognite_ajax.postRemoveCallback("@Url.Action("RemoveSubmissionFile", "Student", new { id = item.Id, identityToken = item.IdentityToken })","listfileitem_@item.Id",RevealModal("removedFile"))'>&nbsp;</a>
+    </div>
+    }
+}
+
+

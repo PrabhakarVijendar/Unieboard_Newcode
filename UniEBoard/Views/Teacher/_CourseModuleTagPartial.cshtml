@@ -1,0 +1,17 @@
+﻿
+@model IEnumerable<UniEBoard.Service.Models.CourseModuleViewModel>
+@if (Request.IsAuthenticated && Model != null)
+{
+    if (Model != null)
+    {
+        foreach (var courseModule in Model)
+        {                         
+            <span class="label radius">@courseModule.Course.Title   
+   
+                <a id="RemoveCourse_@courseModule.Id" class="ajaxLink" data-source='@Url.Action("RemoveCourseFromModule", "Teacher", new { courseModuleId = courseModule.Id, moduleId = courseModule.Module_Id })'
+                   data-target-id=@string.Format("{0}_{1}", "courseTags", courseModule.Module_Id)>x</a>
+
+            </span>
+        }
+    }
+}

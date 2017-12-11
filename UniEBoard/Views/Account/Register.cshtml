@@ -1,0 +1,100 @@
+﻿@using Cognite.Utility.MethodExtensions;
+@model UniEBoard.Service.Models.StudentViewModel
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section firstNavigationElement {
+    <li class="name">
+        <h1><a href="dashboard.htm">&nbsp;</a></h1>
+    </li>
+}
+
+<!-- Begin Register -->
+<div class="row">
+    <div class="large-3 medium-3 columns schedule">&nbsp;</div>
+    <div class="large-6 medium-6 columns schedule">
+        <h2>Student Registration</h2>
+        @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "custom", id = "registerForm", name = "registerForm" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+
+            <div class="panel">
+                <p>To proceed you will need to have your activation code.</p>
+                <label for="activationCode"></label>
+                <input name="activationCode" type="text" placeholder="Type your activation code">
+                <p><small>If you have not yet received your activation code please <a>contact support</a>.</small></p>
+            </div>
+            <div class="panel">
+
+                <div class="row ">
+                    <div class="large-2 medium-2 columns">
+                        <div class="user login">
+                            <div class="avatar">
+                                <img src="/images/person.png" alt="@User.Identity.Name">
+                            </div>
+                        </div>
+                        <a class="upload-img">Upload</a>
+                    </div>
+
+                    <div class="large-10 medium-10 columns">
+
+                        @Html.TextBoxFor(m => m.Email, new { placeholder = "Enter your email address" })
+                        @Html.ValidationMessageFor(m => m.Email)
+
+                        @Html.PasswordFor(m => m.Password, new { placeholder = "Choose a strong password" })
+                        @Html.ValidationMessageFor(m => m.Password)
+
+                        @Html.PasswordFor(m => m.ConfirmPassword, new { placeholder = "Confirm your password" })
+                        @Html.ValidationMessageFor(m => m.ConfirmPassword)
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="large-6 medium-6 columns">
+                        @Html.TextBoxFor(m => m.FirstName, new { placeholder = "First name" })
+                        @Html.ValidationMessageFor(m => m.FirstName)
+                    </div>
+                    <div class="large-6 medium-6 columns">
+                        @Html.TextBoxFor(m => m.LastName, new { placeholder = "Last name" })
+                        @Html.ValidationMessageFor(m => m.LastName)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-6 medium-6 columns">
+                        @Html.DropDownListFor(m => m.UserGender, new SelectList(ViewBag.GenderTypes, "Key", "Value"), "Gender")
+                        @Html.ValidationMessageFor(m => m.UserGender)
+                    </div>
+                    <div class="large-6 medium-6 columns">
+                        @Html.TextBoxFor(m => m.DateOfBirth, new { placeholder = "Date of Birth" })
+                        @Html.ValidationMessageFor(m => m.DateOfBirth)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-6 medium-6 columns">
+                        @Html.TextBoxFor(m => m.Mobile, new { placeholder = "Mobile (+44 0000 000 000)" })
+                        @Html.ValidationMessageFor(m => m.Mobile)
+                    </div>
+                    <div class="large-6 medium-6 columns">
+                        <input type="text" name="postcode" placeholder="Postcode / Zip" />
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="large-8 medium-8 columns">
+                        <p><small>By registering you agree to our <a>Terms &amp; Conditions</a>.</small></p>
+                    </div>
+                    <div class="large-2 medium-2 columns">
+                        <a href="javascript:document.getElementById('registerForm').submit()" title="Register" class="register right" tabindex="3"><i class="icon-signin"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        }
+    </div>
+    <div class="large-3 medium-3 columns schedule">&nbsp;</div>
+</div>
+<!-- End Register -->

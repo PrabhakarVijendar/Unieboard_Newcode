@@ -1,0 +1,73 @@
+﻿@model IEnumerable<UniEBoard.Service.Models.AssetViewModel>
+@if (Request.IsAuthenticated)
+{
+    <form class="custom">
+    <p class="message-success">@ViewBag.StatusMessage</p>
+    <table class="full responsive grid">
+        <thead>
+            <tr>
+                <th>
+                    Type
+                </th>
+
+                <th>
+                    Name
+                </th>               
+                <th>
+                    Tags
+                </th>
+                <th class="ar">
+                    Actions
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+                <tr>
+                    <td>
+                        <!-- Videos -->
+                        @if (item.AssetType == 1)
+                        {
+                            <a data-effect="st-effect-1" class="sidebar-activate reveal-side" data-id="@item.Id" data-video="Video_@item.Id" title="@item.Name">
+                                <i class="icon-youtube-play"></i></a>
+                        }
+                        else if (item.AssetType == 3 || item.ContentType.Equals("image/jpeg"))
+                        {
+                            <a target="_blank" title="@item.Name" href='@Url.Action("Render", "Asset", new { Id = item.Id })'>
+                                <i class="icon-picture"></i>
+                            </a>
+                        }
+                        else
+                        {
+                            <a target="_blank" title="@item.Name" href='@Url.Action("Render", "Asset", new { Id = item.Id })'>
+                                <i class="icon-file-alt"></i>
+                            </a>
+                        }
+                        <small>@item.AssetExtension</small>
+                    </td>
+
+                    <td>
+                        <input type="text" name="Name_@item.Id" id="Name_@item.Id" value="@item.Name" data-assetid="@item.Id">
+                    </td>                    
+                    <td class="tags" id="assetTags_@item.Id">
+                        <div class="tags" id="assetTagsDiv_@item.Id">
+                            @Html.Partial("_AssetTagPartial", item.Tags, new ViewDataDictionary { { "AssetIdentifier", item.Id } })
+                        </div>
+                        <input type="text" id="Tag_@item.Id" name="Tag_@item.Id" class="autocompleteTagAsset" data-assetid="@item.Id" data-source="@Url.Action("AutoCompleteAssetTags", "Teacher")" data-type="updateAsset"> 
+                        
+</td>
+                    <td class="ar">
+                        <a target="_self" href='@Url.Action("RemoveAsset", "Teacher", new { assetId = item.Id })' onclick="return confirm('Are you sure you wish to delete this item?');">
+                            <i class="icon-remove"></i>
+                        </a>
+                    </td>
+                </tr>
+                }
+            }
+        </tbody>
+    </table>
+    </form>
+}

@@ -1,0 +1,131 @@
+﻿@{
+    ViewBag.Title = "My DashBoard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var CurrentUser = (ViewContext.Controller as UniEBoard.Controllers.BaseController).CurrentUser;
+}
+@section firstNavigationElement {
+    @Html.Partial("_LogoutPartial")
+}
+@section navigationalElements {
+    @Html.Partial("_TeacherNavigationalElementsPartial")
+}
+
+
+
+<!-- Begin Alerts & Intro -->
+
+    <div class="row">
+        <div class="large-12 medium-12 columns">
+            <ul class="breadcrumbs">
+			    <li>@Html.ActionLink("My Dashboard", "Index", "Teacher")</li>
+			    <li class="current">@Html.ActionLink(UniEBoard.Service.Helpers.Configuration.WebSite.Current.TitleModules, "Modules", "Teacher")</li>
+		    </ul>
+	    </div>
+    </div>
+    
+	<!-- End Begin Alerts & Intro -->
+
+
+<div class="row">
+    <div class="large-12 medium-12 columns">
+        <!-- Create Module -->
+        @if(CurrentUser.IsAdmin) {
+        <h2>@UniEBoard.Service.Helpers.Configuration.WebSite.Current.TitleModules <small> <a class="create-new "><i class="icon-plus"></i></a></small></h2>
+            using (Html.BeginForm("CreateModule", "Teacher", FormMethod.Post, new { @class = "custom" }))
+        {
+            @*@Html.ValidationSummary(false)*@
+                if (!ViewData.ModelState.IsValid)
+                {
+            <div class="validation-summary-errors">
+                <ul class="no-bullet">
+                    @foreach (ModelState modelState in ViewData.ModelState.Values)
+                    {
+                        foreach (ModelError modelError in modelState.Errors)
+                        {
+                            <li>@modelError.ErrorMessage</li>
+                        }
+                    }
+                    
+                </ul>
+            </div>
+            }
+            
+            @Html.Partial("_ModuleFormPartial", new UniEBoard.Service.Models.ModuleViewModel())
+        }
+        }
+
+        <!-- Display Modules -->       
+        <form class="custom">
+            @Html.CustomDropDownList("ddCourses", (IEnumerable<SelectListItem>)Session["CourseList"],
+            ViewData["CourseId"].ToString(), string.Format("Filter {0} by {1}...", UniEBoard.Service.Helpers.Configuration.WebSite.Current.TitleModules, UniEBoard.Service.Helpers.Configuration.WebSite.Current.TitleCourse),
+            new { data_source = @Url.Action("ModuleByCourse"), @class = "ajaxDropDown", data_targetElementId = "moduleList" })
+        </form>
+        <p class="message-success">@ViewBag.StatusMessage</p>
+            @Html.Partial("_ModuleListPartial", (IEnumerable<UniEBoard.Service.Models.ModuleViewModel>)ViewData["ModuleList"])
+        <!-- Display Pager -->
+        @Html.Partial("_DisplayPageViewAllPartial", (UniEBoard.Service.Models.PageViewAllFilterViewModel)ViewData["Pager"])
+    </div>
+</div>
+@section Scripts {
+    <script type="text/javascript">
+
+     /*$(function () {
+        BindControls();
+        BindLinkControls();
+        $('input.autocomplete1').each(function (i, el) {
+        el = $(el);
+        el.autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: el.attr('data-source'),
+                    dataType: 'json',
+                    data: {
+                        term: request.term
+                    },
+                    type: 'POST',
+                    success: function (data) {                        
+                        response($.map(data, function (item, i) {
+                            return {
+                                label: item.label,
+                                value: item.id
+                            }
+                        }));
+
+                    }
+                });
+            },
+            change: function(event, ui) {
+                UpdateModule($(this));
+            },
+            select: function (event, ui) {
+                event.preventDefault();
+                el.val(ui.item.label);
+                el.attr('data-sourceid', ui.item.value.toString());
+            },
+            minLength: 1
+        }).data("ui-autocomplete")._renderItem = function (ul, item) {
+            return $("<li />")
+                .data("item.autocomplete", item)
+                .append("<a>" + item.label + "</a>")
+                .appendTo(ul);
+
+        };
+    });
+
+    });*/
+
+        BindLinkControls();
+        BindControls();
+        function BindControls() {
+            
+        }
+
+        function BindLinkControls() {
+            
+        }
+
+        
+
+        
+    </script>
+}

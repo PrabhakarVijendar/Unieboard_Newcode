@@ -1,0 +1,39 @@
+﻿@model UniEBoard.Service.Models.UnitViewModel
+    <ul class="no-bullet">
+    @foreach (var asset in Model.Assets)
+    {
+            <li>
+                
+                    @* === Videos === *@
+                    @if (asset.AssetType == 1)
+            {
+                        <a data-effect="st-effect-1" class="sidebar-activate reveal-side" data-id="@asset.Id" data-video="Video_@asset.Id" title="@asset.Name">
+                            <i class="icon-youtube-play"></i><span>&nbsp;@asset.Name</span>
+                        </a>
+            }
+            @* === Images === *@
+            @if (asset.AssetType == 3 || asset.ContentType.Equals("image/jpeg"))
+            {
+                <a target="_blank" href='@Url.Action("Render", "Asset", new { Id = asset.Id })' title="@asset.Name">
+                    <i class="icon-picture"></i><span>&nbsp;@asset.Name</span>
+                </a>
+            }
+
+            @* === Documents === *@
+            @if (asset.AssetType == 2 && !asset.ContentType.Equals("image/jpeg"))
+            {
+
+                <a target="_blank" href='@Url.Action("Render", "Asset", new { Id = asset.Id })' title="@Model.Title">
+                    <i class="icon-file-alt"></i><span>&nbsp;@asset.Name</span>
+                </a>
+            }
+                <a class="RemoveAssetIcon" id="RemoveAssetForUnit_@Model.Id"
+                    data-action="@Url.Action("RemoveAssetForUnit", "Teacher")" data-unitid="@Model.Id" data-assetid="@asset.Id" data-target-id="c-assets_@Model.Id">
+                    <i class="icon-remove asset-search"></i>
+                </a>
+        
+    </li>
+    }
+
+
+</ul>

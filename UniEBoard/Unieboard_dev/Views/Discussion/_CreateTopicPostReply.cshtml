@@ -1,0 +1,39 @@
+﻿@model UniEBoard.Service.Models.TopicPostViewModel
+
+<script type="text/javascript">
+    /*$(document).ready(function () {
+        $("#Body").val("");
+    });*/
+</script>
+
+@{
+    string parentPostBody = Model.Body;
+    Model.Body = string.Empty;
+}
+
+@using (Html.BeginForm("CreateTopicPostReply", "Discussion", FormMethod.Post, new { id = Model.Id.ToString() })) 
+{
+    @Html.ValidationSummary(true)
+    
+    
+    <div class="row">
+        <div class="large-12 medium-12 columns">
+            <h3>Reply</h3>
+            <input type="hidden" name="topicPostId" id="topicPostId" value="@Model.Id" />
+            <!--<div class="editor-field">
+            <div class="post-body">@parentPostBody</div>
+        </div>
+        <br>-->
+            <div class="editor-field">
+                @Html.TextAreaFor(model => model.Body)
+                @Html.ValidationMessageFor(model => model.Body)
+            </div>
+
+
+            <p>
+                <input type="submit" value="Post" class="button small" />
+            </p>
+        </div>
+    </div>
+}
+

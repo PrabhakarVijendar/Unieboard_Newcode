@@ -1,0 +1,14 @@
+﻿@model UniEBoard.Service.Models.StudentViewModel
+@{
+    ViewBag.Title = "My DashBoard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section firstNavigationElement {
+    @Html.Partial("_LogoutPartial")
+}
+
+@section navigationalElements {
+    @Html.Partial("_AdminNavigationalElementsPartial")
+}
+

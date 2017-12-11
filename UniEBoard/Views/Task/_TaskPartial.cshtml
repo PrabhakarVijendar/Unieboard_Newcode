@@ -1,0 +1,70 @@
+﻿@model IEnumerable<UniEBoard.Service.Models.TaskViewModel>
+@*@Scripts.Render("~/Scripts/jquery-2.0.3.min.js")
+
+
+*@
+@Scripts.Render("~/Scripts/jquery-2.0.3.min.js")
+@Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/Scripts/js/foundation.min.js")
+@if (Request.IsAuthenticated && Model != null)
+{
+    if (ViewBag.Filter != null)
+    {
+    @Html.Partial("_AjaxDisplayFilterPartial", (UniEBoard.Service.Models.DisplayFilterViewModel)ViewBag.Filter)
+    }
+    <hr />        
+    if (Model != null)
+    {
+        
+        <form class="custom" id="tasksForm">
+            @foreach (var item in Model)
+            {  
+                <div class="row" id="assignment_@item.Id">
+                    <div class="large-12 columns">
+                        <label class="left @item.CompletedCssClass">
+                            @Ajax.ActionLink(" ", "CompleteTask", "Task", new { taskId = item.Id }, 
+                            new AjaxOptions() { HttpMethod = "Post", UpdateTargetId = "tasks", InsertionMode = InsertionMode.Replace, OnSuccess = "RevealModal('completedTask')" }, 
+                            new { @class = @item.IsCompleted ? "icon-check complete-me left" : "icon-check-empty complete-me left", id = "link" + item.Id, title = "Complete Task" })
+                            <a class="toggleSubmission" data-toggle-id="assignmentdetails_@item.Id" href="#">
+                                <label class="left tm-4 @item.CompletedCssClass">@item.Title&nbsp;<span class="label @item.PriorityLabelCssClass">@item.DaysLeft</span></label>
+                            </a>
+                        </label>
+                        @*<label class="left tm-4 @item.CompletedCssClass">
+                            @Ajax.ActionLink(" ", "CompleteTask", "Student", new { taskId = item.Id }, 
+                                new AjaxOptions() { HttpMethod = "Post", UpdateTargetId = "tasks", InsertionMode = InsertionMode.Replace, OnSuccess = "RevealModal('completedTask')" }, 
+                                new { @class = "icon-check-empty icon-check left", id = "link1", title = "Complete Task" })
+	                        <a class="toggleSubmission @item.CompletedCssClass" data-toggle-id="assignmentdetails_@item.Id" href="#">
+                                <label class="left tm-4">@item.Title&nbsp;</label>
+                            </a>
+                            <span class="label @item.PriorityLabelCssClass">@item.DaysLeft</span>
+                        </label>*@
+                        <div class="row" id="assignmentdetails_@item.Id">
+                            <div class="large-12 columns">
+                                <p>@MvcHtmlString.Create(item.Note)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+	            
+        <hr />
+            }
+        </form>
+    
+        <div id="completedTask" class="reveal-modal">
+        <h2>
+            Completed!</h2>
+        <p class="lead">
+            Your task has been completed!</p>
+            <a class="close-reveal-modal">&#215;</a>
+        </div>
+    }
+}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            console.log('BindToggleSubmission');
+            BindToggleSubmission();
+            $(document).foundation();
+            console.log('foundation');
+        });
+            
+    </script>

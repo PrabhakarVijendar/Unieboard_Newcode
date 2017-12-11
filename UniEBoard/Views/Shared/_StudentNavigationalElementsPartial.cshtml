@@ -1,0 +1,18 @@
+﻿@{string ctrName = ViewContext.RouteData.Values["controller"].ToString();}
+@{string actName = ViewContext.RouteData.Values["action"].ToString();}
+
+<li class="divider"></li>
+<li class="nav-group-1"><a title="Courses" href=@Url.Action("Courses", "Student") class="@((ctrName == "Student" && actName == "Courses") ? "i-link active" : "i-link")"><i class="icon-desktop"><p>Courses</p></i></a></li>
+<li class="nav-group-1"><a title="Assignments" href=@Url.Action("Assignments", "Student") class="@((ctrName == "Student" && actName == "Assignments") ? "i-link active" : "i-link")"><i class="icon-edit"><p>Assignment</p></i></a></li>
+<li class="nav-group-1"><a title="Grades" href=@Url.Action("Grades", "Student") class="@((ctrName == "Student" && actName == "Grades") ? "i-link active" : "i-link")"><i class="icon-star"><p>Grades</p></i></a></li>
+
+<li class="divider"></li>
+<li class="nav-group-3"><a title="Discussions" href=@Url.Action("Index", "Discussion") class="@((ctrName == "Discussion" && actName == "Index") ? "i-link active" : "i-link")"><i class="icon-comments"><p>Discussions</p></i></a></li>
+<!--
+<li class="nav-group-3"><a title="Messages" href=@Url.Action("Messages", "Student") class="@((ctrName == "Student" && actName == "Messages") ? "i-link active" : "i-link")"><i class="icon-envelope"><p>Messages</p></i></a></li>
+-->
+<li class="nav-group-3"><a title="Tasks" href=@Url.Action("Index", "Task", new { view = "teacher" }) class="@((ctrName == "Student" && actName == "Tasks") ? "i-link active" : "i-link")"><i class="icon-check"><p>Tasks</p></i></a></li>
+<li class="divider"></li>
+
+<li class="nav-group-4"><a title="Help" class="toggle-help i-link"><i class="icon-question-sign"><p>Help</p></i></a></li>
+<li class="divider"></li>

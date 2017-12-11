@@ -1,0 +1,173 @@
+﻿@model IEnumerable<UniEBoard.Service.Models.UnitViewModel>
+
+@{
+    int count = 0;
+}
+
+@if (Model != null)
+{
+    foreach (var item in Model)
+    {
+        foreach (var asset in item.Assets)
+        {
+            @*Load Videos popup*@
+            if (asset.AssetType == 1)
+            {
+                <div id="@asset.Id" class="reveal-modal">
+                    @*if (!@item.Video.IsWebUrl)*@
+                    @if (!((asset.Path.ToLower().StartsWith("http") || asset.Path.ToLower().StartsWith("https") || asset.Path.ToLower().StartsWith("www"))))
+                    {
+                        <video id="Video_@asset.Id" controls preload="none">
+                            <source src="@Url.Action("Render", "Asset", new { Id = asset.Id })" type="video/mp4">
+                            @if (!string.IsNullOrEmpty(asset.Path))
+                            {
+                                <source src="@Url.Action("RenderAlternateVideo", "Asset", new { Id = asset.Id })" type="video/webm">
+                            }
+                            Your browser does not support HTML5 video.
+                        </video>
+                    }
+                    else
+                    {
+                        <iframe src="@Url.Action("Render", "Asset", new { Id = asset.Id })" frameborder="0" allowfullscreen></iframe>
+                    }
+                </div>
+            }
+        }
+    }
+
+}
+
+
+<form class="custom">
+    <table class="full responsive grid schedule">
+        @foreach (var item in Model)
+        {
+        <thead>
+            <tr>
+                <th>
+                    <div class="row">
+                        <div class="large-12 medium-12 columns">
+                            <span class="left">@item.PublishFrom.Value.ToString("hh:mm tt")<small>: @item.Module.Title (group goes here)</small></span>
+                            <span class="right">
+
+                                <small>@item.DurationFormatted</small>
+                            </span>
+                        </div>
+                    </div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <div class="row">
+                        <div class="large-5 medium-5 columns"><p>@item.Title </p></div>
+                        <div class="large-3 medium-3 columns"><p>@item.Module.Title </p></div>
+
+                        <div class="large-3 medium-3 columns icon-spacing">
+                            @foreach (var asset in item.Assets)
+                            {
+                                @* === Videos === *@
+                                if (asset.AssetType == 1)
+                                {
+                                    <a data-effect="st-effect-1" class="sidebar-activate reveal-side" data-id="@asset.Id" data-video="Video_@asset.Id" title="@asset.Name">
+                                        <i class="icon-youtube-play"></i>
+                                    </a>
+                                }
+                                @* === Images === *@
+                                if (asset.AssetType == 3 || asset.ContentType.Equals("image/jpeg"))
+                                {
+                                    <a target="_blank" href='@Url.Action("Render", "Asset", new { Id = asset.Id })' title="@asset.Name">
+                                        <i class="icon-picture"></i>
+                                    </a>
+                                }
+
+                                @* === Documents === *@
+                                if (asset.AssetType == 2 && !asset.ContentType.Equals("image/jpeg"))
+                                {
+
+                                    <a target="_blank" href='@Url.Action("Render", "Asset", new { Id = asset.Id })' title="@item.Title">
+                                        <i class="icon-file-alt"></i>
+                                    </a>
+                                }
+                            }
+
+                            @* === Quiz === *@
+                            @if (item.QuizId.HasValue)
+                            {
+                                if (item.Quiz != null)
+                                {
+                                    ViewData["counter"] = count++;
+                                    @Html.Partial("../Course/_QuizzesModal", item.Quiz);
+                                }
+                                <a href='@Url.Action("ShowQuiz", "Course", new { Id = item.QuizId })' data-id="@item.QuizId" data-reveal-id="@item.QuizId" title="@item.Quiz.Title" class="sidebar-activate reveal-side" data-effect="st-effect-1">
+                                    <i class="icon-tasks"></i>
+                                </a>
+                            }
+
+
+                        </div>
+                        <div class="large-1 medium-1 columns center collapse"><i class="icon-collapse i-medium"></i></div>
+                    </div>
+                    <div class="row detail hide">
+                        <hr>
+                        <div class="large-5 medium-5 columns">
+                            <label for="">Description</label>
+                            <p>@item.Description</p>
+                        </div>
+                        <div class="large-3 medium-3 columns">
+                            <label for="">Date/Time</label>
+                            <p>@item.PublishFrom.Value.ToString("dd/MM/yyyy") @item.PublishFrom.Value.ToString("HH:mm")</p>
+                            <label for="">Duration</label>
+                            <input type="text" value="@item.DurationFormatted" disabled>
+
+                            <label for="">Quiz:</label>
+                            <input type="text" value="@item.Quiz.Title" disabled>
+                        </div>
+                        <div class="large-4 medium-4 columns">
+                            <ul class="no-bullet">
+                                @foreach (var asset in item.Assets)
+                                {
+                                    <li>
+                                        <p>
+                                            @* === Videos === *@
+                                            @if (asset.AssetType == 1)
+                                            {
+                                                <a data-effect="st-effect-1" class="sidebar-activate reveal-side" data-id="@asset.Id" data-video="Video_@asset.Id" title="@asset.Name">
+                                                    <i class="icon-youtube-play"></i>&nbsp;@asset.Name
+                                                </a>
+                                            }
+                                            @* === Images === *@
+                                            @if (asset.AssetType == 3 || asset.ContentType.Equals("image/jpeg"))
+                                            {
+                                                <a target="_blank" href='@Url.Action("Render", "Asset", new { Id = asset.Id })' title="@asset.Name">
+                                                    <i class="icon-picture"></i>&nbsp;@asset.Name
+                                                </a>
+                                            }
+
+                                            @* === Documents === *@
+                                            @if (asset.AssetType == 2 && !asset.ContentType.Equals("image/jpeg"))
+                                            {
+
+                                                <a target="_blank" href='@Url.Action("Render", "Asset", new { Id = asset.Id })' title="@item.Title">
+                                                    <i class="icon-file-alt"></i>&nbsp;@asset.Name
+                                                </a>
+                                            }
+
+
+                                        </p>
+                                    </li>
+                                }
+                            </ul>
+
+
+
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+        }
+    </table>
+</form>
+<script src="/Scripts/js/sidebarEffects.js"></script>

@@ -1,0 +1,16 @@
+﻿@model IEnumerable<UniEBoard.Service.Models.TagViewModel>
+@if (Request.IsAuthenticated && Model != null)
+{
+    if (Model != null)
+    {
+        foreach (var tag in Model)
+        {                         
+            <span class="label radius">@tag.Name   
+                <a id="RemoveCourse_@tag.Id" class="ajaxTagRemoveLink" data-source='@Url.Action("RemoveTagFromAsset", "Teacher", new { assetId = ViewData["AssetIdentifier"], tagId = tag.Id })'
+                   data-target-id=@string.Format("{0}_{1}", "assetTagsDiv", ViewData["AssetIdentifier"]) 
+                   data-action="removeTagFromAsset">x</a>
+ 
+            </span>
+        }
+    }
+}

@@ -1,0 +1,34 @@
+﻿@model IEnumerable<UniEBoard.Service.Models.Quizzes.QuestionViewModel>
+<h2>Correct Answers</h2>
+<p>The following are the correct answers of the quiz</p>
+<table width="75%">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QuestionMessageSolution)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Explanation)
+            </th>
+        </tr>
+    </thead>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QuestionMessageSolution)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Explanation)
+        </td>
+    </tr>
+}
+
+</table>
+<a href="#" id="firstPartialLink2" class="small success radius button right" onclick="@String.Format("submitQuiz({0})", @ViewBag.QuizId )"> Show Your Results</a>

@@ -1,0 +1,84 @@
+﻿@model IEnumerable<UniEBoard.Service.Models.AssignmentSubmissionViewModel>
+
+@{
+    ViewBag.Title = "My Tasks/Assignments";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section firstNavigationElement {
+    @Html.Partial("_LogoutPartial")
+}
+
+@section navigationalElements {
+    @Html.Partial("_StudentNavigationalElementsPartial")
+}
+
+<!-- Begin Breadcrumbs -->
+
+<div class="row">
+    <div class="large-12 medium-12 columns">
+        <ul class="breadcrumbs">
+            <li>@Html.ActionLink("My Dashboard", "Index", "Student")</li>
+            <li class="current">@Html.ActionLink("Assignments", "Assignments", "Student")</li>
+        </ul>
+    </div>
+</div>
+    
+<!-- End Begin Breadcrumbs -->
+
+<div class="row">
+    <div class="large-10 medium-10 columns">
+        <h2 class="tm-25">Assignments <small>/ Deadlines</small></h2>
+        @if (ViewBag.StudentCourses != null && ViewBag.Filter != null)
+        {
+            using (Html.BeginForm("Assignments", "Student", FormMethod.Post, new { id = "form_displayfilter", @class = "custom" }))
+            {
+                @Html.DropDownList("selectedCourse", (IEnumerable<SelectListItem>)ViewData["StudentCourses"], "All Courses", new { onchange = "this.form.submit();" })
+                @Html.Partial("_DisplaySubFilterPartial", (UniEBoard.Service.Models.DisplayFilterViewModel)ViewBag.Filter)
+            }
+        }
+        <hr />
+        <div id="assignments" class="tasks">
+            @if (Model != null && Model.Count() > 0)
+            {
+                foreach (var item in Model)
+                {
+                    <div id="assignment_@item.AssignmentId" class="row">
+                        @Html.Partial("_AssignmentSubmissionsPartial", item)
+                    </div>
+                    <hr />
+                }
+            }
+            else
+            {
+                <div class="panel">
+                    You have no @ViewData["NoAssignmentDisplayLabel"]assignments
+                </div>
+                <hr />
+            }
+        </div>
+    </div>
+</div>
+
+<div id="removedFile" class="reveal-modal">
+    <h2>File Removed!</h2>
+    <p class="lead">Your file has been removed!</p>
+    <a class="close-reveal-modal">&#215;</a>
+</div>
+<div id="uploadedFile" class="reveal-modal">
+    <h2>File uploaded!</h2>
+    <p class="lead">Your file has been uploaded!</p>
+    <a class="close-reveal-modal">&#215;</a>
+</div>
+<div id="savedAssignment" class="reveal-modal">
+    <h2>Saved!</h2>
+    <p class="lead">Your work has been saved!</p>
+    <a class="close-reveal-modal">&#215;</a>
+</div>
+<div id="submittedAssignment" class="reveal-modal">
+    <h2>Submitted!</h2>
+    <p class="lead">Your assignment has been submitted!</p>
+    <a class="close-reveal-modal">&#215;</a>
+</div>
+
+

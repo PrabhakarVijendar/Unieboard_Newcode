@@ -1,0 +1,59 @@
+﻿@{
+    ViewBag.Title = "My DashBoard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var CurrentUser = (ViewContext.Controller as UniEBoard.Controllers.BaseController).CurrentUser;
+}
+@section firstNavigationElement {
+    @Html.Partial("_LogoutPartial")
+}
+@section navigationalElements {
+    @Html.Partial("_TeacherNavigationalElementsPartial")
+}
+@section ajax{
+    @Html.Partial("../Course/_QuizzesAjax")
+}
+<!-- Begin Alerts & Intro -->
+    <div class="row">
+        <div class="large-12 medium-12 columns">
+            <ul class="breadcrumbs">
+			    <li>@Html.ActionLink("My Dashboard", "Index", "Teacher")</li>
+			    <li class="current">@Html.ActionLink(UniEBoard.Service.Helpers.Configuration.WebSite.Current.TitleClasses, "Units", "Teacher")</li>
+		    </ul>
+	    </div>
+    </div>
+	<!-- End Begin Alerts & Intro -->
+	<!-- Begin Quizzes -->
+	<div class="row">
+        <div class="large-12 medium-12 columns">
+			<!-- Begin Course -->
+            @if(CurrentUser.IsAdmin) {
+                <h2>@UniEBoard.Service.Helpers.Configuration.WebSite.Current.TitleClasses <small> <a class="create-new "><i class="icon-plus"></i></a></small></h2>
+            <!-- Add Quiz -->
+            
+            @Html.Partial("_UnitFormPartial")
+            }
+
+            <!-- Modules dropdown -->       
+            <form class="custom">
+                @Html.CustomDropDownList("ddModules", (IEnumerable<SelectListItem>)ViewData["ModuleList"],
+                "", string.Format("Filter {0} by {1}...", @UniEBoard.Service.Helpers.Configuration.WebSite.Current.TitleClasses, @UniEBoard.Service.Helpers.Configuration.WebSite.Current.TitleModules),
+                new { data_source = @Url.Action("UnitsByModule"), @class = "ajaxDropDown", data_targetElementId = "unitList" })
+            </form>
+            <!-- Filter -->
+            @*
+                @Html.Partial("_UnitsFilterPartial")
+            *@
+            <!-- Asset List -->
+            <div id="unitList">
+                @Html.Partial("_DashboardScheduleUnitGridPartial", (IEnumerable<UniEBoard.Service.Models.UnitViewModel>)ViewData["Units"])
+            </div>
+        @*
+            <div id="unitList">
+                @Html.Partial("_UnitsListPartial", (IEnumerable<UniEBoard.Service.Models.UnitViewModel>)ViewData["Units"])
+            </div>
+        *@
+            <!-- Paging Display -->
+            @Html.Partial("_DisplayPageViewAllPartial", (UniEBoard.Service.Models.PageViewAllFilterViewModel)ViewData["Pager"])
+            </div>
+	</div>
+	<!-- End Body -->

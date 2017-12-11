@@ -1,0 +1,149 @@
+﻿<script type="text/javascript">
+
+
+    //start quiz
+    function Start(idquiz, counter) {
+        console.log(counter);
+        $.ajax({
+            url: '/Course/StartQuiz/' + idquiz + '?counter='+counter,
+            type: 'GET',
+            dataType: 'html',
+            success: function (data) {
+                $("#secondpartial_" + idquiz + "_" + counter).html(data);
+            },
+            error: function (jXhr) {
+                if (typeof console != 'undefined')
+                    console.log(jXhr.responseText);
+            }
+        });
+        $("#welcome_" + idquiz + "_" + counter).hide();
+        $("#question_" + idquiz + "_" + counter).show();
+    }
+
+    function showAnswer() {        
+        $("#solutionButton").hide();
+        $("#solution").show();
+        $("#buttons").show();
+    }
+
+    function showQuizAnswers(quizId, counter) {
+        $.ajax({
+            url: '/Course/ShowQuizAnswers/' + quizId,
+            type: 'GET',
+            dataType: 'html',
+            success: function (data) {
+                $("#secondpartial_" + quizId + "_" + counter).html(data);
+            },
+            error: function (jXhr) {
+                if (typeof console != 'undefined')
+                    console.log(jXhr.responseText);
+            }
+        });
+
+    }
+
+    //last question Submit quiz
+    function submitQuiz(idquiz, idquestion, title, corrected, quizcounter) {
+
+        var valueArray = [];
+        var questionType = "choice";
+
+        //Question choices
+        $("#questionchoices-" + idquestion + " ul li input").each(function (i, elem) {
+            var value = $(elem).val();
+            if ($(elem).is('input:text')) {
+                // it was an input
+                valueArray.push(value);
+                questionType = "text";
+            }
+
+            if ($('#question-' + value).is(':checked') == true) {
+                valueArray.push(value);
+                questionType = "choice";
+            }
+
+        });
+
+        $.ajax({
+            url: '/Course/SubmitQuiz/',            
+            type: 'POST',
+            data: "{ values:'" + valueArray + "', " +
+                    "quizId:'" + idquiz + "', " +
+                    "questionId:'" + idquestion + "', " +
+                    "questionType:'" + questionType +
+                   "'}",
+            contentType: "application/json; charset=utf-8",
+
+            success: function (data) {
+                $("#secondpartial_" + idquiz + "_" + quizcounter).html(data);
+                console.log("#secondpartial_" + idquiz + "_" + quizcounter);
+            },
+            error: function (jXhr) {
+                console.log("error");
+                if (typeof console != 'undefined')
+                    console.log(jXhr.responseText);
+
+            }
+        });
+
+    }
+
+    //last question Submit quiz
+    function CloseQuiz(courseId, counter) {
+        $.ajax({
+            url: '/Course/Quizzes/' + courseId,
+            type: 'POST',
+            dataType: 'html',
+            success: function (data) {
+                $("#secondpartial_" + idquiz + "_" + counter).html(data);
+            },
+            error: function (jXhr) {
+                if (typeof console != 'undefined')
+                    console.log(jXhr.responseText);
+            }
+        });
+    }
+
+    //Next Question
+    function Next(idquiz, idquestion, title, corrected, quizcounter) {
+        var valueArray = [];
+        var questionType = "choice";
+
+        //Question choices
+        $("#questionchoices-" + idquestion + " ul li input").each(function (i, elem) {
+            var value = $(elem).val();
+            if ($(elem).is('input:text')) {
+                // it was an input
+                valueArray.push(value);
+                questionType = "text";
+
+            }
+
+            if ($('#question-' + value).is(':checked') == true) {
+                valueArray.push(value);
+                questionType = "choice";
+            }
+
+
+        });
+        $.ajax({
+            url: '@Url.Action("GoNextQuestion", "Course")',
+            type: 'POST',
+            data: "{ values:'" + valueArray + "', " +
+                    "quizId:'" + idquiz + "', " +
+                    "questionId:'" + idquestion + "', " +                    
+                    "questionType:'" + questionType + "', " +
+                    "counter:'" + quizcounter +
+                   "'}",
+            contentType: "application/json; charset=utf-8",
+            dataType: "html",
+            success: function (data) {
+                $("#secondpartial_" + idquiz + "_" + quizcounter).html(data);
+            },
+            error: function (jXhr) {
+                if (typeof console != 'undefined')
+                    console.log(jXhr.responseText);
+            }
+        });
+    }
+</script>

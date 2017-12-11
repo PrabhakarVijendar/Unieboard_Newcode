@@ -1,0 +1,92 @@
+﻿@model UniEBoard.Service.Models.AssignmentSubmissionViewModel
+
+@{
+    ViewBag.Title = "Submission";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section firstNavigationElement {
+    @Html.Partial("_LogoutPartial")
+}
+
+@section navigationalElements {
+    @Html.Partial("_StudentNavigationalElementsPartial")
+}
+
+<!-- Begin Breadcrumbs -->
+
+<div class="row">
+    <div class="large-12 medium-12 columns">
+        <ul class="breadcrumbs">
+            <li>@Html.ActionLink("My Dashboard", "Index", "Student")</li>
+            <li>@Html.ActionLink("Assignments", "Assignments", "Student")</li>
+            <li class="current"><a href="#">@Model.Title</a></li>
+        </ul>
+    </div>
+</div>
+@if (Model != null)
+{
+    <div class="row">
+        <!-- Begin Assignments And Submissions -->
+        <div class="large-12 medium-12 columns" id="editable" contenteditable="true">
+
+            <form enctype="multipart/form-data" method="post" id="upload-form" action="@Url.Action("Submission", "Student")">
+                <h3>@Model.Title</h3>
+
+                @Html.HiddenFor(m => m.AssignmentId);
+
+                <div class="alert-box">Assignment is in a status of 'Draft'. Once completed, click the 'Submit' button.</div>
+                <hr />
+                <a href="#" class="small success radius button right">Submit</a>
+                <div class="section-container tabs" data-section="tabs">
+                    <section>
+                        <p class="title" data-section-title><strong><a href="#">Information</a></strong></p>
+                        <div class="content" data-section-content>
+                            <p>@MvcHtmlString.Create(Model.Instructions)</p>
+                        </div>
+                    </section>
+                    <section>
+                        <p class="title" data-section-title><strong><a href="#">Submission Notes</a></strong></p>
+                        <div class="content" data-section-content>
+                            <ul>
+                                @if (Model.FileUploads != null)
+                                {
+                                    foreach (var item in Model.FileUploads)
+                                    {
+                                        <li>@Html.ActionLink(item.FileName, "Download", "File", new { id = item.Id, identityToken = item.IdentityToken }, null)</li>
+                                    }
+                                }
+                            </ul>
+                            <p>
+                                @Html.TextAreaFor(m => m.Body)
+                            </p>
+                        </div>
+                    </section>
+                    <section>
+                        <p class="title" data-section-title><strong><a href="#">Upload Attachments</a></strong></p>
+                        <div class="content" data-section-content>
+                            <!-- File Upload Section-->
+                            <input type="file" id="UploadFile" name="UploadFile" />
+                            <input type="button" value="Upload With JQuery" class="button secondary" onclick="submissionForm.submit()" />
+                            <input type="submit" id="btnUploadDocument" name="btnUploadDocument" class="button secondary" value="Upload" />
+                        </div>
+                    </section>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryform")
+        @Scripts.Render("~/Scripts/custom/global.js")
+        <script type="text/javascript">
+        $(document).ready(function () {
+            submissionForm.init(@Model.AssignmentId,@Model.Id);
+        });
+        </script>
+    }
+
+}
+
+
+

@@ -1,0 +1,55 @@
+﻿@model IEnumerable<UniEBoard.Service.Models.Quizzes.QuizzesViewModel>
+@if (Request.IsAuthenticated)
+{
+    <form class="custom">
+        <p class="message-success">@ViewBag.StatusMessage</p>
+        <table class="full responsive grid">
+            <thead>
+                <tr>
+                    <th>
+                        Quizzes
+                    </th>
+                    <th>
+                        Allowed Attempts
+                    </th>
+                    <th>
+                        Start Date
+                    </th>
+                    <th>
+                        End Date
+                    </th>
+                    <th>@UniEBoard.Service.Helpers.Configuration.WebSite.Current.TitleModule
+                    </th>
+                    <th>
+                        Actions
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null)
+                {
+                    foreach (var item in Model)
+                    {
+                    <tr>
+                        <td><p>@item.Title</p>
+                        </td>
+                        <td><p>@item.MaxAttemptsAllowed</p>
+                        </td>
+                        <td><p>@item.PublishFrom.ToString("dd/MM/yyyy")</p>
+                        </td>
+                        <td><p>@item.PublishTo.ToString("dd/MM/yyyy")</p>
+                        </td>
+                        <td><p>@item.ModuleTitle</p>
+                        </td>
+                        <td class="actions">
+                            <a href='@Url.Action("QuizQuestions", "Teacher", new { quizId = item.Id })' title="Edit Quiz"><i class="icon-list-alt"></i></a>
+                            <a target="_self" href='@Url.Action("RemoveQuiz", "Teacher", new { quizId = item.Id })' onclick="return confirm('Are you sure you wish to delete this item?');" title="Remove Quiz"><i class="icon-remove"></i></a>
+                        </td>
+                    </tr>
+                    }
+                }
+            </tbody>
+        </table>
+        </form>
+    
+}

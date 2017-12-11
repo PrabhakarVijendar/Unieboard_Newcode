@@ -1,0 +1,93 @@
+﻿@model IEnumerable<UniEBoard.Service.Models.ModuleSyllabusModel>
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- End Course / Grades -->
+@section firstNavigationElement {
+    @Html.Partial("_LogoutPartial")
+}
+@section navigationalElements {
+    @Html.Partial("_StudentNavigationalElementsPartial")
+}
+<div class="row">
+    <div class="large-12 medium-12 columns">
+        @Html.Partial("_CourseBreadcrumbsPartial", ViewData["CourseModel"])
+        <a class="tm-35 small success radius button right edit-view">Edit Page</a>
+        <hr>
+    </div>
+</div>
+<div class="row">
+    <div class="large-3 medium-3 columns">
+        @Html.Partial("_MenuLeftCoursePartial", ViewData["CourseModel"])
+    </div>
+    <div class="large-9 medium-9 columns">
+        <h3 class="course-page-header">Course Syllabus</h3>
+        <hr>
+        @if (Model != null)
+        {
+            <h4>@ViewData["CourseDates"]   </h4>
+
+            <hr />
+            <ul class="square">
+                @foreach (var moduleSyllabus in Model)
+                {
+                    @*<h4>From: @moduleSyllabus.PublishFrom To: @moduleSyllabus.PublishFrom</h4>*@
+                    foreach (var module in moduleSyllabus.Modules)
+                    {
+                        <h5>@module.Title <small> @String.Format("{0:dd MMM yyyy}", module.PublishFrom) - @String.Format("{0:dd MMM yyyy}", module.PublishTo)</small></h5>
+                        <h6>@module.Description </h6>
+
+                        <ul class="square">
+
+                            @if (module.Units.Count != 0)
+                            {
+                                <li>
+                                    Lectures:
+                                    <ul>
+
+                                        @foreach (var unit in module.Units)
+                                        {
+                                            <li>
+                                                <strong>@unit.Title <small> @String.Format("{0:dd MMM yyyy}", unit.PublishFrom) - @String.Format("{0:dd MMM yyyy}", unit.PublishTo)</small></strong><br />
+                                                @unit.Description
+                                            </li>
+                                        }
+
+                                    </ul>
+
+                                </li>
+                            }
+                            @if (module.Quizzes.Count != 0)
+                            {
+                                <li>
+                                    Quizzes:
+                                    <ul>
+
+                                        @foreach (var quiz in module.Quizzes)
+                                        {
+                                            <li>
+                                                <strong>@quiz.Title <small> @String.Format("{0:dd MMM yyyy}", quiz.PublishFrom) - @String.Format("{0:dd MMM yyyy}", quiz.PublishTo)</small></strong><br />
+                                                @quiz.Description
+                                            </li>
+                                        }
+                                    </ul>
+
+                                </li>
+                            }
+                        </ul>
+                    }
+                    <hr />
+                }
+
+            </ul>
+        }
+        else
+        {
+
+            <p>
+                The course is not activated in this moment.
+            </p>
+
+        }
+

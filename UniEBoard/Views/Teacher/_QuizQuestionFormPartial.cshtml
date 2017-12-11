@@ -1,0 +1,68 @@
+﻿@model UniEBoard.Service.Models.Quizzes.QuestionViewModel
+@if (Model != null)
+{ @Html.HiddenFor(model => model.Id) }
+<div id="AddNew" class="hide panel">
+    <div class="row">
+        <div class="large-12 medium-12 columns">
+            @Html.LabelFor(model => model.Name)
+            @Html.TextAreaFor(model => model.Name, 10, 30, new { required = "required", placeholder = "Enter Question...", dataid = "questioniD" })
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+    </div>
+    <div id="questionchoicespanel">
+        <div class="row">
+            <div class="large-4 medium-4 columns">
+                @Html.LabelFor(model => model.HelpText)
+                @Html.TextAreaFor(model => model.HelpText, 10, 30, new { placeholder = "Enter Help Text..." })
+            </div>
+            <div class="large-4 medium-4 columns">
+                @Html.LabelFor(model => model.Explanation)
+                @Html.TextAreaFor(model => model.Explanation, 10, 30, new { placeholder = "Enter Explanation Text..." })
+            </div>
+            <div class="large-4 medium-4 columns">
+                @Html.LabelFor(model => model.QuestionType_Id)
+                @Html.DropDownListFor(model => model.QuestionQuizTypeSelected, Model.QuestionQuizTypeChoices, new { required = "required" })
+
+                @Html.ValidationMessageFor(model => model.QuestionType_Id)
+            </div>
+        </div>
+    </div>
+    @Html.HiddenFor(model => model.Quiz_Id, new { Value = ViewBag.QuizId })
+
+    <div class="row">
+        @for (int i = 0; i < Model.QuestionChoices.Count; i++)
+        {
+            if (Model != null)
+            { @Html.HiddenFor(model => model.QuestionChoices[i].Id); @Html.HiddenFor(model => model.QuestionChoices[i].Question_Id) }
+
+                                                                                                                                    <div class="large-8 medium-8 columns">
+                                                                                                                                        @Html.LabelFor(model => model.QuestionChoices[i].Name)
+                                                                                                                                        @Html.TextBoxFor(model => model.QuestionChoices[i].Name, new { placeholder = "Enter Answer Text...", dataid = "quesChoice" })
+                                                                                                                                        @* @Html.ValidationMessageFor(model => model.QuestionChoices[i].Name)*@
+                                                                                                                                    </div>
+    <div class="large-2 medium-2 columns">
+        @Html.LabelFor(model => model.QuestionChoices[i].PointsValue)
+        @Html.TextBoxFor(model => model.QuestionChoices[i].PointsValue)
+        @*@Html.ValidationMessageFor(model => model.QuestionChoices[i].PointsValue)*@
+    </div>
+    <div class="large-1 medium-1 columns">
+        @Html.LabelFor(model => model.QuestionChoices[i].CorrectAnswer)
+        @Html.CheckBoxFor(model => model.QuestionChoices[i].CorrectAnswer)
+    </div>
+
+        }
+        <div id="savequestionrow">
+            <div class="large-1 medium-1 columns">
+                @*Ajax.RawAjaxActionLink("Add", "BlankQuestionChoice", "Teacher", new { questionChoiceNumber = maxQuestionChoicesIterator }, new AjaxOptions { HttpMethod = "Post", InsertionMode = InsertionMode.InsertBefore, UpdateTargetId = "savequestionrow" }, new { @class = "fr button radius tiny t20" })*@
+                @*<i class=""icon-plus""></i>*@
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="large-12 medium-12 columns">
+            <input id="savequestionbtn" type="submit" value="Create Question" class="right tiny radius button" />
+        </div>
+    </div>
+
+</div>
+

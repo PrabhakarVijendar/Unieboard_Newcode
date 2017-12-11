@@ -1,0 +1,25 @@
+﻿@model IEnumerable<UniEBoard.Service.Models.ScheduleViewModel>
+@if (Request.IsAuthenticated && Model != null)
+{
+    @(Html.WeekView(Model, "ScheduledFrom")
+        .HtmlAttributes(new { @class = "day radius" })
+        .AltHtmlAttributes(new { @class = "alt-day radius" })
+        .HeaderHTML("<dl>")
+        .ItemTemplate
+        (
+            @<text>
+            	<dt>
+                    <a href="@Url.Action("VideoLectures", "Course", new { id = item.CourseId })" class="roll" data-title="@item.Unit.Module.Title">@item.Unit.Module.Title</a>
+                </dt>
+				<dd>
+                    <span class="label white radius">@item.ScheduledFromTime</span>&nbsp; <a href="@Url.Action("VideoLectures", "Course", new { id = item.CourseId })" class="roll" data-title="@item.Unit.Title">@item.Unit.Title</a>
+                </dd>
+            </text>
+        )
+        .ItemSeperatorHTML("<hr />")
+        .FooterHTML("<dl>")
+        .EmptyTemplate
+        (
+            @<p>Free Day</p>
+        ))   
+}

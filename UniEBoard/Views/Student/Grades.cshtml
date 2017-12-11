@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "Grades";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section firstNavigationElement {
+    @Html.Partial("_LogoutPartial")
+}
+
+@section navigationalElements {
+    @Html.Partial("_StudentNavigationalElementsPartial")
+}
+
+<!-- Begin Breadcrumbs -->
+
+<div class="row">
+    <div class="large-12 medium-12 columns">
+        <ul class="breadcrumbs">
+            <li>@Html.ActionLink("My Dashboard", "Index", "Student")</li>
+            <li class="current">@Html.ActionLink("Grades", "Grades", "Student")</li>
+        </ul>
+    </div>
+</div>
+<!-- Begin Grades -->
+<div class="row">
+    <div class="large-12 medium-12 columns">
+
+        <h2>My Grades</h2>
+
+        <div class="grade">
+            @if ((bool)ViewData["Validation"])
+            {
+                <form class="custom analytics-filter">
+                    <label for="filter-course" class="hide ">Filter by course:</label>
+                    @Html.DropDownList("Courses", (SelectList)ViewData["Courses"], new { data_source = @Url.Action("GradesByStudentsPerCourse"), @class = "ajaxDropDown", data_targetElementId = "charts" })
+
+
+                    <div id="charts">
+                        @Html.Partial("_GradesPartial")
+                    </div>
+                </form>
+            }
+            else
+            {
+                @Html.Raw("No courses registered for this student.");
+            }
+        </div>
+    </div>
+</div>
+
+<!-- End Grades -->

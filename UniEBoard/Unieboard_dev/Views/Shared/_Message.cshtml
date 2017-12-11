@@ -1,0 +1,27 @@
+﻿@model List<SelectListItem>
+<!-- Message / Announcement -->
+@using (Ajax.BeginForm("SendMessage", "Message", null, new AjaxOptions { HttpMethod = "Post", InsertionMode = InsertionMode.Replace, OnSuccess="ResetMessageForm" }, new { id = "messageForm", @class = "custom" }))
+{
+    <h5 class="all-inline">
+        Send<small>:</small>
+    </h5>
+    <div class="row">
+        <div class="large-6 medium-6 columns">
+            <input type="text" id="txtAssets" name="txtAssets" class="autocomplete" placeholder="Please type in user name..."
+                   data-source="@Url.Action("Users", "AutoComplete")"
+                   data-callback="AddUserToMessageUserList"
+                   data-callback-controller="@Url.Action("CreateUserList", "Message")"
+                   data-callback-target-id="users">
+        </div>
+        <div class="large-6 medium-6 columns">
+            @Html.CustomDropDownList("ddCourses", Model, string.Empty, "Select a course...", new { })
+        </div>
+	</div>
+    
+    <div class="tags panel" id="users" style="display:none">
+    </div>
+    
+    <label for="question" class="hide">Message:</label>
+    <textarea id="textMessage" name="textMessage" placeholder="Type the message here"></textarea>
+    <a href="#" class="tiny radius button submitLink" data-reveal-id="myAnnouncement" data-form="messageForm">Send</a>
+}

@@ -1,0 +1,221 @@
+﻿@{
+    ViewBag.Title = "My DashBoard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section firstNavigationElement {
+    @Html.Partial("_LogoutPartial")
+}
+
+@section navigationalElements {
+    @Html.Partial("_TeacherNavigationalElementsPartial")
+}
+
+<!-- Begin Breadcrumbs -->
+
+<div class="row">
+    <div class="large-12 medium-12 columns">
+        <ul class="breadcrumbs">
+            <li>@Html.ActionLink("My Dashboard", "Index", "Teacher")</li>
+            <li class="current">@Html.ActionLink("Grade Work", "Grades", "Teacher")</li>
+        </ul>
+    </div>
+</div>
+
+<!-- Begin Grades -->
+<div class="row">
+    <div class="large-12 medium-12 columns">
+
+        <h2>Grade work</h2>
+        <dl class="sub-nav">
+            <dt>Filter:</dt>
+            <dd class="active"><a href="#">All</a></dd>
+            <dd><a href="#">Submitted</a></dd>
+            <dd><a href="#">Not Submitted</a></dd>
+            <dd><a href="#">Marked</a></dd>
+        </dl>
+
+        <div class="grade">
+            <form class="custom">
+                <div class="panel">
+                    <div class="row">
+                        <div class="large-6 medium-6 columns">
+                            <label for="filter-course" class="hide ">Filter by course:</label>
+                            <select id="filter-course" class="inline">
+                                <option>All courses</option>
+                                <option>Design</option>
+                                <option>IHTS</option>
+                            </select>
+                        </div>
+                        <div class="large-6 medium-6 columns">
+                            <label for="filter-module" class="hide">Filter by module:</label>
+                            <select id="filter-module" class="inline">
+                                <option>All modules</option>
+                                <option>Web Design 101</option>
+                                <option>Graphic design</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="large-6 medium-6 columns">
+                            <label for="filter-assignment" class="hide">Filter by assignment:</label>
+                            <select id="filter-assignment" class="inline">
+                                <option>All assignments</option>
+                                <option>The World Wide Web</option>
+                                <option>NSFNet</option>
+                                <option>Essay The early days</option>
+                            </select>
+                        </div>
+                        <div class="large-6 medium-6 columns">
+                            <label for="filter-student" class="hide">Filter by student:</label>
+                            <select id="filter-student" class="inline">
+                                <option>All students</option>
+                                <option>Paul Mervin</option>
+                                <option>Andy Proios</option>
+                                <option>Ali Raza</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <h5><small><i class="general icon-plus "></i></small> &nbsp; The World Wide Web <small>(IHTS)</small></a></h5>
+                <hr>
+                <h5><small><i class="general icon-plus "></i></small> &nbsp; NSFNet <small>(IHTS)</small></a></h5>
+                <hr>
+                <h5><small><i class="general icon-minus "></i></small> &nbsp; Essay The early days <small>(IHTS)</small></h5>
+                <hr>
+
+                <div class="row">
+                    <div class="large-3 medium-3 columns student">
+                        <span class="label success radius">Received</span> &nbsp; <span>Paul Mervin</span>
+                    </div>
+                    <div class="large-1 medium-1 columns download-assignment">
+                        <a href="#"><i class="general icon-file-alt"></i><br /><small>View assignment</small></a>
+                    </div>
+                    <div class="large-5 medium-5 columns set-comments">
+                        <label for="comments" class="hide">Comments</label>
+                        <textarea id="comments" placeholder="Type your comments here"></textarea>
+                    </div>
+                    <div class="large-2 medium-2 columns set-grade">
+                        <label for="grade" class="hide">Grade</label>
+                        <select id="grade" class="small inline">
+                            <option>Grade</option>
+                            <option>A+</option>
+                            <option>A</option>
+                            <option>A-</option>
+                            <option>B+</option>
+                            <option>B</option>
+                            <option>B-</option>
+                            <option>C+</option>
+                            <option>C</option>
+                            <option>C-</option>
+                            <option>D+</option>
+                            <option>D</option>
+                            <option>D-</option>
+                            <option>E+</option>
+                            <option>E</option>
+                            <option>E-</option>
+                            <option>F+</option>
+                            <option>F</option>
+                            <option>F-</option>
+                        </select>
+                    </div>
+                    <div class="large-1 medium-1 columns">
+                        <a href="#" class="small radius button right" data-reveal-id="myPaper">Submit</a>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="large-3 medium-3 columns student">
+                        <span class="label alert radius">Not Submitted</span> &nbsp; <span>Chico Chidi</span>
+                    </div>
+                    <div class="large-1 medium-1 columns download-assignment">
+                        <a href="#"><i class="general icon-file-alt"></i><br /><small>View assignment</small></a>
+                    </div>
+                    <div class="large-5 medium-5 columns set-comments">
+                        <label for="comments" class="hide">Comments</label>
+                        <textarea id="comments" placeholder="Type your comments here" class="disabled" disabled></textarea>
+                    </div>
+                    <div class="large-2 medium-2 columns set-grade">
+                        <label for="grade" class="hide">Grade</label>
+                        <select id="grade" class="small inline disabled" disabled>
+                            <option>Grade</option>
+                            <option>A+</option>
+                            <option>A</option>
+                            <option>A-</option>
+                            <option>B+</option>
+                            <option>B</option>
+                            <option>B-</option>
+                            <option>C+</option>
+                            <option>C</option>
+                            <option>C-</option>
+                            <option>D+</option>
+                            <option>D</option>
+                            <option>D-</option>
+                            <option>E+</option>
+                            <option>E</option>
+                            <option>E-</option>
+                            <option>F+</option>
+                            <option>F</option>
+                            <option>F-</option>
+                        </select>
+                    </div>
+                    <div class="large-1 medium-1 columns">
+                        <a href="#" class="small radius button right disabled" data-reveal-id="myPaper">Submit</a>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="large-3 medium-3 columns student">
+                        <span class="label secondary radius">Marked</span> &nbsp; <span>Ali Raza</span>
+                    </div>
+                    <div class="large-1 medium-1 columns download-assignment">
+                        <a href="#"><i class="general icon-file-alt"></i><br /><small>View assignment</small></a>
+                    </div>
+                    <div class="large-5 medium-5 columns set-comments">
+                        <label for="comments" class="hide">Comments</label>
+                        <textarea id="comments" placeholder="Type your comments here" class="disabled" disabled>Good work some but some grammar improvments are need!</textarea>
+                    </div>
+                    <div class="large-2 medium-2 columns set-grade">
+                        <label for="grade" class="hide">Grade</label>
+                        <select id="grade" class="small inline disabled" disabled>
+                            <option>B</option>
+                        </select>
+                    </div>
+                    <div class="large-1 medium-1 columns">
+                        <a href="#" class="small radius button right disabled" data-reveal-id="myPaper">Marked</a>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="large-3 medium-3 columns student">
+                        <span class="label secondary radius">Marked</span> &nbsp; <span>Ishan Fernando</span>
+                    </div>
+                    <div class="large-1 medium-1 columns download-assignment">
+                        <a href="#"><i class="general icon-file-alt"></i><br /><small>View assignment</small></a>
+                    </div>
+                    <div class="large-5 medium-5 columns set-comments">
+                        <label for="comments" class="hide">Comments</label>
+                        <textarea id="comments" placeholder="Type your comments here" class="disabled" disabled>A nice improvment over your previous submission, keep it up!</textarea>
+                    </div>
+                    <div class="large-2 medium-2 columns set-grade">
+                        <label for="grade" class="hide">Grade</label>
+                        <select id="grade" class="small inline disabled" disabled>
+                            <option>B+</option>
+                        </select>
+                    </div>
+                    <div class="large-1 medium-1 columns">
+                        <a href="#" class="small radius button right disabled" data-reveal-id="myPaper">Marked</a>
+                    </div>
+                </div>
+                <hr>
+
+
+
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- End Grades -->

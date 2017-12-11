@@ -1,0 +1,76 @@
+﻿@model UniEBoard.Service.Models.AssignmentViewModel
+@if (Request.IsAuthenticated)
+{
+    @*<label for="to">
+        Who will receive the assignment?</label>
+    @Html.DropDownListFor(m => m.StudentId, (IEnumerable<SelectListItem>)ViewData["Students"], "Select person or group")*@
+    
+    <label for="CourseId">
+        Which course does the assignment relate to?</label>
+    @Html.DropDownListFor(m => m.CourseId, (IEnumerable<SelectListItem>)ViewData["TeacherCourses"], "Select a course")
+    
+    <label for="ModuleId">
+        Which module does the assignment relate to?</label>
+    @Html.DropDownListFor(m => m.ModuleId, (IEnumerable<SelectListItem>)ViewData["TeacherModules"], "Select a module")
+@*<select id="ModuleId" name="ModuleId">
+    <option value="">Select a module</option>
+    </select>*@
+  
+
+   @* <label for="type">
+        What type of assignment is this?</label>
+    @Html.DropDownListFor(m => m.QuizId, (IEnumerable<SelectListItem>)ViewData["Quiz"], "Select assignment type")*@
+
+    @Html.LabelFor(m => m.Title)
+    @Html.TextBoxFor(m => m.Title, new { placeholder = "Type the assignment title here" })
+
+    <label for="question">
+        Assignment:</label>
+    @Html.TextAreaFor(m => m.Instructions, new { placeholder = "Type the assignment here" })
+
+    @Html.LabelFor(m => m.PointsPossible)
+    @Html.TextBoxFor(m => m.PointsPossible, new { placeholder = "Type the points possible here" })
+
+    @*<label for="file">
+        Upload documents:</label>
+    <div class="row collapse">
+        <div class="small-10 columns">
+            <input id="UploadFile" name="UploadFile" type="file" class="upload-file width100" />
+            <input type="text" class="upload-fake width100" placeholder="Upload any supporting documents" />
+        </div>
+        <div class="small-2 columns">
+            <a href="#" class="button prefix">Upload</a>
+        </div>
+    </div>*@
+    <label for="txtAssets">
+        Assets:</label>
+    <input type="text" id="txtAssets" name="txtAssets" class="autocomplete" placeholder="Please type in asset name..."
+        data-source="@Url.Action("AutoCompleteAssets", "Teacher")" 
+        data-callback="AddAssetToAssignmentList" 
+        data-callback-controller="@Url.Action("CreateAssignmentAssetList", "Teacher")" 
+        data-callback-target-id="assignmentAssets">
+    <div class="tags panel" id="assignmentAssets" style="display:none">
+    </div>
+    <label for="deadline">
+        Deadline:</label>
+    <div class="row collapse">
+        <div class="small-11 columns">
+            @Html.TextBoxFor(m => m.Deadline, new { placeholder = "Choose the deadline", @class = "datetimepicker" })</div>
+        <div class="small-1 columns">
+            <a data-focus-id="Deadline" class="button prefix"><i class="icon-calendar"></i></a>
+        </div>
+    </div>
+   @* <input type="submit" value="Save as draft" class="small radius button" data-reveal-id="myAssignment1" />*@
+    <input type="submit" value="Save" class="small radius button" />
+    <div id="myAssignment" class="reveal-modal">
+        <h2>
+            Published!</h2>
+        <p class="lead">
+            Your assignment has been pubished.</p>
+        <p>
+            Students will recive an alert and this assignment in their task list.</p>
+        <a class="close-reveal-modal">&#215;</a>
+    </div>
+  
+}
+

@@ -1,0 +1,82 @@
+﻿@model PagedList.IPagedList<UniEBoard.Service.Models.TopicPostViewModel>
+@using PagedList.Mvc;
+@using System.Linq;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Topic Posts";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section firstNavigationElement {
+    @Html.Partial("_LogoutPartial")
+}
+
+@section navigationalElements {
+    @Html.Partial("_StudentNavigationalElementsPartial")
+}
+
+
+
+<div class="row">
+    <div class="large-12 medium-12 columns">
+        <h2>@Request.QueryString["topicTitle"]</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="large-12 medium-12 columns">
+        <a data-effect="st-effect-2" class="sidebar-activate reveal-bottom button tiny right"><i class="icon-plus"></i> New Post</a>
+
+        <div class="topic-wrapper">
+
+            @foreach (UniEBoard.Service.Models.TopicPostViewModel topicPost in Model.OrderBy(m => m.DateCreated))
+            {
+                <div class="post">
+                    <div class="row">
+                        <div class="large-2 medium-2 columns">
+                            <div class="username">
+                                <img src="/images/person.png" alt=" ">
+                                <p>@topicPost.PostedByUser.FirstName @topicPost.PostedByUser.LastName</p>
+                            </div>
+                        </div>
+                        <div class="large-10 medium-10 columns">
+                            <a data-effect="st-effect-2" class="sidebar-activate reveal-bottom right tiny button lm-10" data-id="postReply_@topicPost.Id"><i class="icon-reply"></i></a>
+                            <div class="datetime">@topicPost.DateCreated</div>
+                            <div class="post-title">@topicPost.Title</div>
+                            @if (topicPost.ParentPost != null && !string.IsNullOrEmpty(topicPost.ParentPost.Body))
+                            {
+                                <div class="original-post">
+                                    <p>@topicPost.ParentPost.Body</p>
+                                </div>
+                            }
+                            <div class="post-content">
+                                <p>@topicPost.Body</p>
+                            </div>
+                            <div id="postReply_@topicPost.Id" class="reveal-modal">
+                                @Html.Partial("_CreateTopicPostReply", topicPost)
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            }
+
+            <div class="row">
+                <div class="large-12 medium-12 columns">
+                    @Html.PagedListPager(Model, page => Url.Action("TopicPost", new { page, id = (int)Session["TopicId"] }))
+                </div>
+            </div>
+
+            <div id="newPost" class="reveal-modal">
+                @Html.Partial("_CreateTopicPost", new UniEBoard.Service.Models.TopicPostViewModel())
+            </div>
+        </div>
+        <a data-effect="st-effect-2" class="sidebar-activate reveal-bottom button tiny right"><i class="icon-plus"></i> New Post</a>
+    </div>
+
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/Scripts/custom/global.js")
+}

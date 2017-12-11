@@ -1,0 +1,31 @@
+﻿<div class="row">
+    <div class="large-6 medium-6 columns">
+        <label for="filter-course" class="hide ">Filter by course:</label>
+        @Html.DropDownList("CoursesFilterDropList", (SelectList)ViewData["CoursesDropList"], "-- Select Course --", new { @class = "FilterDropList", @id = "CoursesFilterDropList" })
+    </div>
+    <div class="large-6 medium-6 columns">
+        <label for="filter-module" class="hide">Filter by module:</label>
+        @Html.DropDownList("ModulesFilterDropList", (SelectList)ViewData["ModulesDropList"], "-- Select Module --", new { @class = "FilterDropList", @id = "ModulesFilterDropList" })
+    </div>
+</div>
+<div class="row">
+    <div class="large-6 medium-6 columns">
+        <label for="filter-assignment" class="hide">Filter by assignment:</label>
+        @Html.DropDownList("AssignmentsFilterDropList", (SelectList)ViewData["AssignmentsDropList"], "-- Select Assignments --", new { @class = "FilterDropList", @id = "AssignmentsFilterDropList" })
+    </div>
+    <div class="large-6 medium-6 columns">
+        <label for="filter-student" class="hide">Filter by student:</label>
+        @Html.DropDownList("StudentsFilterDropList", (SelectList)ViewData["StudentsDropList"], "-- Select Student --", new { @class = "FilterDropList", @id = "StudentsFilterDropList" })
+    </div>
+</div>
+
+@if((bool)ViewData["ajaxCall"])
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(document).foundation();
+            //console.log('foundation');
+        });
+
+    </script>
+}

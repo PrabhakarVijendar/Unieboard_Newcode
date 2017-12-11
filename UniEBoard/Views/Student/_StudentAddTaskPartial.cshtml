@@ -1,0 +1,58 @@
+﻿@model UniEBoard.Service.Models.TaskViewModel
+@if (Request.IsAuthenticated)
+{
+<!-- Begin Add Task -->
+    
+    
+    using (Ajax.BeginForm("AddTask", "Student", null, new AjaxOptions() { HttpMethod = "Post", UpdateTargetId = "tasks", InsertionMode = InsertionMode.Replace, OnBegin = "validateForm", OnSuccess = "ResetAddTaskForm" }, new { id = "addTaskForm" }))
+    {
+        
+        
+        <h2 class="tm-25">Add Task</h2>
+        @*@Html.ValidationSummary(false)
+    @*
+        if (!ViewData.ModelState.IsValid) 
+        { 
+        <div class="validation-summary-errors">
+            <ul class="no-bullet">
+                @foreach (ModelState modelState in ViewData.ModelState.Values)
+                {
+                    foreach (ModelError modelError in modelState.Errors)
+                    {
+                        <li>@modelError.ErrorMessage</li>
+                    }
+                }
+                    
+            </ul>
+        </div>
+        }
+        *@
+        <hr/>
+        @Html.LabelFor(m => m.Title)
+        @Html.TextBoxFor(m => m.Title, new { placeholder = "Type your task title here" })  
+        //@Html.ValidationMessageFor(m => m.Title)
+
+        @Html.LabelFor(m => m.Note)
+        @Html.TextAreaFor(m => m.Note, new { placeholder = "Type your task notes here" })  
+        //@Html.ValidationMessageFor(m => m.Note)
+        
+        @Html.LabelFor(m => m.Deadline)
+        @Html.TextBoxFor(m => m.Deadline, new { placeholder = "Select the deadline date", @class = "datetimepicker" }) 
+        @*
+        <input class="text-box single-line valid datetimepicker" data-val="true" 
+                                id="Deadline" name="Deadline" type="datetime" placeholder="Select the deadline date"
+                                value="" />
+            *@
+        @*@Html.ValidationMessageFor(m => m.Deadline)*@
+
+        <input type="submit" value="Add" class="small success radius button"/>
+    
+	    <div id="myNotes" class="reveal-modal">
+            <h2>Added!</h2>
+            <p class="lead">Your task has been added!</p>
+            <a class="close-reveal-modal">&#215;</a>
+		</div>
+    }
+    
+<!-- End Add Task -->
+}

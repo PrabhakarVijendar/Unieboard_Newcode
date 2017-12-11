@@ -1,0 +1,19 @@
+﻿@model IEnumerable<UniEBoard.Service.Models.StudentViewModel>
+@{
+    ViewBag.Title = "My DashBoard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section firstNavigationElement {
+    @Html.Partial("_LogoutPartial")
+}
+
+@section navigationalElements {
+    @Html.Partial("_AdminNavigationalElementsPartial")
+}
+
+@foreach (var item in Model)
+{
+    <p>@item.UserName</p>
+}
+

@@ -1,0 +1,88 @@
+﻿@model IEnumerable<UniEBoard.Service.Models.Units.ClassViewModel>
+@{
+    ViewBag.Title = "My DashBoard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section firstNavigationElement {
+    @Html.Partial("_LogoutPartial")
+}
+@section navigationalElements {
+    @Html.Partial("_TeacherNavigationalElementsPartial")
+}
+<div class="row">
+    <br/>
+
+    <div class="large-12 medium-12 columns">
+
+
+        <form class="custom">
+            <table class="full responsive grid">
+                <thead>
+                    <tr>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Asset Video
+                        </th>
+                        <th>
+                            Asset document
+                        </th>
+                        <th>
+                            Assignment
+                        </th>
+                        <th>
+                            Schedule
+                        </th>
+                        <th>
+                            Department
+                        </th>
+                        <th>
+                            Students
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var obj in Model)
+                    {
+
+                        <tr>
+                            <td>
+                                @obj.Title
+                            </td>
+
+                            <td class="tags" id="assetVideo_@obj.Id">
+                                @Html.Partial("_VideoClassPartial", obj.VideoAssets, new ViewDataDictionary { { "ClassVideoIdentifier", obj.Id } })
+                            </td>
+
+                            <td class="tags" id="assetDocument_@obj.Id">
+                                @Html.Partial("_DocumentClassPartial", obj.DocumentAssets, new ViewDataDictionary { { "ClassDocumentIdentifier", obj.Id } })
+                            </td>
+
+                            <td class="tags" id="calssAssignment_@obj.Id">
+                                @Html.Partial("_AssignmentClassPartial", obj.ListAsignment, new ViewDataDictionary { { "ClassAssignmentIdentifier", obj.Id } })
+                            </td>
+
+                            <td class="tags" id="calssSchedule_@obj.Id">
+                                @Html.Partial("_ScheduleClassPartial", obj.ListScheduleViewModel, new ViewDataDictionary { { "ClassScheduleIdentifier", obj.Id } })
+                            </td>
+                            <td>
+                                StaffUsers
+                            </td>
+                            <td>
+                                ddd
+                            </td>
+
+                        </tr>
+                    }
+
+
+                </tbody>
+            </table>
+
+        </form>
+
+
+
+    </div>
+</div>

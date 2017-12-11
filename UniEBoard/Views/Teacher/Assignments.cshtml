@@ -1,0 +1,100 @@
+﻿@model UniEBoard.Service.Models.AssignmentViewModel
+@{
+    ViewBag.Title = "Assignments";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section firstNavigationElement {
+    @Html.Partial("_LogoutPartial")
+}
+@section navigationalElements {
+    @Html.Partial("_TeacherNavigationalElementsPartial")
+}
+<div class="row">
+    <div class="large-12 medium-12 columns">
+        <ul class="breadcrumbs">
+            <li>@Html.ActionLink("My Dashboard", "Index", "Teacher")</li>
+            <li class="current">@Html.ActionLink("Manage Assignments", "Assignments", "Teacher")</li>
+        </ul>
+        <h2 class="tm-25">
+            Manage Assignments
+        </h2>
+        <hr />
+    </div>
+</div>
+<div class="row">
+    <div class="large-6 medium-6 columns schedule">
+        <h3>
+            Create New Assignment:
+        </h3>
+        <hr />
+        @using (Html.BeginForm("CreateAssignment", "Teacher", FormMethod.Post, new { @class = "custom", enctype = "multipart/form-data" }))
+        {
+            @*@Html.ValidationSummary(false)*@
+            if (!ViewData.ModelState.IsValid)
+            {
+            <div class="validation-summary-errors">
+                <ul class="no-bullet">
+                    @foreach (ModelState modelState in ViewData.ModelState.Values)
+                    {
+                        foreach (ModelError modelError in modelState.Errors)
+                        {
+                            <li>@modelError.ErrorMessage</li>
+                        }
+                    }
+                    
+                </ul>
+            </div>
+            }
+            @Html.Partial("_AssignmentFormPartial", Model)
+        }
+    </div>
+    <div class="large-6 medium-6 columns">
+        <h5>
+            @* 
+            @Html.CustomDropDownList("ddCourses", (IEnumerable<SelectListItem>)Session["CourseList"],
+            ViewData["CourseId"].ToString(), string.Format("Filter {0} by {1}...", UniEBoard.Service.Helpers.Configuration.WebSite.Current.TitleModules, UniEBoard.Service.Helpers.Configuration.WebSite.Current.TitleCourse),
+            new { data_source = @Url.Action("ModuleByCourse"), @class = "ajaxDropDown", data_targetElementId = "moduleList" })
+        *@
+            <form class="custom">
+            @Html.CustomDropDownList("ddCourses", (IEnumerable<SelectListItem>)ViewData["TeacherCourses"],
+            ViewData["CourseId"].ToString(), "Filter Assignments by course...",
+                     new { data_source = @Url.Action("FilterModuleByCourse"), @class = "ajaxDropDown", data_targetElementId = "moduleList" })
+           @* @Html.DropDownList("CourseId", (IEnumerable<SelectListItem>)ViewData["TeacherCourses"], "Filter Module by course", new { @class = "ajaxDropDown" })*@
+        </form>
+        </h5>
+        <hr>
+        @Html.Partial("_AssignmentListPartial", (IEnumerable<UniEBoard.Service.Models.AssignmentViewModel>)ViewData["AssignmentList"])
+    </div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $(document).on('change', '#CourseId', function () {
+                
+                var cid = $(this).val();
+
+                $.getJSON("/Teacher/GetCourseModule/", { CourseId: cid },
+                function (data) {
+                    var select = $("#ModuleId");
+
+                    select.empty();
+                    select.append($('<option/>', {
+                        value: "",
+                        text: "Select a module"
+                    }));
+                    $.each(data, function (index, data) {
+                        select.append($('<option/>', {
+                            value: data.Value,
+                            text: data.Text
+                        }));
+
+                    });
+
+                });
+                $(document).foundation();
+            });
+        });    
+    </script>
+}

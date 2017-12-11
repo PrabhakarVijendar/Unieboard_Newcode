@@ -1,0 +1,44 @@
+﻿@model UniEBoard.Service.Models.Quizzes.QuestionViewModel
+@section firstNavigationElement {
+    @Html.Partial("_LogoutPartial")
+}
+@section navigationalElements {
+    @Html.Partial("_TeacherNavigationalElementsPartial")
+}
+<!-- Begin Alerts & Intro -->
+<div class="row">
+    <div class="large-12 medium-12 columns">
+        <ul class="breadcrumbs">
+            <li>@Html.ActionLink("My Dashboard", "Index", "Teacher")</li>
+            <li>@Html.ActionLink("Quizzes", "Quizzes", "Teacher")</li>
+            <li class="current">@Html.ActionLink("Questions", "QuizQuestions", "Teacher", new { quizId = ViewData["QuizId"] }, new { })</li>
+        </ul>
+    </div>
+</div>
+<!-- End Begin Alerts & Intro -->
+<!-- Begin Schedule -->
+<div class="row">
+    <div class="large-12 medium-12 columns">
+        <!-- Begin Add Users -->
+        <h2>
+            Questions <small> <a class="create-new "><i class="icon-plus"></i></a></small>
+        </h2>
+        @using (Html.BeginForm("CreateQuizQuestion", "Teacher", FormMethod.Post, new { @class = "custom" }))
+        {
+            <div id="validation"></div>
+            @Html.Partial("_QuizQuestionFormPartial", Model)
+        }
+        @using (Html.BeginForm("CreateQuizQuestion", "Teacher", FormMethod.Post, new { @class = "custom" }))
+        {
+            @Html.Partial("_QuizQuestionListPartial", (IEnumerable<UniEBoard.Service.Models.Quizzes.QuestionViewModel>)ViewData["QuestionList"])
+        }
+        @*            @Html.Partial("_CreateUserPartial")*@
+        <!-- Begin Find Users -->
+        @*             @Html.Partial("_UserListPartial", (IEnumerable<UniEBoard.Service.Models.UserViewModel>)ViewData["Users"])*@
+        <!-- Begin Pager -->
+        @Html.Partial("_DisplayPageViewAllPartial", (UniEBoard.Service.Models.PageViewAllFilterViewModel)ViewData["Pager"])
+    </div>
+</div>
+<!-- End Body -->
+<!-- End Body -->
+

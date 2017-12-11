@@ -1,0 +1,50 @@
+﻿@model UniEBoard.Service.Models.CourseViewModel
+
+@if (Request.IsAuthenticated)
+{
+    <div id="AddNew" class="hide panel">
+        <div class="row">
+            <div class="large-6 medium-6 columns">
+                @Html.LabelFor(m => m.Title)
+                @Html.TextBoxFor(m => m.Title, new { required = "required", placeholder = "Enter course title..." })
+            </div>
+            <div class="large-6 medium-6 columns">
+                @Html.LabelFor(m => m.DepartmentName)
+                @Html.DropDownListFor(m => m.DepartmentId, (IEnumerable<SelectListItem>)ViewData["DepartmentList"], "Select department...", new{required = "required"})
+            </div>
+        </div>
+        <div class="row">
+            <div class="large-6 medium-6 columns">
+                @Html.LabelFor(m => m.Overview)
+                @Html.TextAreaFor(m => m.Overview, new { required = "required", placeholder = "Enter  course description..." })
+            </div>            
+            <div class="large-3 medium-3 columns">
+                <label for="from">Start Date</label>
+                <div class="row collapse">
+                    <div class="small-10 columns">
+                        @Html.TextBoxFor(m => m.PublishFrom, new { required = "required", placeholder = "Enter Start Date...", @class = "datetimepicker" })
+                    </div>
+                    <div class="small-2 columns">
+                        <a href="#" data-focus-id="PublishFrom" class="button prefix"><i class="icon-calendar"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="large-3 medium-3 columns">
+                <label for="to">End Date</label>
+                <div class="row collapse">
+                    <div class="small-10 columns">
+                        @Html.TextBoxFor(m => m.PublishTo, new { required = "required", placeholder = "Enter End Date...", @class = "datetimepicker" })
+                    </div>
+                    <div class="small-2 columns">
+                        <a href="#" data-focus-id="PublishTo" class="button prefix"><i class="icon-calendar"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="large-12 medium-12 columns">
+                <input type="submit" value="Create Course" class="right button radius tiny" />
+            </div>
+        </div>
+    </div>
+}

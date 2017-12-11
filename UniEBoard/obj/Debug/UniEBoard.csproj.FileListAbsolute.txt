@@ -1,0 +1,460 @@
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\UniEBoard.dll
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\UniEBoard.pdb
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\Antlr3.Runtime.dll
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\Cognite.MembershipProvider.dll
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\DotNetOpenAuth.AspNet.dll
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\DotNetOpenAuth.Core.dll
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\DotNetOpenAuth.OAuth.Consumer.dll
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\DotNetOpenAuth.OAuth.dll
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\DotNetOpenAuth.OpenId.dll
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\EntityFramework.dll
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\EntityFramework.SqlServer.dll
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging.dll
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\Microsoft.Practices.ServiceLocation.dll
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\Microsoft.Web.Infrastructure.dll
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\Microsoft.Web.WebPages.OAuth.dll
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\MySql.Data.dll
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\mysql.data.entity.EF6.dll
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\Newtonsoft.Json.dll
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\PagedList.dll
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\PagedList.Mvc.dll
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\RestSharp.dll
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\StructureMap.dll
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\System.Data.dll
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\System.Net.Http.dll
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\System.Net.Http.Formatting.dll
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\System.Net.Http.WebRequest.dll
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\System.Web.Helpers.dll
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\System.Web.Http.dll
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\System.Web.Http.WebHost.dll
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\System.Web.Mvc.dll
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\System.Web.Optimization.dll
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\System.Web.Razor.dll
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\System.Web.WebPages.Deployment.dll
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\System.Web.WebPages.dll
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\UniEBoard.Model.dll
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\UniEBoard.Repository.dll
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\UniEBoard.Resource.dll
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\UniEBoard.Service.dll
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\Utility.dll
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\WebActivator.dll
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\WebGrease.dll
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\log4net.dll
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\Microsoft.Practices.EnterpriseLibrary.Logging.dll
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\Microsoft.Practices.EnterpriseLibrary.Common.dll
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\AutoMapper.dll
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\Microsoft.Practices.Unity.Interception.dll
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\Microsoft.Practices.Unity.dll
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\Cognite.MembershipProvider.pdb
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\UniEBoard.Resource.pdb
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\UniEBoard.Model.pdb
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\UniEBoard.Repository.pdb
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\UniEBoard.Service.pdb
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\Utility.pdb
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\DotNetOpenAuth.AspNet.xml
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\DotNetOpenAuth.Core.xml
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\DotNetOpenAuth.OAuth.xml
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\DotNetOpenAuth.OAuth.Consumer.xml
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\DotNetOpenAuth.OpenId.xml
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\EntityFramework.xml
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\EntityFramework.SqlServer.xml
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\Microsoft.Web.WebPages.OAuth.xml
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\System.Net.Http.xml
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\System.Net.Http.Formatting.xml
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\System.Net.Http.WebRequest.xml
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\System.Web.Helpers.xml
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\System.Web.Http.xml
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\System.Web.Http.WebHost.xml
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\System.Web.Mvc.xml
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\System.Web.Razor.xml
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\System.Web.WebPages.xml
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\System.Web.WebPages.Deployment.xml
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\bin\log4net.xml
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\obj\Debug\UniEBoard.csprojResolveAssemblyReference.cache
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\obj\Debug\UniEBoard.dll
+F:\UniEBoard-App\UniEBoard-App\UniEBoard\obj\Debug\UniEBoard.pdb
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\obj\Debug\UniEBoard.csprojResolveAssemblyReference.cache
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\obj\Debug\UniEBoard.dll
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\obj\Debug\UniEBoard.pdb
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\UniEBoard.dll.config
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\UniEBoard.dll
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\UniEBoard.pdb
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\Antlr3.Runtime.dll
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\Cognite.MembershipProvider.dll
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\DotNetOpenAuth.AspNet.dll
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\DotNetOpenAuth.Core.dll
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\DotNetOpenAuth.OAuth.Consumer.dll
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\DotNetOpenAuth.OAuth.dll
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\DotNetOpenAuth.OpenId.dll
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\EntityFramework.dll
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\EntityFramework.SqlServer.dll
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging.dll
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\Microsoft.Practices.ServiceLocation.dll
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\Microsoft.Web.Infrastructure.dll
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\Microsoft.Web.WebPages.OAuth.dll
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\MySql.Data.dll
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\MySql.Data.Entity.EF6.dll
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\Newtonsoft.Json.dll
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\PagedList.dll
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\PagedList.Mvc.dll
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\RestSharp.dll
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\StructureMap.dll
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\System.Data.dll
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\System.Net.Http.dll
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\System.Net.Http.Formatting.dll
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\System.Net.Http.WebRequest.dll
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\System.Web.Helpers.dll
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\System.Web.Http.dll
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\System.Web.Http.WebHost.dll
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\System.Web.Mvc.dll
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\System.Web.Optimization.dll
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\System.Web.Razor.dll
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\System.Web.WebPages.Deployment.dll
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\System.Web.WebPages.dll
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\UniEBoard.Model.dll
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\UniEBoard.Repository.dll
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\UniEBoard.Resource.dll
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\UniEBoard.Service.dll
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\Utility.dll
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\WebActivator.dll
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\WebGrease.dll
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\System.Web.WebPages.Razor.dll
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\log4net.dll
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\Microsoft.Practices.EnterpriseLibrary.Logging.dll
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\AutoMapper.dll
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\Microsoft.Practices.EnterpriseLibrary.Common.dll
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\Microsoft.Practices.Unity.Interception.dll
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\Microsoft.Practices.Unity.dll
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\Cognite.MembershipProvider.pdb
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\UniEBoard.Resource.pdb
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\UniEBoard.Model.pdb
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\UniEBoard.Repository.pdb
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\UniEBoard.Service.pdb
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\Utility.pdb
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\DotNetOpenAuth.AspNet.xml
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\DotNetOpenAuth.Core.xml
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\DotNetOpenAuth.OAuth.xml
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\DotNetOpenAuth.OAuth.Consumer.xml
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\DotNetOpenAuth.OpenId.xml
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\EntityFramework.xml
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\EntityFramework.SqlServer.xml
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\Microsoft.Web.WebPages.OAuth.xml
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\System.Net.Http.xml
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\System.Net.Http.Formatting.xml
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\System.Net.Http.WebRequest.xml
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\System.Web.Helpers.xml
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\System.Web.Http.xml
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\System.Web.Http.WebHost.xml
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\System.Web.Mvc.xml
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\System.Web.Razor.xml
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\System.Web.WebPages.xml
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\System.Web.WebPages.Deployment.xml
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\System.Web.WebPages.Razor.xml
+E:\UnieBoardRepository\UniEBoard-App\UniEBoard-App\UniEBoard-App\UniEBoard\bin\log4net.xml
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\obj\Debug\UniEBoard.csprojResolveAssemblyReference.cache
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\obj\Debug\UniEBoard.csproj.CoreCompileInputs.cache
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\UniEBoard.dll.config
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\UniEBoard.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\UniEBoard.pdb
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\Antlr3.Runtime.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\Cognite.MembershipProvider.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\DotNetOpenAuth.AspNet.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\DotNetOpenAuth.Core.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\DotNetOpenAuth.OAuth.Consumer.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\DotNetOpenAuth.OAuth.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\DotNetOpenAuth.OpenId.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\EntityFramework.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\EntityFramework.SqlServer.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\Microsoft.Practices.ServiceLocation.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\Microsoft.Web.Infrastructure.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\Microsoft.Web.WebPages.OAuth.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\MySql.Data.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\MySql.Data.Entity.EF6.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\Newtonsoft.Json.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\PagedList.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\PagedList.Mvc.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\RestSharp.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\StructureMap.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\System.Data.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\System.Net.Http.Formatting.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\System.Web.Helpers.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\System.Web.Http.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\System.Web.Http.WebHost.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\System.Web.Mvc.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\System.Web.Optimization.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\System.Web.Razor.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\System.Web.WebPages.Deployment.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\System.Web.WebPages.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\UniEBoard.Model.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\UniEBoard.Repository.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\UniEBoard.Resource.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\UniEBoard.Service.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\Utility.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\WebActivator.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\WebGrease.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\System.Web.WebPages.Razor.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\log4net.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\Microsoft.Practices.EnterpriseLibrary.Logging.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\AutoMapper.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\Microsoft.Practices.EnterpriseLibrary.Common.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\Microsoft.Practices.Unity.Interception.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\Microsoft.Practices.Unity.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\Cognite.MembershipProvider.pdb
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\UniEBoard.Resource.pdb
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\UniEBoard.Model.pdb
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\UniEBoard.Model.dll.config
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\UniEBoard.Repository.pdb
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\UniEBoard.Repository.dll.config
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\UniEBoard.Service.pdb
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\Utility.pdb
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\DotNetOpenAuth.AspNet.xml
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\DotNetOpenAuth.Core.xml
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\DotNetOpenAuth.OAuth.xml
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\DotNetOpenAuth.OAuth.Consumer.xml
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\DotNetOpenAuth.OpenId.xml
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\EntityFramework.xml
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\EntityFramework.SqlServer.xml
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\Microsoft.Web.WebPages.OAuth.xml
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\System.Net.Http.Formatting.xml
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\System.Web.Helpers.xml
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\System.Web.Http.xml
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\System.Web.Http.WebHost.xml
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\System.Web.Mvc.xml
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\System.Web.Razor.xml
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\System.Web.WebPages.xml
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\System.Web.WebPages.Deployment.xml
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\System.Web.WebPages.Razor.xml
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\bin\log4net.xml
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\obj\Debug\UniEBoard.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master\UniEBoard\obj\Debug\UniEBoard.pdb
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\UniEBoard.dll.config
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\UniEBoard.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\UniEBoard.pdb
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\Antlr3.Runtime.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\Cognite.MembershipProvider.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\CommonServiceLocator.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\DotNetOpenAuth.AspNet.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\DotNetOpenAuth.Core.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\DotNetOpenAuth.OAuth.Consumer.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\DotNetOpenAuth.OAuth.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\DotNetOpenAuth.OpenId.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\EntityFramework.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\EntityFramework.SqlServer.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\Microsoft.Practices.EnterpriseLibrary.Common.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\Microsoft.Practices.EnterpriseLibrary.Logging.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\Microsoft.Practices.ServiceLocation.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\Microsoft.Practices.Unity.Configuration.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\Microsoft.Practices.Unity.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\Microsoft.Practices.Unity.Interception.Configuration.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\Microsoft.Practices.Unity.Interception.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\Microsoft.Web.Infrastructure.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\Microsoft.Web.WebPages.OAuth.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\MySql.Data.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\MySql.Data.Entity.EF6.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\MySql.Web.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\Newtonsoft.Json.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\PagedList.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\PagedList.Mvc.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\RestSharp.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\ServiceLocation.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\StructureMap.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\System.Data.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\System.Net.Http.Extensions.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\System.Net.Http.Formatting.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\System.Net.Http.Primitives.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\System.Web.Helpers.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\System.Web.Http.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\System.Web.Http.WebHost.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\System.Web.Mvc.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\System.Web.Optimization.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\System.Web.Razor.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\System.Web.WebPages.Deployment.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\System.Web.WebPages.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\System.Web.WebPages.Razor.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\UniEBoard.Model.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\UniEBoard.Repository.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\UniEBoard.Resource.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\UniEBoard.Service.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\Utility.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\WebActivator.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\WebGrease.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\WebMatrix.Data.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\WebMatrix.WebData.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\log4net.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\AutoMapper.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\Org.Mentalis.Security.Cryptography.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\Mono.Math.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\Cognite.MembershipProvider.pdb
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\Cognite.MembershipProvider.dll.config
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\UniEBoard.Resource.pdb
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\UniEBoard.Model.pdb
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\UniEBoard.Model.dll.config
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\UniEBoard.Repository.pdb
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\UniEBoard.Repository.dll.config
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\UniEBoard.Service.pdb
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\Utility.pdb
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\Antlr3.Runtime.pdb
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\DotNetOpenAuth.AspNet.xml
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\DotNetOpenAuth.Core.xml
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\DotNetOpenAuth.OAuth.xml
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\DotNetOpenAuth.OAuth.Consumer.xml
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\DotNetOpenAuth.OpenId.xml
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\EntityFramework.xml
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\EntityFramework.SqlServer.xml
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\Microsoft.Practices.EnterpriseLibrary.Common.xml
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.xml
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\Microsoft.Practices.EnterpriseLibrary.Logging.xml
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\Microsoft.Practices.Unity.xml
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\Microsoft.Practices.Unity.Configuration.xml
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\Microsoft.Practices.Unity.Interception.xml
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\Microsoft.Practices.Unity.Interception.Configuration.xml
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\Microsoft.Web.WebPages.OAuth.xml
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\Newtonsoft.Json.xml
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\PagedList.xml
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\PagedList.Mvc.xml
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\ServiceLocation.xml
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\StructureMap.pdb
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\StructureMap.xml
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\System.Net.Http.Extensions.xml
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\System.Net.Http.Formatting.xml
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\System.Net.Http.Primitives.xml
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\System.Web.Helpers.xml
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\System.Web.Http.xml
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\System.Web.Http.WebHost.xml
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\System.Web.Mvc.xml
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\System.Web.Optimization.xml
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\System.Web.Razor.xml
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\System.Web.WebPages.xml
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\System.Web.WebPages.Deployment.xml
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\System.Web.WebPages.Razor.xml
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\log4net.xml
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\Org.Mentalis.Security.Cryptography.xml
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\Mono.Math.xml
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\obj\Debug\UniEBoard.csproj.App.config
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\obj\Debug\UniEBoard.csprojResolveAssemblyReference.cache
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\obj\Debug\UniEBoard.csproj.CoreCompileInputs.cache
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\obj\Debug\UniEBoard.dll
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\obj\Debug\UniEBoard.pdb
+E:\UNIEBOARD\08122017\LatestUnieboard-master - Copy\UniEBoard\bin\Microsoft.Web.Helpers.dll
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\UniEBoard.dll.config
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\UniEBoard.dll
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\UniEBoard.pdb
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\Antlr3.Runtime.dll
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\Cognite.MembershipProvider.dll
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\CommonServiceLocator.dll
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\DotNetOpenAuth.AspNet.dll
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\DotNetOpenAuth.Core.dll
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\DotNetOpenAuth.OAuth.Consumer.dll
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\DotNetOpenAuth.OAuth.dll
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\DotNetOpenAuth.OpenId.dll
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\EntityFramework.dll
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\EntityFramework.SqlServer.dll
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\Microsoft.Practices.EnterpriseLibrary.Common.dll
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging.dll
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\Microsoft.Practices.EnterpriseLibrary.Logging.dll
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\Microsoft.Practices.ServiceLocation.dll
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\Microsoft.Practices.Unity.Configuration.dll
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\Microsoft.Practices.Unity.dll
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\Microsoft.Practices.Unity.Interception.Configuration.dll
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\Microsoft.Practices.Unity.Interception.dll
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\Microsoft.Web.Helpers.dll
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\Microsoft.Web.Infrastructure.dll
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\Microsoft.Web.WebPages.OAuth.dll
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\Newtonsoft.Json.dll
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\PagedList.dll
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\PagedList.Mvc.dll
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\RestSharp.dll
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\ServiceLocation.dll
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\StructureMap.dll
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\System.Data.dll
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\System.Net.Http.Extensions.dll
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\System.Net.Http.Formatting.dll
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\System.Net.Http.Primitives.dll
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\System.Web.Helpers.dll
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\System.Web.Http.dll
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\System.Web.Http.WebHost.dll
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\System.Web.Mvc.dll
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\System.Web.Optimization.dll
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\System.Web.Razor.dll
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\System.Web.WebPages.Deployment.dll
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\System.Web.WebPages.dll
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\System.Web.WebPages.Razor.dll
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\UniEBoard.Model.dll
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\UniEBoard.Repository.dll
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\UniEBoard.Resource.dll
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\UniEBoard.Service.dll
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\Utility.dll
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\WebActivator.dll
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\WebGrease.dll
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\log4net.dll
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\AutoMapper.dll
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\Org.Mentalis.Security.Cryptography.dll
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\Mono.Math.dll
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\Cognite.MembershipProvider.pdb
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\UniEBoard.Resource.pdb
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\UniEBoard.Model.pdb
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\UniEBoard.Repository.pdb
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\UniEBoard.Service.pdb
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\Utility.pdb
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\Antlr3.Runtime.pdb
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\DotNetOpenAuth.AspNet.xml
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\DotNetOpenAuth.Core.xml
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\DotNetOpenAuth.OAuth.xml
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\DotNetOpenAuth.OAuth.Consumer.xml
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\DotNetOpenAuth.OpenId.xml
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\EntityFramework.xml
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\EntityFramework.SqlServer.xml
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\Microsoft.Practices.EnterpriseLibrary.Common.xml
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.xml
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\Microsoft.Practices.EnterpriseLibrary.Logging.xml
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\Microsoft.Practices.Unity.xml
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\Microsoft.Practices.Unity.Configuration.xml
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\Microsoft.Practices.Unity.Interception.xml
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\Microsoft.Practices.Unity.Interception.Configuration.xml
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\Microsoft.Web.WebPages.OAuth.xml
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\Newtonsoft.Json.xml
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\PagedList.xml
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\PagedList.Mvc.xml
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\ServiceLocation.xml
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\StructureMap.pdb
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\StructureMap.xml
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\System.Net.Http.Extensions.xml
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\System.Net.Http.Formatting.xml
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\System.Net.Http.Primitives.xml
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\System.Web.Helpers.xml
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\System.Web.Http.xml
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\System.Web.Http.WebHost.xml
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\System.Web.Mvc.xml
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\System.Web.Optimization.xml
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\System.Web.Razor.xml
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\System.Web.WebPages.xml
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\System.Web.WebPages.Deployment.xml
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\System.Web.WebPages.Razor.xml
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\log4net.xml
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\Org.Mentalis.Security.Cryptography.xml
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\Mono.Math.xml
+E:\sudhir1\UniBoardUpdated\UniEBoard\obj\Debug\UniEBoard.csproj.App.config
+E:\sudhir1\UniBoardUpdated\UniEBoard\obj\Debug\UniEBoard.csprojResolveAssemblyReference.cache
+E:\sudhir1\UniBoardUpdated\UniEBoard\obj\Debug\UniEBoard.dll
+E:\sudhir1\UniBoardUpdated\UniEBoard\obj\Debug\UniEBoard.pdb
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\WebMatrix.Data.dll
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\WebMatrix.WebData.dll
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\WebMatrix.Data.xml
+E:\sudhir1\UniBoardUpdated\UniEBoard\bin\WebMatrix.WebData.xml

@@ -1,0 +1,17 @@
+﻿@model IEnumerable<UniEBoard.Service.Models.UserViewModel>
+
+<!-- Online Status -->
+<h6>Teachers / Classmates online</h6>
+<div class="users-online">
+    @foreach(var user in Model) {
+        <div class="user">
+            <div class="avatar">
+                <i class="icon-user online"></i>
+            </div>
+            <div class="name">
+                @user.FullName
+            </div>
+        </div>
+    }
+</div>
+<!-- end users-->

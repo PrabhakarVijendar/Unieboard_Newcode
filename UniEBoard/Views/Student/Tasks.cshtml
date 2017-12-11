@@ -1,0 +1,53 @@
+﻿@{
+    ViewBag.Title = "My Tasks/Assignments";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section firstNavigationElement {
+    @Html.Partial("_LogoutPartial")
+}
+
+@section navigationalElements {
+    @Html.Partial("_StudentNavigationalElementsPartial")
+}
+
+<!-- Begin Breadcrumbs -->
+
+<div class="row">
+    <div class="large-12 medium-12 columns">
+        <ul class="breadcrumbs">
+            <li>@Html.ActionLink("My Dashboard", "Index", "Student")</li>
+            <li class="current">@Html.ActionLink("Tasks", "Tasks", "Student")</li>
+        </ul>
+    </div>
+</div>
+    
+<!-- End Begin Breadcrumbs -->
+
+
+<div class="row">
+
+    <!-- Begin Tasks And Assignments -->
+    <div class="large-8 medium-8 columns">
+
+        <!-- Begin Tasks -->
+        <h2 class="tm-25">Tasks <small>/ Deadlines</small></h2>
+        <div id="tasks" class="tasks">
+            @if (ViewBag.Tasks != null)
+            {
+                @Html.Partial("_StudentTaskPartial", (List<UniEBoard.Service.Models.TaskViewModel>)ViewBag.Tasks)
+            }
+        </div>
+        <!-- End Tasks -->
+
+    </div>
+    <!-- End Tasks And Assignments --> 
+
+    <!-- Begin Add Tasks -->
+    <div class="large-4 medium-4 columns">
+        @Html.Partial("_StudentAddTaskPartial")
+    </div>
+</div>
+  <!-- End Add Tasks -->
+
+

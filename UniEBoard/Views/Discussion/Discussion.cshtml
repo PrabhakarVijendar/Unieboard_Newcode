@@ -1,0 +1,40 @@
+﻿@model IEnumerable<UniEBoard.Service.Models.DiscussionViewModel>
+@{
+    ViewBag.Title = "Discussions";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section firstNavigationElement {
+    @Html.Partial("_LogoutPartial")
+}
+
+@section navigationalElements {
+    @Html.Partial("_StudentNavigationalElementsPartial")
+}
+
+<div class="row">
+    <div class="large-12 medium-12 columns">
+        <ul class="breadcrumbs">
+            <li>@Html.ActionLink("My Dashboard", "Index", "Student")</li>
+            <li class="current">@Html.ActionLink("Discussions", "Index", "Discussion")</li>
+        </ul>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="large-12 medium-12 columns">
+        @using (Ajax.BeginForm("DiscussionThread", "Discussion", null, new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "result", InsertionMode = InsertionMode.Replace }, new { id = "form_discussion", @class = "custom" }))
+        {
+            @Html.DropDownList("selectedCourse", (IEnumerable<SelectListItem>)ViewData["StudentCourses"], "All Courses", new { @class = "large", onchange = "$(this.form).submit();" })
+
+            @Html.Partial("_DiscussionThreadPartial", (IEnumerable<UniEBoard.Service.Models.DiscussionViewModel>)ViewData["DiscussionThread"])
+        }
+    </div>
+</div>
+<div id="result"></div>
+
+
+      @section Scripts {
+    @Scripts.Render("~/Scripts/custom/global.js")
+}

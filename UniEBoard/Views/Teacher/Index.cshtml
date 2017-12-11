@@ -1,0 +1,92 @@
+﻿@model UniEBoard.Service.Models.StaffViewModel
+@{
+    ViewBag.Title = "My DashBoard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var CurrentUser = (ViewContext.Controller as UniEBoard.Controllers.BaseController).CurrentUser;
+}
+
+@section firstNavigationElement {
+    @Html.Partial("_LogoutPartial")
+}
+
+@section navigationalElements {
+    @Html.Partial("_TeacherNavigationalElementsPartial")
+}
+
+@section ajax{ @Html.Partial("../Course/_QuizzesAjax") }
+
+@Html.Partial("_AssetVideoSliderContainerPartial", (IEnumerable<UniEBoard.Service.Models.AssetViewModel>)ViewData["Assets"])
+
+
+
+	<div class="row">
+		<div class="large-12 columns">
+@*            @if (ViewBag.Messages != null)
+            {
+                @Html.Partial("_StudentMessagePartial", (List<UniEBoard.Service.Models.MessageViewModel>)ViewBag.Messages)
+            }*@
+            <ul class="breadcrumbs">
+                <li class="current"><a href="#">@ViewBag.Title</a></li>
+            </ul>
+		</div>
+	</div>
+
+<!--HTML Demo code START-->
+<div class="row">
+    <div class="large-8 columns">
+
+        <!-- Schedule -->
+        @if(!CurrentUser.IsAdmin) {
+            @Html.Partial("_DashboardSchedulePartial", ViewData["Units"])
+        }
+        
+        <div id="divMessage">
+            @{Html.RenderAction("Index", "Message");}
+        </div>
+
+    </div>
+    <div class="large-4 columns">
+        <div class="panel radius dashboard-alert-wrapper">
+            <div class="user">
+                <div class="avatar">
+                    <img src="/images/person.png" alt="@Html.DisplayFor(m => m.FirstName) @Html.DisplayFor(m => m.LastName)">
+                </div>
+                <div class="name">
+                    @Html.DisplayFor(m => m.FirstName) @Html.DisplayFor(m => m.LastName)
+                </div>
+            </div>
+            @Html.Partial("_NotificationsPartial", ViewData["Messages"])
+        </div>
+        @if(!CurrentUser.IsAdmin) {
+            @Html.Partial("_OnlineUsersPartial", ViewData["OnlineUsers"])
+        }
+    </div>
+</div>
+
+<!--HTML Demo code END-->
+
+
+    
+
+
+	
+@section Scripts {
+    @Scripts.Render("~/Scripts/custom/global.js")
+
+     @*<script type="text/javascript">
+
+        $('[data-assetId]').bind('change', function () {
+            $.ajax({
+                url: '@Url.Action("UpdateAssetName", "Teacher")',
+                type: 'POST',
+                data: "{ name:'" + $(this).val() + "', assetId:'" + $(this).attr("data-assetId") + "'}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "html",
+                error: function (jXhr) {
+                    if (typeof console != 'undefined')
+                        alert("Error Updating Object")
+                }
+            });
+        });
+    </script>*@
+}

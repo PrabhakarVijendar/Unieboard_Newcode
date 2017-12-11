@@ -1,0 +1,153 @@
+﻿@model UniEBoard.Service.Models.StaffViewModel
+@{
+    ViewBag.Title = "My DashBoard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section firstNavigationElement {
+    @Html.Partial("_LogoutPartial")
+}
+
+@section navigationalElements {
+    @Html.Partial("_TeacherNavigationalElementsPartial")
+}
+
+<!-- Begin Alerts & Intro -->
+
+	<div class="row">
+        <div class="large-12 medium-12 columns">
+            @*            @if (ViewBag.Messages != null)
+            {
+                @Html.Partial("_StudentMessagePartial", (List<UniEBoard.Service.Models.MessageViewModel>)ViewBag.Messages)
+            }*@
+            <ul class="breadcrumbs">
+                <li class="current"><a href="#">@ViewBag.Title</a></li>
+            </ul>
+            <h2 class="tm-25">Welcome back @Html.DisplayFor(m => m.FirstName) @Html.DisplayFor(m => m.LastName)</h2>
+            <hr />
+        </div>
+	</div>
+    
+	<!-- End Begin Alerts & Intro -->
+
+
+	<!-- Begin Schedule -->
+	<div class="row">
+        <div class="large-7 medium-7 columns schedule">
+            <h3>Latest Questions</h3>
+            <hr />
+            <div class="questions">
+                <ul class="square">
+                    <li><a href="" class="roll" data-title="Reading material?">Reading material?&nbsp;</a></li>
+                    <li><a href="" class="roll" data-title="Tim Berners-Lee?">Tim Berners-Lee?&nbsp;<span class="label radius">Updated</span></a></li>
+                    <li><a href="" class="roll" data-title="Historical data in Excel?">Historical data in Excel?&nbsp;</a></li>
+                    <li><a href="" class="roll" data-title="Exploiting market mechanics?">Exploiting market mechanics?&nbsp;</a></li>
+                </ul>
+                <a href="teacher-discussions.htm" class="small success radius button">View all questions</a>
+            </div>
+            <hr>
+            <h3>Create New Announcement:</h3>
+            <hr>
+            <form class="custom">
+                <label for="to">Who will receive the announcement?</label>
+                <select id="to">
+                    <option>Select person or group</option>
+                    <option disabled>Groups</option>
+                    <option>- IHTS : Study Group 1</option>
+                    <option>- IHTS : Study Group 2</option>
+                    <option>- IHTS : Study Group 3</option>
+                    <option>- IHTS : Study Group 4</option>
+                    <option disabled>Students</option>
+                    <option>- Paul Mervin</option>
+                    <option>- Chico Chidi</option>
+                    <option>- Ali Raza</option>
+                </select>
+                <label for="type">What does the announcement relate to?</label>
+                <select id="type">
+                    <option>Select a type</option>
+                    <option>Info</option>
+                    <option>Fact</option>
+                    <option>Update</option>
+                    <option disabled>Internet History, Technology, and Security</option>
+                    <option>- IHTS : General Question</option>
+                    <option>- IHTS : Introduction to the Course and The Dawn of Electronic Computing (1940-1960)</option>
+                    <option>- IHTS : The First Internet (1960-1990)</option>
+                    <option>- IHTS : The World Wide Web (1990-1995</option>
+                    <option>- IHTS : Commerciaoptionzation and Growth (1995-2000)</option>
+                    <option>- IHTS : Internets and Packets</option>
+                    <option>- IHTS : Transports and Security</option>
+                    <option>- IHTS : Networked Appoptioncations</option>
+                    <option>- IHTS : Security - Protecting Information</option>
+                    <option>- IHTS : Security - Estaboptionshing Identity</option>
+                    <option>- IHTS : Final Exam</option>
+                </select>
+
+                <label for="question">Announcement:</label>
+                <textarea id="question" placeholder="Type the announcement here"></textarea>
+
+                <a href="#" class="small success radius button" data-reveal-id="myAnnouncement">Send</a>
+                <div id="myAnnouncement" class="reveal-modal">
+                    <h2>Sent!</h2>
+                    <p class="lead">Your announcement has been sent.</p>
+                    <p>Students will recive an alert and this announcement in their task list.</p>
+                    <a class="close-reveal-modal">&#215;</a>
+                </div>
+            </form>
+
+
+        </div>
+	  <!-- End Schedule -->
+
+        <div class="large-5 medium-5 columns">
+            <!-- Begin Tasks -->
+
+
+            <div class="tasks">
+                <h3>New Work Submitted</h3>
+                <hr />
+                <div class="row">
+                    <div class="large-4 medium-4 columns student">
+                        Paul Mervin :
+                    </div>
+                    <div class="large-8 medium-8 columns set-comments">
+                        <a href="IHTS.htm?mode=edit" class="roll" data-title="Week 1 Quiz">Week 1 Quiz &nbsp; <span class="label  radius">IHTS</span></a>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="large-4 medium-4 columns student">
+                        Paul Mervin :
+                    </div>
+                    <div class="large-8 medium-8 columns set-comments">
+                        <a href="IHTS.htm?mode=edit" class="roll" data-title="Week 2 Quiz">Week 2 Quiz &nbsp; <span class="label  radius">IHTS</span></a>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="large-4 medium-4 columns student">
+                        Paul Mervin :
+                    </div>
+                    <div class="large-8 medium-8 columns set-comments">
+                        <a href="IHTS.htm?mode=edit" class="roll" data-title="Essay The early days  Draft">Essay The early days  Draft &nbsp; <span class="label  radius">IHTS</span></a>
+                    </div>
+                </div>
+                <hr>
+                <a href="teacher-courses.htm" class="small success radius button">View all work</a>
+                <hr>
+            </div>
+
+
+
+
+            <div class="tasks">
+                <h3>My Courses</h3>
+                <hr />
+                <ul class="square">
+                    <li><a href="IHTS.htm?mode=edit" class="roll" data-title="Internet History, Technology, and Security (IHTS)">Internet History, Technology, and Security (IHTS)</a></li>
+                </ul>
+                <a href="teacher-grades.htm" class="small success radius button">Manage my courses</a>
+            </div>
+        </div>
+	</div>
+
+	

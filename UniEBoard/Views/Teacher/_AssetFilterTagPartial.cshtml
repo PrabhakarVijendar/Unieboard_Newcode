@@ -1,0 +1,35 @@
+﻿@model IEnumerable<String>
+@{
+    // to identify whether the list is for assignments or any other page
+    var standard = true;
+    if (Request.RawUrl.ToString().ToLower().Contains("/teacher/addfiltertagasset"))
+    {
+        standard = true;
+    }
+    else if (!Request.RawUrl.ToString().ToLower().Contains("teacher/createassignmentassetlist"))
+    {
+        var stillStandard = Request.QueryString["standard"];
+        standard = (stillStandard != null && stillStandard.Equals("True")) ? true : false;
+    }
+    else
+    {
+        standard = false;
+    }
+    //standard = Request.QueryString["standard"] != null ? Request.QueryString["standard"] : true;
+}
+@if (Request.IsAuthenticated && Model != null)
+{
+    if (Model != null)
+    {
+        foreach (var strFilter in Model)
+        {
+            <span class="label radius">
+                @strFilter
+           
+            <a id="RemoveTagFilter_@strFilter" class="ajaxTagRemoveLink" 
+               data-source='@Url.Action("RemoveFilterTagAsset", "Teacher", new { tagFilter = strFilter, standard = standard })'
+               data-target-id="@(standard ? "tagFiltering" : "assignmentAssets")" data-action="removeFilter" data-callback="@(standard ? "undefined" : "RemoveAssetFromAssignmentList")">x</a>
+        </span>
+        }
+    }
+}
